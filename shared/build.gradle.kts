@@ -1,6 +1,9 @@
+val settingsVersion = "1.0.0"
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
+    kotlin("plugin.serialization")
     id("com.android.library")
     id("org.jetbrains.compose")
 }
@@ -36,7 +39,10 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
-                implementation("com.russhwolf:multiplatform-settings-no-arg:1.0.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+
+                implementation("com.russhwolf:multiplatform-settings-no-arg:$settingsVersion")
+                implementation("com.russhwolf:multiplatform-settings-serialization:$settingsVersion")
             }
         }
         val androidMain by getting {

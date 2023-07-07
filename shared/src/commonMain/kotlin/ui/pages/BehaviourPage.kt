@@ -1,26 +1,9 @@
 package ui.pages
 
-import SettingsRepository
+import data.repository.SettingsRepository
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MenuDefaults
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,7 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import data.model.TimeDuration
+import data.model.TimeData
 import ui.components.BooleanSetting
 import ui.components.TimeInputSetting
 
@@ -36,16 +19,16 @@ import ui.components.TimeInputSetting
 fun BehaviourPage(
     settingsRepository: SettingsRepository
 ) {
-    var breakFrequency by remember { mutableStateOf(TimeDuration(0, 0, 0)) }
-    var breakDuration by remember { mutableStateOf(TimeDuration(0, 0, 0)) }
-    var breakSkip by remember { mutableStateOf(false) }
-    var breakSnooze by remember { mutableStateOf(false) }
-    var breakSnoozeDuration by remember { mutableStateOf(TimeDuration(0, 0, 0)) }
+    val breakFrequency by settingsRepository.breakFrequency
+    val breakDuration by settingsRepository.breakDuration
+    val breakSkip by settingsRepository.breakSkip
+    val breakSnooze by settingsRepository.breakSnooze
+    val breakSnoozeDuration by settingsRepository.breakSnoozeLength
 
     TimeInputSetting(
         time = breakFrequency,
         onTimeChange = {
-            breakFrequency = it
+            settingsRepository.saveBreakFrequency(it)
         },
         name = "Break frequency"
     )
@@ -55,7 +38,7 @@ fun BehaviourPage(
     TimeInputSetting(
         time = breakDuration,
         onTimeChange = {
-            breakDuration = it
+            settingsRepository.saveBreakDuration(it)
         },
         name = "Break duration"
     )
@@ -65,7 +48,7 @@ fun BehaviourPage(
     BooleanSetting(
         checked = breakSkip,
         onCheckedChange = {
-            breakSkip = it
+            settingsRepository.saveBreakSkip(it)
         },
         name = "Allow to skip break"
     )
@@ -75,7 +58,7 @@ fun BehaviourPage(
     BooleanSetting(
         checked = breakSnooze,
         onCheckedChange = {
-            breakSnooze = it
+            settingsRepository.saveBreakSnooze(it)
         },
         name = "Allow to snooze break"
     )
@@ -86,7 +69,7 @@ fun BehaviourPage(
         TimeInputSetting(
             time = breakSnoozeDuration,
             onTimeChange = {
-                breakSnoozeDuration = it
+                settingsRepository.saveBreakSnoozeLength(it)
             },
             name = "Snooze length"
         )

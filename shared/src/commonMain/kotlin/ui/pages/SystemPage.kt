@@ -9,17 +9,20 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import data.repository.SettingsRepository
 import ui.components.BooleanSetting
 
 @Composable
-fun SystemPage() {
-    var resetOnIdle by remember { mutableStateOf(false) }
-    var startAtLogin by remember { mutableStateOf(false) }
+fun SystemPage(
+    settingsRepository: SettingsRepository
+) {
+    val resetOnIdle by settingsRepository.resetOnIdle
+    val startAtLogin by settingsRepository.startAtLogin
 
     BooleanSetting(
         checked = resetOnIdle,
         onCheckedChange = {
-            resetOnIdle = it
+            settingsRepository.saveResetOnIdle(it)
         },
         name = "Reset on idle"
     )
@@ -29,7 +32,7 @@ fun SystemPage() {
     BooleanSetting(
         checked = startAtLogin,
         onCheckedChange = {
-            startAtLogin = it
+            settingsRepository.saveStartAtLogin(it)
         },
         name = "Start at login"
     )

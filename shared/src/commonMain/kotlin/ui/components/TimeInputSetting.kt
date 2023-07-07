@@ -28,12 +28,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import data.model.TimeDuration
+import data.model.TimeData
 
 @Composable
 fun TimeInputSetting(
-    time: TimeDuration,
-    onTimeChange: (TimeDuration) -> Unit,
+    time: TimeData,
+    onTimeChange: (TimeData) -> Unit,
     name: String
 ) {
     val hours = time.hours.toString().padStart(2, '0')
@@ -72,7 +72,7 @@ fun TimeInputSetting(
             TimeInputField(
                 value = hours,
                 onValueChange = {
-                    TimeDuration.getHours(it)?.let { hours ->
+                    TimeData.getHours(it)?.let { hours ->
                         onTimeChange(time.copy(hours = hours))
                     }
                 }
@@ -81,7 +81,7 @@ fun TimeInputSetting(
             TimeInputField(
                 value = minutes,
                 onValueChange = {
-                    TimeDuration.getMinutes(it)?.let { minutes ->
+                    TimeData.getMinutes(it)?.let { minutes ->
                         onTimeChange(time.copy(minutes = minutes))
                     }
                 }
@@ -90,7 +90,7 @@ fun TimeInputSetting(
             TimeInputField(
                 value = seconds,
                 onValueChange = {
-                    TimeDuration.getSeconds(it)?.let { seconds ->
+                    TimeData.getSeconds(it)?.let { seconds ->
                         onTimeChange(time.copy(seconds = seconds))
                     }
                 }
@@ -129,7 +129,8 @@ fun TimeInputField(
     BasicTextField(
         value = textFieldValue,
         onValueChange = {
-            onValueChange(it.text)
+            if (it.text != textFieldValue.text)
+                onValueChange(it.text)
         },
         textStyle = MaterialTheme.typography.bodyMedium.copy(textAlign = TextAlign.Center),
         modifier = Modifier.width(40.dp),

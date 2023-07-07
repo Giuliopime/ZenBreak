@@ -1,8 +1,9 @@
 package data.model
 
-import kotlin.time.Duration.Companion.hours
+import kotlinx.serialization.Serializable
 
-data class TimeDuration(
+@Serializable
+data class TimeData(
     val hours: Int,
     val minutes: Int,
     val seconds: Int

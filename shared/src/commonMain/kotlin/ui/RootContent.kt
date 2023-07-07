@@ -1,6 +1,6 @@
-import androidx.compose.animation.AnimatedVisibility
+package ui
+
 import androidx.compose.animation.Crossfade
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +16,7 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,20 +25,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import org.jetbrains.compose.resources.ExperimentalResourceApi
+import data.repository.SettingsRepository
 import ui.pages.AppearancePage
 import ui.pages.BehaviourPage
 import ui.pages.SystemPage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun App() {
-    val settingsRepository = remember { SettingsRepository() }
-
+fun RootContent(
+    settingsRepository: SettingsRepository
+) {
     var tabIndex by remember { mutableStateOf(0) }
     val titles = listOf("Behaviour", "Appearance", "System")
 
-    var enabled by remember { mutableStateOf(true) }
+    val enabled by settingsRepository.enabled
+
+    LaunchedEffect(true) {
+        if (settingsRepository.isFirstRun.value)
+            settingsRepository.saveHasCompletedFirstRun(true)
+    }
 
     MaterialTheme {
         Scaffold(
@@ -50,7 +56,7 @@ fun App() {
                         Switch(
                             checked = enabled,
                             onCheckedChange = {
-                                enabled = it
+                                settingsRepository.saveEnabled(it)
                             }
                         )
                     },
@@ -88,7 +94,7 @@ fun App() {
                                 when (tabIndex) {
                                     0 -> BehaviourPage(settingsRepository)
                                     1 -> AppearancePage(settingsRepository)
-                                    2 -> SystemPage()
+                                    2 -> SystemPage(settingsRepository)
                                 }
                             }
                         }
@@ -106,5 +112,3 @@ fun App() {
         }
     }
 }
-
-expect fun getPlatformName(): String

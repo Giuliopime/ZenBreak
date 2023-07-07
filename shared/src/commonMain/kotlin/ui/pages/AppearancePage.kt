@@ -1,13 +1,10 @@
 package ui.pages
 
-import SettingsRepository
+import data.repository.SettingsRepository
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ui.components.ColorSetting
@@ -18,16 +15,16 @@ import ui.components.MultilineTextSetting
 fun AppearancePage(
     settingsRepository: SettingsRepository
 ) {
-    var popupNotification by remember { mutableStateOf(true) }
-    var breakMessage by remember { mutableStateOf("Take a break!") }
-    var primaryColor by remember { mutableStateOf("#FFFFFF") }
-    var secondaryColor by remember { mutableStateOf("#000000") }
+    val popupNotification by settingsRepository.popupNotification
+    val breakMessage by settingsRepository.breakMessage
+    val primaryColor by settingsRepository.primaryColor
+    val secondaryColor by settingsRepository.secondaryColor
 
     DoubleChoiceSetting(
         name = "Notification type",
         value = popupNotification,
         onValueChange = {
-            popupNotification = it
+            settingsRepository.savePopupNotification(it)
         },
         positiveName = "Popup",
         negativeName = "Notification"
@@ -39,7 +36,7 @@ fun AppearancePage(
         name = "Break message",
         value = breakMessage,
         onValueChange = {
-            breakMessage = it
+            settingsRepository.saveBreakMessage(it)
         }
     )
 
@@ -49,7 +46,7 @@ fun AppearancePage(
         name = "Primary color",
         color = primaryColor,
         onColorChange = {
-            primaryColor = it
+            settingsRepository.savePrimaryColor(it)
         }
     )
 
@@ -59,7 +56,7 @@ fun AppearancePage(
         name = "Secondary color",
         color = secondaryColor,
         onColorChange = {
-            secondaryColor = it
+            settingsRepository.saveSecondaryColor(it)
         }
     )
 }
