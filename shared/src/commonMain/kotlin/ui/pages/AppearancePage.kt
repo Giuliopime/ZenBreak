@@ -1,12 +1,12 @@
 package ui.pages
 
-import data.repository.SettingsRepository
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import data.repository.SettingsRepository
 import ui.components.ColorSetting
 import ui.components.DoubleChoiceSetting
 import ui.components.MultilineTextSetting

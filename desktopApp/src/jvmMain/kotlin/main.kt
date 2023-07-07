@@ -1,14 +1,11 @@
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.awt.ComposeDialog
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
@@ -45,13 +42,27 @@ fun main() = application {
             )
         }
     )
+    /*
+    if(isSettingsVisible) {
+        Dialog(
+            visible = isSettingsVisible,
+            onCloseRequest = {
+                isSettingsVisible = false
+            },
+            title = "ZenBreak settings",
+        ) {
+            appRoot.App()
+        }
+    }
+     */
 
     Window(
-        title = "ZenBreak",
+        title = "",
         visible = isSettingsVisible,
         onCloseRequest = {
             isSettingsVisible = false
         },
+        icon = null
     ) {
         appRoot.App()
     }

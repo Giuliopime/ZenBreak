@@ -45,7 +45,7 @@ fun RootContent(
             settingsRepository.saveHasCompletedFirstRun(true)
     }
 
-    MaterialTheme {
+    ZenBreakTheme() {
         Scaffold(
             topBar = {
                 TopAppBar(
