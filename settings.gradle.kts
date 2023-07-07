@@ -1,4 +1,4 @@
-rootProject.name = "MyApplication"
+rootProject.name = "ZenBreak"
 
 include(":androidApp")
 include(":shared")
