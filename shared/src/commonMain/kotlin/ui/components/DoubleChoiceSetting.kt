@@ -26,7 +26,7 @@ fun DoubleChoiceSetting(
 
         Row(
             horizontalArrangement = Arrangement.spacedBy(
-                space = 12.dp
+                space = 20.dp
             )
         ) {
             Row(

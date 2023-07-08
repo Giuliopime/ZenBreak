@@ -45,7 +45,7 @@ fun RootContent(
             settingsRepository.saveHasCompletedFirstRun(true)
     }
 
-    ZenBreakTheme() {
+    ZenBreakTheme {
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -62,7 +62,8 @@ fun RootContent(
                     },
                     modifier = Modifier.padding(end = 8.dp)
                 )
-            }
+            },
+            containerColor = MaterialTheme.colorScheme.surface
         ) { paddingValues ->
             Column(modifier = Modifier.padding(paddingValues)) {
                 Crossfade(targetState = enabled) {
