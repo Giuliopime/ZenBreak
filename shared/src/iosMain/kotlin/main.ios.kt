@@ -3,6 +3,7 @@ import data.repository.SettingsRepository
 import logic.BreakManager
 import ui.ZenBreakUi
 
+@Suppress("Unused", "FunctionName")
 fun MainViewController(
     settingsRepository: SettingsRepository,
     breakManager: BreakManager
