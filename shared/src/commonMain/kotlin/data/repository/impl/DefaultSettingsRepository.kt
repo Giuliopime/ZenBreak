@@ -6,8 +6,6 @@ import data.repository.SettingsRepository
 import data.source.SettingsStorage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
 class DefaultSettingsRepository(
     private val settingsStorage: SettingsStorage
