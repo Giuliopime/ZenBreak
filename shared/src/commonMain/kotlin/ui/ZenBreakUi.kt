@@ -16,10 +16,12 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +29,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import data.model.ZbSettings
 import data.repository.SettingsRepository
+import logic.BreakManager
 import ui.pages.AppearancePage
 import ui.pages.BehaviourPage
 import ui.pages.SystemPage
@@ -34,12 +37,22 @@ import ui.pages.SystemPage
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ZenBreakUi(
+    breakManager: BreakManager,
     settingsRepository: SettingsRepository
 ) {
+    val scope = rememberCoroutineScope()
     var tabIndex by remember { mutableStateOf(0) }
     val titles = listOf("Behaviour", "Appearance", "System")
 
     val settings = settingsRepository.getSettings().collectAsState(ZbSettings())
+
+    LaunchedEffect(settings.value.enabled) {
+        if (settings.value.enabled) {
+            breakManager.planBreak(settings.value)
+        } else {
+            breakManager.cancelBreak()
+        }
+    }
 
     ZenBreakTheme {
         Scaffold(
@@ -90,8 +103,10 @@ fun ZenBreakUi(
                             ) {
                                 when (tabIndex) {
                                     0 -> BehaviourPage(
+                                        breakManager = breakManager,
                                         settingsRepository = settingsRepository,
-                                        settings = settings.value
+                                        settings = settings.value,
+                                        scope = scope
                                     )
                                     1 -> AppearancePage(
                                         settingsRepository = settingsRepository,
