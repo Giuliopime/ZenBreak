@@ -3,7 +3,10 @@ package logic
 import data.model.ZbSettings
 
 interface BreakManager {
-    suspend fun planBreak(zbSettings: ZbSettings)
+    /**
+     * This will check for [ZbSettings.enabled] automatically before planning a break
+     */
+    fun planBreak(zbSettings: ZbSettings)
 
     fun cancelBreak()
 }

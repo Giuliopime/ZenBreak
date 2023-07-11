@@ -1,6 +1,7 @@
 package ui.pages
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
@@ -13,37 +14,51 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import logic.BreakManager
 import ui.components.BooleanSetting
+import ui.components.DoubleChoiceSetting
 import ui.components.TimeInputSetting
 
 @Composable
 fun BehaviourPage(
     breakManager: BreakManager,
     settingsRepository: SettingsRepository,
-    settings: ZbSettings,
-    scope: CoroutineScope = rememberCoroutineScope()
+    settings: ZbSettings
 ) {
     TimeInputSetting(
         time = settings.breakFrequency,
         onTimeChange = {
             settingsRepository.setBreakFrequency(it)
-            scope.launch {
-                breakManager.planBreak(settings)
-            }
+            breakManager.planBreak(settings)
         },
         name = "Break frequency"
     )
 
     Spacer(Modifier.height(16.dp))
 
-    TimeInputSetting(
-        time = settings.breakDuration,
-        onTimeChange = {
-            settingsRepository.setBreakDuration(it)
+    DoubleChoiceSetting(
+        name = "Notification type",
+        value = settings.popupNotification,
+        onValueChange = {
+            settingsRepository.setPopupNotification(it)
         },
-        name = "Break duration"
+        positiveName = "Popup",
+        negativeName = "Notification"
     )
 
     Spacer(Modifier.height(16.dp))
+
+    AnimatedVisibility(settings.popupNotification) {
+        Column {
+            TimeInputSetting(
+                time = settings.breakDuration,
+                onTimeChange = {
+                    settingsRepository.setBreakDuration(it)
+                },
+                name = "Break duration"
+            )
+
+            Spacer(Modifier.height(16.dp))
+        }
+    }
 
     BooleanSetting(
         checked = settings.breakSkip,

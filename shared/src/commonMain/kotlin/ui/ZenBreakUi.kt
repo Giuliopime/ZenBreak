@@ -40,15 +40,10 @@ fun ZenBreakUi(
     breakManager: BreakManager,
     settingsRepository: SettingsRepository
 ) {
-    val scope = rememberCoroutineScope()
     var tabIndex by remember { mutableStateOf(0) }
     val titles = listOf("Behaviour", "Appearance", "System")
 
     val settings = settingsRepository.getSettings().collectAsState(ZbSettings())
-
-    LaunchedEffect(settings.value.enabled) {
-        breakManager.planBreak(settings.value)
-    }
 
     ZenBreakTheme {
         Scaffold(
@@ -62,6 +57,10 @@ fun ZenBreakUi(
                             checked = settings.value.enabled,
                             onCheckedChange = {
                                 settingsRepository.setEnabled(it)
+                                if (it)
+                                    breakManager.planBreak(settings.value)
+                                else
+                                    breakManager.cancelBreak()
                             }
                         )
                     },
@@ -101,8 +100,7 @@ fun ZenBreakUi(
                                     0 -> BehaviourPage(
                                         breakManager = breakManager,
                                         settingsRepository = settingsRepository,
-                                        settings = settings.value,
-                                        scope = scope
+                                        settings = settings.value
                                     )
                                     1 -> AppearancePage(
                                         settingsRepository = settingsRepository,

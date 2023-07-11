@@ -1,4 +1,6 @@
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,8 +18,12 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Notification
 import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
@@ -25,7 +31,8 @@ import data.model.ZbSettings
 import data.repository.impl.DefaultSettingsRepository
 import data.source.local.OfflineSettingsStorage
 import kotlinx.coroutines.launch
-import javax.swing.SwingUtilities
+import java.awt.Dimension
+import java.awt.Toolkit
 
 
 fun main() = application {
@@ -45,10 +52,12 @@ fun main() = application {
     }
 
     val popupWindowState = remember {
-        WindowState()
+        WindowState(
+            position = WindowPosition(Alignment.Center)
+        )
     }
     var isPopupWindowVisible by remember {
-        mutableStateOf(false)
+        mutableStateOf(true)
     }
 
     val trayState = rememberTrayState()
@@ -57,7 +66,17 @@ fun main() = application {
     val breakManager = remember {
         DesktopBreakManager(
             breakNotification = {
-                isPopupWindowVisible = true
+                if (settings.value.popupNotification) {
+                    isPopupWindowVisible = true
+                } else {
+                    trayState.sendNotification(
+                        Notification(
+                            title = "Take a quick break",
+                            message = settings.value.breakMessage,
+                            type = Notification.Type.Info
+                        )
+                    )
+                }
             }
         )
     }
@@ -65,13 +84,20 @@ fun main() = application {
     Tray(
         state = trayState,
         icon = TrayIcon,
+        onAction = {
+            isSettingsWindowVisible = true
+        },
         menu = {
             Item(
                 text = if (settings.value.enabled) "Disable" else "Enable",
                 onClick = {
-                    scope.launch {
-                        settingsRepository.setEnabled(!settings.value.enabled)
-                    }
+                    val enabled = !settings.value.enabled
+                    settingsRepository.setEnabled(enabled)
+
+                    if (enabled)
+                        breakManager.planBreak(settings.value)
+                    else
+                        breakManager.cancelBreak()
                 }
             )
 
@@ -117,18 +143,27 @@ fun main() = application {
         focusable = false,
         state = popupWindowState
     ) {
+        Toolkit.getDefaultToolkit().screenSize.let {
+            val insets = window.insets
+            window.size = Dimension(it.width + insets.left + insets.right, it.height + insets.bottom + insets.top)
+            window.setLocation(0, 0)
+            window.toFront()
+        }
+
+
+
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().border(BorderStroke(2.dp, Color.Red)),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Box(Modifier.background(Color.Cyan).fillMaxSize()) {
+            Box(Modifier.background(Color.Cyan)) {
                 Button(onClick = {
                     scope.launch {
                         breakManager.planBreak(settings.value)
                         isPopupWindowVisible = false
                     }
-                }, modifier = Modifier.fillMaxSize()) {
+                }) {
 
                 }
             }

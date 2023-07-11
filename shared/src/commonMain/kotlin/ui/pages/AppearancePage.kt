@@ -16,18 +16,6 @@ fun AppearancePage(
     settingsRepository: SettingsRepository,
     settings: ZbSettings
 ) {
-    DoubleChoiceSetting(
-        name = "Notification type",
-        value = settings.popupNotification,
-        onValueChange = {
-            settingsRepository.setPopupNotification(it)
-        },
-        positiveName = "Popup",
-        negativeName = "Notification"
-    )
-
-    Spacer(Modifier.height(16.dp))
-
     MultilineTextSetting(
         name = "Break message",
         value = settings.breakMessage,

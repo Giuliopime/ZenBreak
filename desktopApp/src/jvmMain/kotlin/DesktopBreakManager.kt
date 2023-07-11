@@ -11,20 +11,18 @@ class DesktopBreakManager(
 ) : BreakManager {
     private var task: TimerTask? = null
 
-    override suspend fun planBreak(zbSettings: ZbSettings) {
+    override fun planBreak(zbSettings: ZbSettings) {
         cancelBreak()
-        if (zbSettings.enabled) {
-            scheduleBreak(zbSettings)
-            println("BREAK PLANNED for ${zbSettings.breakFrequency.millis}")
-        }
-    }
 
-    private fun scheduleBreak(zbSettings: ZbSettings) {
-        task = Timer().schedule(zbSettings.breakFrequency.millis) {
-            println("BREAK RUNNING")
-            runBlocking(Dispatchers.IO) {
-                breakNotification()
+        if (zbSettings.enabled) {
+            task = Timer().schedule(zbSettings.breakFrequency.millis) {
+                println("BREAK RUNNING")
+                runBlocking(Dispatchers.IO) {
+                    breakNotification()
+                }
             }
+
+            println("Break planned for ${zbSettings.breakFrequency.millis}ms from now")
         }
     }
 

@@ -11,9 +11,9 @@ data class ZbTimeData(
     val minutes: Int,
     val seconds: Int
 ) {
-    val millis = hours.hours.inWholeMilliseconds +
+    val millis = (hours.hours.inWholeMilliseconds +
             minutes.minutes.inWholeMilliseconds +
-            seconds.seconds.inWholeMilliseconds
+            seconds.seconds.inWholeMilliseconds).coerceAtLeast(5000)
 
     companion object {
         fun getHours(hours: String) = hours.toIntOrNull()?.coerceIn(0, 23)
