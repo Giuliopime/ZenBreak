@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import data.model.ZbSettings
 import data.repository.SettingsRepository
 import ui.components.ColorSetting
 import ui.components.DoubleChoiceSetting
@@ -13,18 +14,14 @@ import ui.components.MultilineTextSetting
 
 @Composable
 fun AppearancePage(
-    settingsRepository: SettingsRepository
+    settingsRepository: SettingsRepository,
+    settings: ZbSettings
 ) {
-    val popupNotification by settingsRepository.popupNotification
-    val breakMessage by settingsRepository.breakMessage
-    val primaryColor by settingsRepository.primaryColor
-    val secondaryColor by settingsRepository.secondaryColor
-
     DoubleChoiceSetting(
         name = "Notification type",
-        value = popupNotification,
+        value = settings.popupNotification,
         onValueChange = {
-            settingsRepository.savePopupNotification(it)
+            settingsRepository.setPopupNotification(it)
         },
         positiveName = "Popup",
         negativeName = "Notification"
@@ -34,9 +31,9 @@ fun AppearancePage(
 
     MultilineTextSetting(
         name = "Break message",
-        value = breakMessage,
+        value = settings.breakMessage,
         onValueChange = {
-            settingsRepository.saveBreakMessage(it)
+            settingsRepository.setBreakMessage(it)
         }
     )
 
@@ -44,9 +41,9 @@ fun AppearancePage(
 
     ColorSetting(
         name = "Primary color",
-        color = primaryColor,
+        color = settings.primaryColor,
         onColorChange = {
-            settingsRepository.savePrimaryColor(it)
+            settingsRepository.setPrimaryColor(it)
         }
     )
 
@@ -54,9 +51,9 @@ fun AppearancePage(
 
     ColorSetting(
         name = "Secondary color",
-        color = secondaryColor,
+        color = settings.secondaryColor,
         onColorChange = {
-            settingsRepository.saveSecondaryColor(it)
+            settingsRepository.setSecondaryColor(it)
         }
     )
 }

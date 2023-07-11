@@ -6,20 +6,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import data.model.ZbSettings
 import data.repository.SettingsRepository
 import ui.components.BooleanSetting
 
 @Composable
 fun SystemPage(
-    settingsRepository: SettingsRepository
+    settingsRepository: SettingsRepository,
+    settings: ZbSettings
 ) {
-    val resetOnIdle by settingsRepository.resetOnIdle
-    val startAtLogin by settingsRepository.startAtLogin
-
     BooleanSetting(
-        checked = resetOnIdle,
+        checked = settings.resetOnIdle,
         onCheckedChange = {
-            settingsRepository.saveResetOnIdle(it)
+            settingsRepository.setResetOnIdle(it)
         },
         name = "Reset on idle"
     )
@@ -27,9 +26,9 @@ fun SystemPage(
     Spacer(Modifier.height(16.dp))
 
     BooleanSetting(
-        checked = startAtLogin,
+        checked = settings.startAtLogin,
         onCheckedChange = {
-            settingsRepository.saveStartAtLogin(it)
+            settingsRepository.setStartAtLogin(it)
         },
         name = "Start at login"
     )

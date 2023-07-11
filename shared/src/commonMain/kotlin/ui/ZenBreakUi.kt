@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import data.model.ZbSettings
 import data.repository.SettingsRepository
 import ui.pages.AppearancePage
 import ui.pages.BehaviourPage
@@ -32,18 +34,13 @@ import ui.pages.SystemPage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RootContent(
+fun ZenBreakUi(
     settingsRepository: SettingsRepository
 ) {
     var tabIndex by remember { mutableStateOf(0) }
     val titles = listOf("Behaviour", "Appearance", "System")
 
-    val enabled by settingsRepository.enabled
-
-    LaunchedEffect(true) {
-        if (settingsRepository.isFirstRun.value)
-            settingsRepository.saveHasCompletedFirstRun(true)
-    }
+    val settings = settingsRepository.getSettings().collectAsState(ZbSettings())
 
     ZenBreakTheme {
         Scaffold(
@@ -54,9 +51,9 @@ fun RootContent(
                     },
                     actions = {
                         Switch(
-                            checked = enabled,
+                            checked = settings.value.enabled,
                             onCheckedChange = {
-                                settingsRepository.saveEnabled(it)
+                                settingsRepository.setEnabled(it)
                             }
                         )
                     },
@@ -66,7 +63,7 @@ fun RootContent(
             containerColor = MaterialTheme.colorScheme.surface
         ) { paddingValues ->
             Column(modifier = Modifier.padding(paddingValues)) {
-                Crossfade(targetState = enabled) {
+                Crossfade(targetState = settings.value.enabled) {
                     if (it) {
                         Column {
                             TabRow(
@@ -93,9 +90,18 @@ fun RootContent(
                                     .verticalScroll(rememberScrollState())
                             ) {
                                 when (tabIndex) {
-                                    0 -> BehaviourPage(settingsRepository)
-                                    1 -> AppearancePage(settingsRepository)
-                                    2 -> SystemPage(settingsRepository)
+                                    0 -> BehaviourPage(
+                                        settingsRepository = settingsRepository,
+                                        settings = settings.value
+                                    )
+                                    1 -> AppearancePage(
+                                        settingsRepository = settingsRepository,
+                                        settings = settings.value
+                                    )
+                                    2 -> SystemPage(
+                                        settingsRepository = settingsRepository,
+                                        settings = settings.value
+                                    )
                                 }
                             }
                         }

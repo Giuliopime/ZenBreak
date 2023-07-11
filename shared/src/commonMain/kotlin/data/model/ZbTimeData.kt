@@ -3,7 +3,7 @@ package data.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TimeData(
+data class ZbTimeData(
     val hours: Int,
     val minutes: Int,
     val seconds: Int

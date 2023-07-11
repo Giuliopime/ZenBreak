@@ -30,12 +30,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import data.model.TimeData
+import data.model.ZbTimeData
 
 @Composable
 fun TimeInputSetting(
-    time: TimeData,
-    onTimeChange: (TimeData) -> Unit,
+    time: ZbTimeData,
+    onTimeChange: (ZbTimeData) -> Unit,
     name: String
 ) {
     val hours = time.hours.toString().padStart(2, '0')
@@ -74,7 +74,7 @@ fun TimeInputSetting(
             TimeInputField(
                 value = hours,
                 onValueChange = {
-                    TimeData.getHours(it)?.let { hours ->
+                    ZbTimeData.getHours(it)?.let { hours ->
                         onTimeChange(time.copy(hours = hours))
                     }
                 }
@@ -83,7 +83,7 @@ fun TimeInputSetting(
             TimeInputField(
                 value = minutes,
                 onValueChange = {
-                    TimeData.getMinutes(it)?.let { minutes ->
+                    ZbTimeData.getMinutes(it)?.let { minutes ->
                         onTimeChange(time.copy(minutes = minutes))
                     }
                 }
@@ -92,7 +92,7 @@ fun TimeInputSetting(
             TimeInputField(
                 value = seconds,
                 onValueChange = {
-                    TimeData.getSeconds(it)?.let { seconds ->
+                    ZbTimeData.getSeconds(it)?.let { seconds ->
                         onTimeChange(time.copy(seconds = seconds))
                     }
                 }

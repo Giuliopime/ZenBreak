@@ -4,27 +4,24 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import data.model.ZbSettings
 import data.repository.SettingsRepository
 import ui.components.BooleanSetting
 import ui.components.TimeInputSetting
 
 @Composable
 fun BehaviourPage(
-    settingsRepository: SettingsRepository
+    settingsRepository: SettingsRepository,
+    settings: ZbSettings
 ) {
-    val breakFrequency by settingsRepository.breakFrequency
-    val breakDuration by settingsRepository.breakDuration
-    val breakSkip by settingsRepository.breakSkip
-    val breakSnooze by settingsRepository.breakSnooze
-    val breakSnoozeDuration by settingsRepository.breakSnoozeLength
-
     TimeInputSetting(
-        time = breakFrequency,
+        time = settings.breakFrequency,
         onTimeChange = {
-            settingsRepository.saveBreakFrequency(it)
+            settingsRepository.setBreakFrequency(it)
         },
         name = "Break frequency"
     )
@@ -32,9 +29,9 @@ fun BehaviourPage(
     Spacer(Modifier.height(16.dp))
 
     TimeInputSetting(
-        time = breakDuration,
+        time = settings.breakDuration,
         onTimeChange = {
-            settingsRepository.saveBreakDuration(it)
+            settingsRepository.setBreakDuration(it)
         },
         name = "Break duration"
     )
@@ -42,9 +39,9 @@ fun BehaviourPage(
     Spacer(Modifier.height(16.dp))
 
     BooleanSetting(
-        checked = breakSkip,
+        checked = settings.breakSkip,
         onCheckedChange = {
-            settingsRepository.saveBreakSkip(it)
+            settingsRepository.setBreakSkip(it)
         },
         name = "Allow to skip break"
     )
@@ -52,20 +49,20 @@ fun BehaviourPage(
     Spacer(Modifier.height(16.dp))
 
     BooleanSetting(
-        checked = breakSnooze,
+        checked = settings.breakSnooze,
         onCheckedChange = {
-            settingsRepository.saveBreakSnooze(it)
+            settingsRepository.setBreakSnooze(it)
         },
         name = "Allow to snooze break"
     )
 
     Spacer(Modifier.height(8.dp))
 
-    AnimatedVisibility(breakSnooze) {
+    AnimatedVisibility(settings.breakSnooze) {
         TimeInputSetting(
-            time = breakSnoozeDuration,
+            time = settings.breakSnoozeLength,
             onTimeChange = {
-                settingsRepository.saveBreakSnoozeLength(it)
+                settingsRepository.setBreakSnoozeLength(it)
             },
             name = "Snooze length"
         )

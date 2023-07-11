@@ -1,11 +1,33 @@
-package data.repository
+package data.source
 
-import data.model.ZbSettings
 import data.model.ZbTimeData
-import kotlinx.coroutines.flow.Flow
 
-interface SettingsRepository {
-    fun getSettings() : Flow<ZbSettings>
+interface SettingsStorage {
+    fun getHasCompletedFirstRun(): Boolean
+
+    fun getEnabled(): Boolean
+
+    fun getBreakFrequency(): ZbTimeData
+
+    fun getBreakDuration(): ZbTimeData
+
+    fun getBreakSkip(): Boolean
+
+    fun getBreakSnooze(): Boolean
+
+    fun getBreakSnoozeLength(): ZbTimeData
+
+    fun getPopupNotification(): Boolean
+
+    fun getBreakMessage(): String
+
+    fun getPrimaryColor(): String
+
+    fun getSecondaryColor(): String
+
+    fun getResetOnIdle(): Boolean
+
+    fun getStartAtLogin(): Boolean
 
 
     fun setHasCompletedFirstRun(completed: Boolean)
