@@ -47,11 +47,7 @@ fun ZenBreakUi(
     val settings = settingsRepository.getSettings().collectAsState(ZbSettings())
 
     LaunchedEffect(settings.value.enabled) {
-        if (settings.value.enabled) {
-            breakManager.planBreak(settings.value)
-        } else {
-            breakManager.cancelBreak()
-        }
+        breakManager.planBreak(settings.value)
     }
 
     ZenBreakTheme {

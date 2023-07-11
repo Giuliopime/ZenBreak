@@ -29,7 +29,9 @@ class DesktopBreakManager(
     }
 
     override fun cancelBreak() {
-        task?.cancel()
-        println("BREAK CANCELED!")
+        task?.cancel()?.let {
+            if (it)
+                println("BREAK CANCELED!")
+        }
     }
 }

@@ -1,26 +1,32 @@
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Button
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
 import data.model.ZbSettings
 import data.repository.impl.DefaultSettingsRepository
 import data.source.local.OfflineSettingsStorage
 import kotlinx.coroutines.launch
+import javax.swing.SwingUtilities
+
 
 fun main() = application {
     val scope = rememberCoroutineScope()
@@ -37,9 +43,14 @@ fun main() = application {
     var isSettingsWindowVisible by remember(settings.value.hasCompletedFirstRun) {
         mutableStateOf(settings.value.hasCompletedFirstRun)
     }
+
+    val popupWindowState = remember {
+        WindowState()
+    }
     var isPopupWindowVisible by remember {
         mutableStateOf(false)
     }
+
     val trayState = rememberTrayState()
 
 
@@ -58,7 +69,9 @@ fun main() = application {
             Item(
                 text = if (settings.value.enabled) "Disable" else "Enable",
                 onClick = {
-                    settingsRepository.setEnabled(!settings.value.enabled)
+                    scope.launch {
+                        settingsRepository.setEnabled(!settings.value.enabled)
+                    }
                 }
             )
 
@@ -90,7 +103,6 @@ fun main() = application {
     }
 
     Window(
-        title = "Time for a break",
         visible = isPopupWindowVisible,
         onCloseRequest = {
             scope.launch {
@@ -98,10 +110,28 @@ fun main() = application {
                 isPopupWindowVisible = false
             }
         },
-        icon = WindowIcon
+        undecorated = true,
+        resizable = false,
+        transparent = true,
+        alwaysOnTop = true,
+        focusable = false,
+        state = popupWindowState
     ) {
-        Column(Modifier.padding(60.dp)) {
-            Text(settings.value.breakMessage)
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Box(Modifier.background(Color.Cyan).fillMaxSize()) {
+                Button(onClick = {
+                    scope.launch {
+                        breakManager.planBreak(settings.value)
+                        isPopupWindowVisible = false
+                    }
+                }, modifier = Modifier.fillMaxSize()) {
+
+                }
+            }
         }
     }
 }
