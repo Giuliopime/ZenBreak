@@ -13,13 +13,19 @@ class ZenBreakViewModel(
 ): KoinComponent {
     private val settingsRepository: SettingsRepository by inject()
 
-    val zbSettings: Flow<ZbSettings> = settingsRepository.getSettings()
+    val zbSettings: Flow<ZbSettings> = settingsRepository.getSettingsFlow()
 
     fun setHasCompletedFirstRun(completed: Boolean) = settingsRepository.setHasCompletedFirstRun(completed)
 
-    fun setEnabled(enabled: Boolean) = settingsRepository.setEnabled(enabled)
+    fun setEnabled(enabled: Boolean) {
+        settingsRepository.setEnabled(enabled)
+        breakManager.planBreak(settingsRepository.getSettings())
+    }
 
-    fun setBreakFrequency(frequency: ZbTimeData) = settingsRepository.setBreakFrequency(frequency)
+    fun setBreakFrequency(frequency: ZbTimeData) {
+        settingsRepository.setBreakFrequency(frequency)
+        breakManager.planBreak(settingsRepository.getSettings())
+    }
 
     fun setBreakDuration(duration: ZbTimeData) = settingsRepository.setBreakDuration(duration)
 

@@ -5,8 +5,8 @@ import dev.giuliopime.shared_compose.data.model.ZbTimeData
 import kotlinx.coroutines.flow.Flow
 
 interface SettingsRepository {
-    fun getSettings() : Flow<ZbSettings>
-
+    fun getSettings() : ZbSettings
+    fun getSettingsFlow() : Flow<ZbSettings>
 
     fun setHasCompletedFirstRun(completed: Boolean)
 

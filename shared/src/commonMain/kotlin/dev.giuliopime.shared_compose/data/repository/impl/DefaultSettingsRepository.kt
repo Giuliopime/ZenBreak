@@ -13,7 +13,9 @@ import org.koin.core.component.inject
 class DefaultSettingsRepository : SettingsRepository, KoinComponent {
     private val settingsStorage: SettingsStorage by inject()
 
-    override fun getSettings() : Flow<ZbSettings> = settingsStorage.getZbSettingsFlow()
+    override fun getSettings() : ZbSettings = settingsStorage.getZbSettings()
+
+    override fun getSettingsFlow() : Flow<ZbSettings> = settingsStorage.getZbSettingsFlow()
 
     override fun setHasCompletedFirstRun(completed: Boolean) = settingsStorage.setHasCompletedFirstRun(completed)
 

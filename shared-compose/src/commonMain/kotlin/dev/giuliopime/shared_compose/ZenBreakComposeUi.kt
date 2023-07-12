@@ -42,7 +42,7 @@ fun ZenBreakUi(
     var tabIndex by remember { mutableStateOf(0) }
     val titles = listOf("Behaviour", "Appearance", "System")
 
-    val settings = settingsRepository.getSettings().collectAsState(ZbSettings())
+    val settings = settingsRepository.getSettingsFlow().collectAsState(ZbSettings())
 
     ZenBreakTheme {
         Scaffold(

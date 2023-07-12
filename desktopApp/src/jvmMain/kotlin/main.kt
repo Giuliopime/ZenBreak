@@ -11,7 +11,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,20 +18,15 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Notification
 import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.WindowPlacement
-import androidx.compose.ui.window.WindowPosition
-import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
 import dev.giuliopime.shared_compose.data.model.ZbSettings
 import dev.giuliopime.shared_compose.data.repository.impl.DefaultSettingsRepository
 import dev.giuliopime.shared_compose.data.source.local.OfflineSettingsStorage
-import kotlinx.coroutines.launch
 import java.awt.Dimension
 import java.awt.Toolkit
 
@@ -45,7 +39,7 @@ fun main() = application {
         DefaultSettingsRepository(settingsStorage)
     }
 
-    val settings = settingsRepository.getSettings().collectAsState(ZbSettings())
+    val settings = settingsRepository.getSettingsFlow().collectAsState(ZbSettings())
 
     var isSettingsWindowVisible by remember(settings.value.hasCompletedFirstRun) {
         mutableStateOf(settings.value.hasCompletedFirstRun)
