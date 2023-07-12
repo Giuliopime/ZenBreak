@@ -6,8 +6,6 @@ import ui.ZenBreakUi
 @Composable
 fun MainView(
     settingsRepository: SettingsRepository,
-    breakManager: BreakManager
 ) = ZenBreakUi(
-    breakManager = breakManager,
     settingsRepository = settingsRepository
 )

@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import data.model.ZbSettings
 import data.repository.SettingsRepository
+import kotlinx.coroutines.launch
 import logic.BreakManager
 import ui.pages.AppearancePage
 import ui.pages.BehaviourPage
@@ -37,9 +38,9 @@ import ui.pages.SystemPage
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ZenBreakUi(
-    breakManager: BreakManager,
     settingsRepository: SettingsRepository
 ) {
+    val scope = rememberCoroutineScope()
     var tabIndex by remember { mutableStateOf(0) }
     val titles = listOf("Behaviour", "Appearance", "System")
 
@@ -56,11 +57,9 @@ fun ZenBreakUi(
                         Switch(
                             checked = settings.value.enabled,
                             onCheckedChange = {
-                                settingsRepository.setEnabled(it)
-                                if (it)
-                                    breakManager.planBreak(settings.value)
-                                else
-                                    breakManager.cancelBreak()
+                                scope.launch {
+                                    settingsRepository.setEnabled(it)
+                                }
                             }
                         )
                     },
@@ -98,7 +97,6 @@ fun ZenBreakUi(
                             ) {
                                 when (tabIndex) {
                                     0 -> BehaviourPage(
-                                        breakManager = breakManager,
                                         settingsRepository = settingsRepository,
                                         settings = settings.value
                                     )

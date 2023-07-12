@@ -22,21 +22,9 @@ compose.desktop {
         mainClass = "MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(TargetFormat.Msi, TargetFormat.Deb)
             packageName = "KotlinMultiplatformComposeDesktopApplication"
             packageVersion = "1.0.0"
-
-            macOS {
-                infoPlist {
-                    extraKeysRawXml = macExtraPlistKeys
-                }
-            }
         }
     }
 }
-
-val macExtraPlistKeys: String
-    get() = """
-      <key>LSUIElement</key>
-      <true/>
-    """

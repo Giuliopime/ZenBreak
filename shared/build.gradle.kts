@@ -1,3 +1,8 @@
+import org.jetbrains.kotlin.gradle.plugin.KotlinTargetPreset
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeCompilation
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetPreset
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+
 val settingsVersion = "1.0.0"
 
 plugins {
@@ -16,18 +21,21 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
+    macosX64()
+    macosArm64()
 
     cocoapods {
         version = "1.0.0"
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
-        ios.deploymentTarget = "14.1"
-        podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
             isStatic = true
         }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+        ios.deploymentTarget = "16.4"
+        osx.deploymentTarget = "13.2"
+        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/multiplatformMain/resources/**']"
+        noPodspec()
     }
 
     sourceSets {
@@ -55,11 +63,15 @@ kotlin {
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
-        val iosMain by creating {
+        val macosX64Main by getting
+        val macosArm64Main by getting
+        val multiplatformMain by creating {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            macosX64Main.dependsOn(this)
+            macosArm64Main.dependsOn(this)
         }
         val desktopMain by getting {
             dependencies {

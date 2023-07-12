@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Notification
 import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
@@ -36,8 +38,6 @@ import java.awt.Toolkit
 
 
 fun main() = application {
-    val scope = rememberCoroutineScope()
-
     val settingsStorage = remember {
         OfflineSettingsStorage()
     }
@@ -51,17 +51,11 @@ fun main() = application {
         mutableStateOf(settings.value.hasCompletedFirstRun)
     }
 
-    val popupWindowState = remember {
-        WindowState(
-            position = WindowPosition(Alignment.Center)
-        )
-    }
     var isPopupWindowVisible by remember {
-        mutableStateOf(true)
+        mutableStateOf(false)
     }
 
     val trayState = rememberTrayState()
-
 
     val breakManager = remember {
         DesktopBreakManager(
@@ -81,6 +75,14 @@ fun main() = application {
         )
     }
 
+    LaunchedEffect(settings.value) {
+        if (settings.value.enabled) {
+            breakManager.planBreak(settings.value)
+        } else {
+            breakManager.cancelBreak()
+        }
+    }
+
     Tray(
         state = trayState,
         icon = TrayIcon,
@@ -91,13 +93,7 @@ fun main() = application {
             Item(
                 text = if (settings.value.enabled) "Disable" else "Enable",
                 onClick = {
-                    val enabled = !settings.value.enabled
-                    settingsRepository.setEnabled(enabled)
-
-                    if (enabled)
-                        breakManager.planBreak(settings.value)
-                    else
-                        breakManager.cancelBreak()
+                    settingsRepository.setEnabled(!settings.value.enabled)
                 }
             )
 
@@ -125,32 +121,28 @@ fun main() = application {
         },
         icon = WindowIcon
     ) {
-        MainView(settingsRepository, breakManager)
+        MainView(settingsRepository)
     }
 
     Window(
         visible = isPopupWindowVisible,
         onCloseRequest = {
-            scope.launch {
-                breakManager.planBreak(settings.value)
-                isPopupWindowVisible = false
-            }
+            isPopupWindowVisible = false
+            breakManager.planBreak(settings.value)
         },
         undecorated = true,
         resizable = false,
         transparent = true,
         alwaysOnTop = true,
         focusable = false,
-        state = popupWindowState
     ) {
         Toolkit.getDefaultToolkit().screenSize.let {
             val insets = window.insets
             window.size = Dimension(it.width + insets.left + insets.right, it.height + insets.bottom + insets.top)
             window.setLocation(0, 0)
             window.toFront()
+            window.requestFocus()
         }
-
-
 
         Column(
             modifier = Modifier.fillMaxSize().border(BorderStroke(2.dp, Color.Red)),
@@ -159,10 +151,8 @@ fun main() = application {
         ) {
             Box(Modifier.background(Color.Cyan)) {
                 Button(onClick = {
-                    scope.launch {
-                        breakManager.planBreak(settings.value)
-                        isPopupWindowVisible = false
-                    }
+                    isPopupWindowVisible = false
+                    breakManager.planBreak(settings.value)
                 }) {
 
                 }

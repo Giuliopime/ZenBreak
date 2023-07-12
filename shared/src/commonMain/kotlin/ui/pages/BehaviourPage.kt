@@ -19,7 +19,6 @@ import ui.components.TimeInputSetting
 
 @Composable
 fun BehaviourPage(
-    breakManager: BreakManager,
     settingsRepository: SettingsRepository,
     settings: ZbSettings
 ) {
@@ -27,7 +26,6 @@ fun BehaviourPage(
         time = settings.breakFrequency,
         onTimeChange = {
             settingsRepository.setBreakFrequency(it)
-            breakManager.planBreak(settings)
         },
         name = "Break frequency"
     )
