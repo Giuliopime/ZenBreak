@@ -29,9 +29,9 @@ import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
-import data.model.ZbSettings
-import data.repository.impl.DefaultSettingsRepository
-import data.source.local.OfflineSettingsStorage
+import dev.giuliopime.shared_compose.data.model.ZbSettings
+import dev.giuliopime.shared_compose.data.repository.impl.DefaultSettingsRepository
+import dev.giuliopime.shared_compose.data.source.local.OfflineSettingsStorage
 import kotlinx.coroutines.launch
 import java.awt.Dimension
 import java.awt.Toolkit

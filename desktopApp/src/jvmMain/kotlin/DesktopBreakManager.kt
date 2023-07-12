@@ -1,7 +1,7 @@
-import data.model.ZbSettings
+import dev.giuliopime.shared_compose.data.model.ZbSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import logic.BreakManager
+import dev.giuliopime.shared_compose.logic.BreakManager
 import java.util.Timer
 import java.util.TimerTask
 import kotlin.concurrent.schedule
