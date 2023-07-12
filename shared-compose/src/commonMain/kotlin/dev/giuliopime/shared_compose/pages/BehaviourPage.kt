@@ -5,27 +5,24 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import dev.giuliopime.shared_compose.data.model.ZbSettings
-import dev.giuliopime.shared_compose.data.repository.SettingsRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import dev.giuliopime.shared_compose.logic.BreakManager
-import ui.components.BooleanSetting
-import ui.components.DoubleChoiceSetting
-import ui.components.TimeInputSetting
+import dev.giuliopime.shared.data.model.ZbSettings
+import dev.giuliopime.shared.data.repository.SettingsRepository
+import dev.giuliopime.shared.viewmodel.ZenBreakViewModel
+import dev.giuliopime.shared_compose.components.BooleanSetting
+import dev.giuliopime.shared_compose.components.DoubleChoiceSetting
+import dev.giuliopime.shared_compose.components.TimeInputSetting
 
 @Composable
 fun BehaviourPage(
-    settingsRepository: SettingsRepository,
+    viewModel: ZenBreakViewModel,
     settings: ZbSettings
 ) {
     TimeInputSetting(
         time = settings.breakFrequency,
         onTimeChange = {
-            settingsRepository.setBreakFrequency(it)
+            viewModel.setBreakFrequency(it)
         },
         name = "Break frequency"
     )
@@ -36,7 +33,7 @@ fun BehaviourPage(
         name = "Notification type",
         value = settings.popupNotification,
         onValueChange = {
-            settingsRepository.setPopupNotification(it)
+            viewModel.setPopupNotification(it)
         },
         positiveName = "Popup",
         negativeName = "Notification"
@@ -49,7 +46,7 @@ fun BehaviourPage(
             TimeInputSetting(
                 time = settings.breakDuration,
                 onTimeChange = {
-                    settingsRepository.setBreakDuration(it)
+                    viewModel.setBreakDuration(it)
                 },
                 name = "Break duration"
             )
@@ -61,7 +58,7 @@ fun BehaviourPage(
     BooleanSetting(
         checked = settings.breakSkip,
         onCheckedChange = {
-            settingsRepository.setBreakSkip(it)
+            viewModel.setBreakSkip(it)
         },
         name = "Allow to skip break"
     )
@@ -71,7 +68,7 @@ fun BehaviourPage(
     BooleanSetting(
         checked = settings.breakSnooze,
         onCheckedChange = {
-            settingsRepository.setBreakSnooze(it)
+            viewModel.setBreakSnooze(it)
         },
         name = "Allow to snooze break"
     )
@@ -82,7 +79,7 @@ fun BehaviourPage(
         TimeInputSetting(
             time = settings.breakSnoozeLength,
             onTimeChange = {
-                settingsRepository.setBreakSnoozeLength(it)
+                viewModel.setBreakSnoozeLength(it)
             },
             name = "Snooze length"
         )

@@ -5,19 +5,20 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import dev.giuliopime.shared_compose.data.model.ZbSettings
-import dev.giuliopime.shared_compose.data.repository.SettingsRepository
-import ui.components.BooleanSetting
+import dev.giuliopime.shared.data.model.ZbSettings
+import dev.giuliopime.shared.data.repository.SettingsRepository
+import dev.giuliopime.shared.viewmodel.ZenBreakViewModel
+import dev.giuliopime.shared_compose.components.BooleanSetting
 
 @Composable
 fun SystemPage(
-    settingsRepository: SettingsRepository,
+    viewModel: ZenBreakViewModel,
     settings: ZbSettings
 ) {
     BooleanSetting(
         checked = settings.resetOnIdle,
         onCheckedChange = {
-            settingsRepository.setResetOnIdle(it)
+            viewModel.setResetOnIdle(it)
         },
         name = "Reset on idle"
     )
@@ -27,7 +28,7 @@ fun SystemPage(
     BooleanSetting(
         checked = settings.startAtLogin,
         onCheckedChange = {
-            settingsRepository.setStartAtLogin(it)
+            viewModel.setStartAtLogin(it)
         },
         name = "Start at login"
     )

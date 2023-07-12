@@ -24,43 +24,35 @@ import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
-import dev.giuliopime.shared_compose.data.model.ZbSettings
-import dev.giuliopime.shared_compose.data.repository.impl.DefaultSettingsRepository
-import dev.giuliopime.shared_compose.data.source.local.OfflineSettingsStorage
+import dev.giuliopime.shared.data.model.ZbSettings
+import dev.giuliopime.shared.data.repository.impl.DefaultSettingsRepository
+import dev.giuliopime.shared.data.source.local.OfflineSettingsStorage
+import dev.giuliopime.shared.di.initKoin
+import dev.giuliopime.shared.logic.BreakManager
+import dev.giuliopime.shared.viewmodel.ZenBreakViewModel
+import dev.giuliopime.shared_compose.ZenBreakUi
 import java.awt.Dimension
 import java.awt.Toolkit
 
+private val koin = initKoin().koin
+
 
 fun main() = application {
-    val settingsStorage = remember {
-        OfflineSettingsStorage()
-    }
-    val settingsRepository = remember {
-        DefaultSettingsRepository(settingsStorage)
-    }
-
-    val settings = settingsRepository.getSettingsFlow().collectAsState(ZbSettings())
-
-    var isSettingsWindowVisible by remember(settings.value.hasCompletedFirstRun) {
-        mutableStateOf(settings.value.hasCompletedFirstRun)
-    }
-
+    val trayState = rememberTrayState()
     var isPopupWindowVisible by remember {
         mutableStateOf(false)
     }
 
-    val trayState = rememberTrayState()
-
-    val breakManager = remember {
+    val breakManager: BreakManager = remember {
         DesktopBreakManager(
             breakNotification = {
-                if (settings.value.popupNotification) {
+                if (it.popupNotification) {
                     isPopupWindowVisible = true
                 } else {
                     trayState.sendNotification(
                         Notification(
                             title = "Take a quick break",
-                            message = settings.value.breakMessage,
+                            message = it.breakMessage,
                             type = Notification.Type.Info
                         )
                     )
@@ -69,12 +61,13 @@ fun main() = application {
         )
     }
 
-    LaunchedEffect(settings.value) {
-        if (settings.value.enabled) {
-            breakManager.planBreak(settings.value)
-        } else {
-            breakManager.cancelBreak()
-        }
+    val viewModel : ZenBreakViewModel = remember {
+        ZenBreakViewModel(breakManager)
+    }
+    val settings = viewModel.zbSettings.collectAsState(ZbSettings())
+
+    var isSettingsWindowVisible by remember(settings.value.hasCompletedFirstRun) {
+        mutableStateOf(settings.value.hasCompletedFirstRun)
     }
 
     Tray(
@@ -87,7 +80,7 @@ fun main() = application {
             Item(
                 text = if (settings.value.enabled) "Disable" else "Enable",
                 onClick = {
-                    settingsRepository.setEnabled(!settings.value.enabled)
+                    viewModel.setEnabled(!settings.value.enabled)
                 }
             )
 
@@ -115,7 +108,7 @@ fun main() = application {
         },
         icon = WindowIcon
     ) {
-        MainView(settingsRepository)
+        ZenBreakUi(viewModel)
     }
 
     Window(

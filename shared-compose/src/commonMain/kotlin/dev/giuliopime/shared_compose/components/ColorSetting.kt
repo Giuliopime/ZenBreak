@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import core.toColor
+import dev.giuliopime.shared_compose.core.toColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

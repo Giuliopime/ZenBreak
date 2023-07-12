@@ -26,23 +26,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import dev.giuliopime.shared_compose.data.model.ZbSettings
-import dev.giuliopime.shared_compose.data.repository.SettingsRepository
+import dev.giuliopime.shared.data.model.ZbSettings
+import dev.giuliopime.shared.data.repository.SettingsRepository
+import dev.giuliopime.shared.viewmodel.ZenBreakViewModel
+import dev.giuliopime.shared_compose.pages.AppearancePage
+import dev.giuliopime.shared_compose.pages.BehaviourPage
+import dev.giuliopime.shared_compose.pages.SystemPage
+import dev.giuliopime.shared_compose.theme.ZenBreakTheme
 import kotlinx.coroutines.launch
-import ui.pages.AppearancePage
-import ui.pages.BehaviourPage
-import ui.pages.SystemPage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ZenBreakUi(
-    settingsRepository: SettingsRepository
+    viewModel: ZenBreakViewModel
 ) {
     val scope = rememberCoroutineScope()
     var tabIndex by remember { mutableStateOf(0) }
     val titles = listOf("Behaviour", "Appearance", "System")
 
-    val settings = settingsRepository.getSettingsFlow().collectAsState(ZbSettings())
+    val settings = viewModel.zbSettings.collectAsState(ZbSettings())
 
     ZenBreakTheme {
         Scaffold(
@@ -56,7 +58,7 @@ fun ZenBreakUi(
                             checked = settings.value.enabled,
                             onCheckedChange = {
                                 scope.launch {
-                                    settingsRepository.setEnabled(it)
+                                    viewModel.setEnabled(it)
                                 }
                             }
                         )
@@ -95,15 +97,15 @@ fun ZenBreakUi(
                             ) {
                                 when (tabIndex) {
                                     0 -> BehaviourPage(
-                                        settingsRepository = settingsRepository,
+                                        viewModel = viewModel,
                                         settings = settings.value
                                     )
                                     1 -> AppearancePage(
-                                        settingsRepository = settingsRepository,
+                                        viewModel = viewModel,
                                         settings = settings.value
                                     )
                                     2 -> SystemPage(
-                                        settingsRepository = settingsRepository,
+                                        viewModel = viewModel,
                                         settings = settings.value
                                     )
                                 }

@@ -5,21 +5,22 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import dev.giuliopime.shared_compose.data.model.ZbSettings
-import dev.giuliopime.shared_compose.data.repository.SettingsRepository
-import ui.components.ColorSetting
-import ui.components.MultilineTextSetting
+import dev.giuliopime.shared.data.model.ZbSettings
+import dev.giuliopime.shared.data.repository.SettingsRepository
+import dev.giuliopime.shared.viewmodel.ZenBreakViewModel
+import dev.giuliopime.shared_compose.components.ColorSetting
+import dev.giuliopime.shared_compose.components.MultilineTextSetting
 
 @Composable
 fun AppearancePage(
-    settingsRepository: SettingsRepository,
+    viewModel: ZenBreakViewModel,
     settings: ZbSettings
 ) {
     MultilineTextSetting(
         name = "Break message",
         value = settings.breakMessage,
         onValueChange = {
-            settingsRepository.setBreakMessage(it)
+            viewModel.setBreakMessage(it)
         }
     )
 
@@ -29,17 +30,17 @@ fun AppearancePage(
         name = "Primary color",
         color = settings.primaryColor,
         onColorChange = {
-            settingsRepository.setPrimaryColor(it)
+            viewModel.setPrimaryColor(it)
         }
     )
 
     Spacer(Modifier.height(8.dp))
 
     ColorSetting(
-        name = "Secondary color",
+        name = "Text color",
         color = settings.textColor,
         onColorChange = {
-            settingsRepository.setSecondaryColor(it)
+            viewModel.setTextColor(it)
         }
     )
 }

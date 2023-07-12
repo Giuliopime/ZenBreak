@@ -11,6 +11,7 @@ kotlin {
         val jvmMain by getting  {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation(project(":shared-compose"))
                 implementation(project(":shared"))
             }
         }
@@ -23,7 +24,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "KotlinMultiplatformComposeDesktopApplication"
+            packageName = "ZenBreakDesktopApplication"
             packageVersion = "1.0.0"
         }
     }
