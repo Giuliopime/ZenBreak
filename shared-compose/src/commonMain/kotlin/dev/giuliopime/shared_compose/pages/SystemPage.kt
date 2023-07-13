@@ -6,9 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.giuliopime.shared.data.model.ZbSettings
-import dev.giuliopime.shared.data.repository.SettingsRepository
 import dev.giuliopime.shared.viewmodel.ZenBreakViewModel
-import dev.giuliopime.shared_compose.components.BooleanSetting
+import dev.giuliopime.shared_compose.components.settings.BooleanSetting
 
 @Composable
 fun SystemPage(

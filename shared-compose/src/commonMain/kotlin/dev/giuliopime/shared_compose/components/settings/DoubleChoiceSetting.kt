@@ -1,4 +1,4 @@
-package dev.giuliopime.shared_compose.components
+package dev.giuliopime.shared_compose.components.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

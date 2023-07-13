@@ -1,7 +1,9 @@
 package dev.giuliopime.shared.data.model
 
 import kotlinx.serialization.Serializable
+import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 
@@ -14,6 +16,8 @@ data class ZbTimeData(
     val millis = (hours.hours.inWholeMilliseconds +
             minutes.minutes.inWholeMilliseconds +
             seconds.seconds.inWholeMilliseconds).coerceAtLeast(5000)
+
+    val duration = millis.milliseconds
 
     companion object {
         fun getHours(hours: String) = hours.toIntOrNull()?.coerceIn(0, 23)

@@ -1,3 +1,4 @@
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -41,6 +42,7 @@ import dev.giuliopime.shared.di.initKoin
 import dev.giuliopime.shared.logic.BreakManager
 import dev.giuliopime.shared.viewmodel.ZenBreakViewModel
 import dev.giuliopime.shared_compose.ZenBreakUi
+import dev.giuliopime.shared_compose.components.BreakPopup
 import dev.giuliopime.shared_compose.core.toColor
 import dev.giuliopime.shared_compose.theme.ZenBreakTheme
 import java.awt.Dimension
@@ -143,40 +145,25 @@ fun main() = application {
             window.requestFocus()
         }
 
-        ZenBreakTheme {
-            Column(
-                modifier = Modifier.fillMaxSize().background(Color.Black.copy(0.5F)),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                    modifier = Modifier
-                        .clip(CircleShape)
-                        .background(settings.value.primaryColor.toColor(Color.Yellow))
-                        .wrapContentHeight()
-                        .padding(64.dp)
-                ) {
-                    Text(
-                        text = settings.value.breakMessage,
-                        style = MaterialTheme.typography.h4,
-                        textAlign = TextAlign.Center,
-                        color = settings.value.textColor.toColor(Color.Black)
-                    )
-
-                    Spacer(Modifier.height(12.dp))
-
-                    Button(
-                        onClick = {
-                            isPopupWindowVisible = false
-                            breakManager.planBreak(settings.value)
-                        }
-                    ) {
-                        Text("Skip")
-                    }
-                }
-            }
+        Column(
+            modifier = Modifier.fillMaxSize().background(Color.Black.copy(0.5F)),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            BreakPopup(
+                message = settings.value.breakMessage,
+                duration = settings.value.breakDuration.copy(),
+                onSkipClicked = {
+                    isPopupWindowVisible = false
+                    breakManager.planBreak(settings.value)
+                },
+                onTimeFinished = {
+                    isPopupWindowVisible = false
+                    breakManager.planBreak(settings.value)
+                },
+                primaryColor = settings.value.primaryColor.toColor(Color.Black),
+                textColor = settings.value.textColor.toColor(Color.White)
+            )
         }
     }
 }

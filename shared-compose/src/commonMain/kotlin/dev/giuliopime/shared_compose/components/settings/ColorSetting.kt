@@ -1,4 +1,4 @@
-package dev.giuliopime.shared_compose.components
+package dev.giuliopime.shared_compose.components.settings
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
