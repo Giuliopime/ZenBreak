@@ -1,4 +1,8 @@
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -33,8 +37,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Notification
 import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
+import androidx.compose.ui.window.rememberWindowState
 import dev.giuliopime.shared.data.model.ZbSettings
 import dev.giuliopime.shared.data.repository.impl.DefaultSettingsRepository
 import dev.giuliopime.shared.data.source.local.OfflineSettingsStorage
@@ -56,6 +62,9 @@ fun main() = application {
     var isPopupWindowVisible by remember {
         mutableStateOf(false)
     }
+    val popupWindowState = rememberWindowState(
+        placement = WindowPlacement.Maximized
+    )
 
     val breakManager: BreakManager = remember {
         DesktopBreakManager(
@@ -136,34 +145,38 @@ fun main() = application {
         transparent = true,
         alwaysOnTop = true,
         focusable = false,
+        state = popupWindowState
     ) {
-        Toolkit.getDefaultToolkit().screenSize.let {
-            val insets = window.insets
-            window.size = Dimension(it.width + insets.left + insets.right, it.height + insets.bottom + insets.top)
-            window.setLocation(0, 0)
-            window.toFront()
-            window.requestFocus()
-        }
+        window.toFront()
+        window.requestFocus()
 
-        Column(
-            modifier = Modifier.fillMaxSize().background(Color.Black.copy(0.5F)),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+        AnimatedVisibility(
+            visible = isPopupWindowVisible,
+            enter = fadeIn(
+                animationSpec = spring(stiffness = Spring.StiffnessVeryLow)
+            ),
+            exit = fadeOut()
         ) {
-            BreakPopup(
-                message = settings.value.breakMessage,
-                duration = settings.value.breakDuration.copy(),
-                onSkipClicked = {
-                    isPopupWindowVisible = false
-                    breakManager.planBreak(settings.value)
-                },
-                onTimeFinished = {
-                    isPopupWindowVisible = false
-                    breakManager.planBreak(settings.value)
-                },
-                primaryColor = settings.value.primaryColor.toColor(Color.Black),
-                textColor = settings.value.textColor.toColor(Color.White)
-            )
+            Column(
+                modifier = Modifier.fillMaxSize().background(Color.Black.copy(0.5F)),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                BreakPopup(
+                    message = settings.value.breakMessage,
+                    duration = settings.value.breakDuration.copy(),
+                    onSkipClicked = {
+                        isPopupWindowVisible = false
+                        breakManager.planBreak(settings.value)
+                    },
+                    onTimeFinished = {
+                        isPopupWindowVisible = false
+                        breakManager.planBreak(settings.value)
+                    },
+                    primaryColor = settings.value.primaryColor.toColor(Color.Black),
+                    textColor = settings.value.textColor.toColor(Color.White)
+                )
+            }
         }
     }
 }
