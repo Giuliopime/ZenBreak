@@ -4,6 +4,9 @@ import dev.giuliopime.shared.data.repository.SettingsRepository
 import dev.giuliopime.shared.data.repository.impl.DefaultSettingsRepository
 import dev.giuliopime.shared.data.source.SettingsStorage
 import dev.giuliopime.shared.data.source.local.OfflineSettingsStorage
+import dev.giuliopime.shared.logic.BreakManager
+import dev.giuliopime.shared.logic.IBreakManager
+import dev.giuliopime.shared.viewmodel.ZenBreakViewModel
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.KoinAppDeclaration
@@ -20,4 +23,6 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
 val commonModule = module {
     single<SettingsStorage> { OfflineSettingsStorage() }
     single<SettingsRepository> { DefaultSettingsRepository() }
+    single<IBreakManager> { BreakManager() }
+    single<ZenBreakViewModel> { ZenBreakViewModel() }
 }

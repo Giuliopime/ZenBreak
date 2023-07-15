@@ -4,27 +4,37 @@ import dev.giuliopime.shared.data.model.ZbSettings
 import dev.giuliopime.shared.data.model.ZbTimeData
 import dev.giuliopime.shared.data.repository.SettingsRepository
 import kotlinx.coroutines.flow.Flow
-import dev.giuliopime.shared.logic.BreakManager
+import dev.giuliopime.shared.logic.IBreakManager
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class ZenBreakViewModel(
-    private val breakManager: BreakManager
-): KoinComponent {
+/**
+ * Initializing the break action is **needed** with [setBreakAction]
+ */
+class ZenBreakViewModel: KoinComponent {
     private val settingsRepository: SettingsRepository by inject()
+    private val breakManager: IBreakManager by inject()
 
     val zbSettings: Flow<ZbSettings> = settingsRepository.getSettingsFlow()
+
+    fun setBreakAction(breakAction: (ZbSettings) -> Unit) {
+        breakManager.setBreakAction(breakAction)
+    }
+
+    fun planBreak() = breakManager.planBreak()
+
+    fun cancelBreak() = breakManager.cancelBreak()
 
     fun setHasCompletedFirstRun(completed: Boolean) = settingsRepository.setHasCompletedFirstRun(completed)
 
     fun setEnabled(enabled: Boolean) {
         settingsRepository.setEnabled(enabled)
-        breakManager.planBreak(settingsRepository.getSettings())
+        breakManager.planBreak()
     }
 
     fun setBreakFrequency(frequency: ZbTimeData) {
         settingsRepository.setBreakFrequency(frequency)
-        breakManager.planBreak(settingsRepository.getSettings())
+        breakManager.planBreak()
     }
 
     fun setBreakDuration(duration: ZbTimeData) = settingsRepository.setBreakDuration(duration)

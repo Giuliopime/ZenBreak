@@ -49,11 +49,11 @@ fun BreakPopup(
     primaryColor: Color,
     textColor: Color
 ) {
-    var progress by remember {
+    var targetProgress by remember {
         mutableStateOf(1F)
     }
     val animatedProgress by animateFloatAsState(
-        targetValue = progress,
+        targetValue = targetProgress,
         animationSpec = tween(
             durationMillis = duration.millis.toInt(),
             easing = LinearEasing
@@ -64,7 +64,7 @@ fun BreakPopup(
     )
 
     LaunchedEffect(duration) {
-        progress = 0F
+        targetProgress = 0F
     }
 
     ZenBreakTheme {
