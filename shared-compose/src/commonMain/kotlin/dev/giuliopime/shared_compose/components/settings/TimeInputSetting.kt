@@ -1,6 +1,7 @@
 package dev.giuliopime.shared_compose.components.settings
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
@@ -11,10 +12,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.LocalTextSelectionColors
+import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,6 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -42,61 +47,72 @@ fun TimeInputSetting(
     val minutes = time.minutes.toString().padStart(2, '0')
     val seconds = time.seconds.toString().padStart(2, '0')
 
-    Column(
-        verticalArrangement = Arrangement.spacedBy(
-            space = 8.dp
-        )
-    ) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(
-                space = 8.dp
-            ),
-            verticalAlignment = Alignment.Bottom
-        ) {
-            Text(name)
-            Text(
-                text = "(hh:mm:ss)",
-                style = MaterialTheme.typography.labelMedium,
-                fontWeight = FontWeight.Light
-            )
-        }
+    val customTextSelectionColors = TextSelectionColors(
+        handleColor = MaterialTheme.colorScheme.onPrimary,
+        backgroundColor = MaterialTheme.colorScheme.onPrimaryContainer
+    )
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.border(
-                border = BorderStroke(
-                    width = 1.dp,
-                    color = MaterialTheme.colorScheme.primaryContainer
-                ),
-                shape = MaterialTheme.shapes.medium
-            ).padding(4.dp)
+    CompositionLocalProvider(LocalTextSelectionColors provides customTextSelectionColors) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(
+                space = 8.dp
+            )
         ) {
-            TimeInputField(
-                value = hours,
-                onValueChange = {
-                    ZbTimeData.getHours(it)?.let { hours ->
-                        onTimeChange(time.copy(hours = hours))
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(
+                    space = 8.dp
+                ),
+                verticalAlignment = Alignment.Bottom
+            ) {
+                Text(name)
+                Text(
+                    text = "(hh:mm:ss)",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.Light,
+                )
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .border(
+                        border = BorderStroke(
+                            width = 2.dp,
+                            color = MaterialTheme.colorScheme.outline
+                        ),
+                        shape = MaterialTheme.shapes.medium
+                    )
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(MaterialTheme.colorScheme.primary)
+                    .padding(4.dp)
+            ) {
+                TimeInputField(
+                    value = hours,
+                    onValueChange = {
+                        ZbTimeData.getHours(it)?.let { hours ->
+                            onTimeChange(time.copy(hours = hours))
+                        }
                     }
-                }
-            )
-            Text(text = ":", textAlign = TextAlign.Center)
-            TimeInputField(
-                value = minutes,
-                onValueChange = {
-                    ZbTimeData.getMinutes(it)?.let { minutes ->
-                        onTimeChange(time.copy(minutes = minutes))
+                )
+                TimeInputSeparator()
+                TimeInputField(
+                    value = minutes,
+                    onValueChange = {
+                        ZbTimeData.getMinutes(it)?.let { minutes ->
+                            onTimeChange(time.copy(minutes = minutes))
+                        }
                     }
-                }
-            )
-            Text(":")
-            TimeInputField(
-                value = seconds,
-                onValueChange = {
-                    ZbTimeData.getSeconds(it)?.let { seconds ->
-                        onTimeChange(time.copy(seconds = seconds))
+                )
+                TimeInputSeparator()
+                TimeInputField(
+                    value = seconds,
+                    onValueChange = {
+                        ZbTimeData.getSeconds(it)?.let { seconds ->
+                            onTimeChange(time.copy(seconds = seconds))
+                        }
                     }
-                }
-            )
+                )
+            }
         }
     }
 }
@@ -137,7 +153,7 @@ fun TimeInputField(
         },
         textStyle = MaterialTheme.typography.bodyMedium.copy(
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onSurface
+            color = MaterialTheme.colorScheme.onPrimary
         ),
         modifier = Modifier.width(40.dp),
         interactionSource = interactionSource,
@@ -146,4 +162,9 @@ fun TimeInputField(
             imeAction = ImeAction.Next
         ),
     )
+}
+
+@Composable
+fun TimeInputSeparator() {
+    Text(text = ":", color = MaterialTheme.colorScheme.onPrimary, textAlign = TextAlign.Center, fontWeight = FontWeight.SemiBold)
 }

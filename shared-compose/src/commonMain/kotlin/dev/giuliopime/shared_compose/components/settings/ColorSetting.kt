@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.text.BasicTextField
@@ -43,17 +44,17 @@ fun ColorSetting(
             modifier = Modifier
                 .border(
                     border = BorderStroke(
-                        width = 1.dp,
-                        color = color.toColor(Color.Black)
+                        width = 2.dp,
+                        color = MaterialTheme.colorScheme.outline
                     ),
-                    shape = MaterialTheme.shapes.medium
+                    shape = MaterialTheme.shapes.small
                 )
         ) {
             Box(
                 modifier = Modifier
                     .size(30.dp)
                     .clip(
-                        MaterialTheme.shapes.medium.copy(
+                        MaterialTheme.shapes.small.copy(
                             topEnd = CornerSize(0.dp),
                             bottomEnd = CornerSize(0.dp)
                         ),
