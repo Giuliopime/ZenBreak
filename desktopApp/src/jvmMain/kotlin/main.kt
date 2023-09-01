@@ -29,16 +29,12 @@ import androidx.compose.ui.window.rememberTrayState
 import androidx.compose.ui.window.rememberWindowState
 import dev.giuliopime.shared.data.model.ZbSettings
 import dev.giuliopime.shared.di.initKoin
-import dev.giuliopime.shared.logic.IBreakManager
 import dev.giuliopime.shared.viewmodel.ZenBreakViewModel
 import dev.giuliopime.shared_compose.ZenBreakUi
 import dev.giuliopime.shared_compose.components.BreakPopup
 import dev.giuliopime.shared_compose.core.toColor
-import org.koin.java.KoinJavaComponent.get
-import org.koin.java.KoinJavaComponent.inject
 
 private val koin = initKoin().koin
-
 
 fun main() = application {
     val trayState = rememberTrayState()

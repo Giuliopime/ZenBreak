@@ -1,57 +1,46 @@
-val settingsVersion = "1.0.0"
-
 plugins {
-    kotlin("multiplatform")
-    kotlin("native.cocoapods")
-    kotlin("plugin.serialization")
-    id("com.android.library")
+    alias(libs.plugins.multiplatform)
+    alias(libs.plugins.plugin.serialization)
+    alias(libs.plugins.android.library)
 }
 
 kotlin {
-    android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
+    androidTarget()
 
+    // Windows and Linux targets
     jvm("desktop")
 
+    // iOS
     iosX64()
     iosArm64()
     iosSimulatorArm64()
 
+    // macOS
     macosX64()
     macosArm64()
-
-    cocoapods {
-        version = "1.0.0"
-        summary = "Business logic package for ZenBreak"
-        homepage = "https://github.com/Giuliopime/ZenBreak"
-        framework {
-            baseName = "shared"
-            isStatic = true
-        }
-        noPodspec()
-    }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-                implementation("com.russhwolf:multiplatform-settings:$settingsVersion")
-                implementation("com.russhwolf:multiplatform-settings-coroutines:$settingsVersion")
-                implementation("com.russhwolf:multiplatform-settings-serialization:$settingsVersion")
-                implementation("io.insert-koin:koin-core:3.4.2")
+                implementation(libs.kotlinx.coroutines)
+                implementation(libs.kotlinx.serialization)
+                implementation(libs.bundles.multiplatformSettings)
+                implementation(libs.bundles.koin)
+                // Needs to provide the apis to the modules that depend on this
+                api(libs.koin.core)
             }
         }
+
+        val desktopMain by getting {
+            dependsOn(commonMain)
+        }
+
         val androidMain by getting {
             dependsOn(commonMain)
             dependencies {
-                implementation("com.russhwolf:multiplatform-settings-datastore:1.0.0")
-                api("androidx.datastore:datastore-preferences:1.0.0")
+                api(libs.androidx.datastore.preferences)
+                api(libs.multiplatform.settings.datastore)
+                api(libs.koin.android)
             }
         }
 
@@ -72,19 +61,25 @@ kotlin {
             macosX64Main.dependsOn(this)
             macosArm64Main.dependsOn(this)
         }
-
-        val desktopMain by getting {
-            dependsOn(commonMain)
-        }
     }
 }
 
 android {
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
-    namespace = "dev.giuliopime.zenbreak.common"
+    namespace = "dev.giuliopime.zenbreak.shared"
+
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    // This library doesn't have any resource
 
     defaultConfig {
         minSdk = (findProperty("android.minSdk") as String).toInt()
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlin {
+        jvmToolchain(11)
     }
 }

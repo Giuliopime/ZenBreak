@@ -1,18 +1,20 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
-    kotlin("multiplatform")
-    id("org.jetbrains.compose")
+    alias(libs.plugins.multiplatform)
+    alias(libs.plugins.compose)
 }
 
 kotlin {
+
     jvm()
+
     sourceSets {
         val jvmMain by getting  {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(project(":shared-compose"))
                 implementation(project(":shared"))
+                implementation(project(":shared-compose"))
             }
         }
     }
@@ -23,7 +25,7 @@ compose.desktop {
         mainClass = "MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "ZenBreakDesktopApplication"
             packageVersion = "1.0.0"
         }

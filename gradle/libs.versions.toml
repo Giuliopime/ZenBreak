@@ -1,0 +1,55 @@
+[versions]
+kotlin="1.9.0"
+
+kotlinxCoroutines="1.7.3"
+kotlinxSerialization="1.6.0"
+
+# Shared
+multiplatformSettings="1.0.0"
+koin="3.4.3"
+
+# Shared Compose
+multiplatformCompose="1.5.0"
+
+# Android
+agp= "8.1.1"
+androidxKtx="1.10.1"
+androidxActivity="1.7.2"
+datastorePreferences="1.0.0"
+
+[plugins]
+jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
+multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp"}
+compose = { id = "org.jetbrains.compose", version.ref = "multiplatformCompose" }
+native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin"}
+
+[libraries]
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+
+multiplatform-settings = { group = "com.russhwolf", name = "multiplatform-settings", version.ref = "multiplatformSettings" }
+multiplatform-settings-coroutines = { group = "com.russhwolf", name = "multiplatform-settings-coroutines", version.ref = "multiplatformSettings" }
+multiplatform-settings-serialization = { group = "com.russhwolf", name = "multiplatform-settings-serialization", version.ref = "multiplatformSettings" }
+multiplatform-settings-datastore = { group = "com.russhwolf", name = "multiplatform-settings-datastore", version.ref = "multiplatformSettings" }
+
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin"}
+
+androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxKtx" }
+androidx-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
+androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastorePreferences" }
+
+[bundles]
+multiplatformSettings = [
+    "multiplatform-settings",
+    "multiplatform-settings-coroutines",
+    "multiplatform-settings-serialization"
+]
+
+koin = [
+    "koin-core"
+]

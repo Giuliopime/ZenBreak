@@ -14,7 +14,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-@OptIn(ExperimentalSerializationApi::class, ExperimentalSettingsApi::class)
+@OptIn(ExperimentalSettingsApi::class)
 class OfflineSettingsStorage: SettingsStorage, KoinComponent {
     private val settings: FlowSettings by inject()
     private val blockingSettings by lazy { settings.toBlockingSettings() }

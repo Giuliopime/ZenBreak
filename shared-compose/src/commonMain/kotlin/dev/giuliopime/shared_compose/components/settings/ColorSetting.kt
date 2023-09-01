@@ -22,7 +22,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import dev.giuliopime.shared_compose.core.toColor
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ColorSetting(
     name: String,
