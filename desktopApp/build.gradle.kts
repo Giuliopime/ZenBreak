@@ -13,8 +13,9 @@ kotlin {
         val jvmMain by getting  {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(project(":shared"))
-                implementation(project(":shared-compose"))
+                implementation(project(":shared-core"))
+                implementation(project(":shared-ui"))
+                api(libs.koin.core)
             }
         }
     }

@@ -27,27 +27,30 @@ import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
 import androidx.compose.ui.window.rememberWindowState
-import dev.giuliopime.shared.data.model.ZbSettings
-import dev.giuliopime.shared.di.initKoin
-import dev.giuliopime.shared.viewmodel.ZenBreakViewModel
-import dev.giuliopime.shared_compose.ZenBreakUi
-import dev.giuliopime.shared_compose.components.BreakPopup
-import dev.giuliopime.shared_compose.core.toColor
+import dev.giuliopime.shared_core.data.model.ZbSettings
+import dev.giuliopime.shared_core.di.initKoin
+import dev.giuliopime.shared_core.logic.IBreakManager
+import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
+import dev.giuliopime.shared_ui.ZenBreakUi
+import dev.giuliopime.shared_ui.components.BreakPopup
+import dev.giuliopime.shared_ui.core.toColor
 
 private val koin = initKoin().koin
 
 fun main() = application {
-    val trayState = rememberTrayState()
-    var isPopupWindowVisible by remember {
-        mutableStateOf(false)
-    }
-    val popupWindowState = rememberWindowState(
-        placement = WindowPlacement.Maximized
-    )
+    val viewModel: IZenBreakViewModel by koin.inject()
+    val breakManager: IBreakManager by koin.inject()
 
-    val viewModel: ZenBreakViewModel by koin.inject()
-    val settings = viewModel.zbSettings.collectAsState(ZbSettings())
-    viewModel.setBreakAction {
+    val trayState = rememberTrayState()
+    var isPopupWindowVisible by remember { mutableStateOf(false) }
+    val popupWindowState = rememberWindowState(placement = WindowPlacement.Maximized)
+
+    val settings = viewModel.getSettings().collectAsState(ZbSettings())
+    var isSettingsWindowVisible by remember(settings.value.hasCompletedFirstRun) {
+        mutableStateOf(settings.value.hasCompletedFirstRun)
+    }
+
+    breakManager.setAction {
         if (it.popupNotification) {
             isPopupWindowVisible = true
         } else {
@@ -57,12 +60,8 @@ fun main() = application {
                     message = it.breakMessage
                 )
             )
-            viewModel.planBreak()
+            breakManager.planBreak()
         }
-    }
-
-    var isSettingsWindowVisible by remember(settings.value.hasCompletedFirstRun) {
-        mutableStateOf(settings.value.hasCompletedFirstRun)
     }
 
     Tray(
@@ -119,7 +118,7 @@ fun main() = application {
         visible = isPopupWindowVisible,
         onCloseRequest = {
             isPopupWindowVisible = false
-            viewModel.planBreak()
+            breakManager.planBreak()
         },
         undecorated = true,
         resizable = false,
@@ -149,11 +148,11 @@ fun main() = application {
                         duration = settings.value.breakDuration.copy(),
                         onSkipClicked = {
                             isPopupWindowVisible = false
-                            viewModel.planBreak()
+                            breakManager.planBreak()
                         },
                         onTimeFinished = {
                             isPopupWindowVisible = false
-                            viewModel.planBreak()
+                            breakManager.planBreak()
                         },
                         primaryColor = settings.value.primaryColor.toColor(Color.Black),
                         textColor = settings.value.textColor.toColor(Color.White)

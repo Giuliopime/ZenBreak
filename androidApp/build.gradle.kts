@@ -10,8 +10,8 @@ kotlin {
     sourceSets {
         val androidMain by getting {
             dependencies {
-                implementation(project(":shared"))
-                implementation(project(":shared-compose"))
+                implementation(project(":shared-core"))
+                implementation(project(":shared-ui"))
 
                 implementation(libs.androidx.activity)
                 implementation(libs.androidx.ktx)

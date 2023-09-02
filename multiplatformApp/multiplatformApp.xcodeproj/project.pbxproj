@@ -11,23 +11,7 @@
 		4137AFCA2A5F082E000787E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137AFC92A5F082E000787E3 /* ContentView.swift */; };
 		4137AFCC2A5F0830000787E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137AFCB2A5F0830000787E3 /* Assets.xcassets */; };
 		4137AFD02A5F0830000787E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137AFCF2A5F0830000787E3 /* Preview Assets.xcassets */; };
-		418E801F2A5F1659008EA425 /* shared.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 418E801E2A5F1658008EA425 /* shared.xcframework */; };
-		418E80202A5F1659008EA425 /* shared.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 418E801E2A5F1658008EA425 /* shared.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		418E80212A5F1659008EA425 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				418E80202A5F1659008EA425 /* shared.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4137AFC42A5F082E000787E3 /* multiplatformApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = multiplatformApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,9 +20,6 @@
 		4137AFCB2A5F0830000787E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4137AFCD2A5F0830000787E3 /* multiplatformApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = multiplatformApp.entitlements; sourceTree = "<group>"; };
 		4137AFCF2A5F0830000787E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4137AFD72A5F0903000787E3 /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = shared.framework; path = ../shared/build/cocoapods/framework/shared.framework; sourceTree = "<group>"; };
-		4137AFDB2A5F097D000787E3 /* shared.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = shared.xcframework; path = ../shared/build/cocoapods/publish/debug/shared.xcframework; sourceTree = "<group>"; };
-		418E801E2A5F1658008EA425 /* shared.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = shared.xcframework; path = ../shared/build/cocoapods/publish/release/shared.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +27,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				418E801F2A5F1659008EA425 /* shared.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,9 +73,6 @@
 		4137AFD62A5F0902000787E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4137AFDB2A5F097D000787E3 /* shared.xcframework */,
-				418E801E2A5F1658008EA425 /* shared.xcframework */,
-				4137AFD72A5F0903000787E3 /* shared.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,7 +87,6 @@
 				4137AFC02A5F082E000787E3 /* Sources */,
 				4137AFC12A5F082E000787E3 /* Frameworks */,
 				4137AFC22A5F082E000787E3 /* Resources */,
-				418E80212A5F1659008EA425 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

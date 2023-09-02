@@ -1,7 +1,7 @@
 package dev.giuliopime.zenbreak.app
 
 import android.app.Application
-import dev.giuliopime.shared.di.initKoin
+import dev.giuliopime.shared_core.di.initKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 
