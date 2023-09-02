@@ -1,7 +1,7 @@
 rootProject.name = "ZenBreak"
 
 include(":shared-core")
-include(":shared-ui")
+include(":shared-compose")
 include(":androidApp")
 include(":desktopApp")
 

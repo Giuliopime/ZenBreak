@@ -1,14 +1,15 @@
 plugins {
     alias(libs.plugins.multiplatform)
-    alias(libs.plugins.plugin.serialization)
     alias(libs.plugins.android.library)
-    alias(libs.plugins.native.cocoapods)
+    alias(libs.plugins.compose)
 }
 
+@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
+    // Android
     androidTarget()
 
-    // Windows and Linux targets
+    // Windows and Linux
     jvm("desktop")
 
     // iOS
@@ -20,37 +21,29 @@ kotlin {
     macosX64()
     macosArm64()
 
-    cocoapods {
-        version = "1.0.0"
-        summary = "Core logic package for ZenBreak"
-        homepage = "https://github.com/Giuliopime/ZenBreak"
-        framework {
-            baseName = "SharedCore"
-            isStatic = true
-        }
-        noPodspec()
-    }
-
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.kotlinx.coroutines)
-                implementation(libs.kotlinx.serialization)
-                implementation(libs.bundles.multiplatformSettings)
-                implementation(libs.bundles.koin)
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
+
+                implementation(project(":shared-core"))
+            }
+        }
+
+        val androidMain by getting {
+            dependencies {
+                dependsOn(commonMain)
             }
         }
 
         val desktopMain by getting {
-            dependsOn(commonMain)
-        }
-
-        val androidMain by getting {
-            dependsOn(commonMain)
             dependencies {
-                api(libs.androidx.datastore.preferences)
-                api(libs.multiplatform.settings.datastore)
-                api(libs.koin.android)
+                dependsOn(commonMain)
+                implementation(compose.desktop.common)
             }
         }
 
@@ -76,10 +69,11 @@ kotlin {
 
 android {
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
-    namespace = "dev.giuliopime.zenbreak.shared_core"
+    namespace = "dev.giuliopime.zenbreak.shared_ui"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    // This library doesn't have any resource
+    sourceSets["main"].res.srcDirs("src/androidMain/res")
+    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
         minSdk = (findProperty("android.minSdk") as String).toInt()

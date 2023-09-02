@@ -7,13 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092F6F7F2AA3CD080074FB53 /* sharedCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092F6F7E2AA3CD080074FB53 /* sharedCore.xcframework */; };
+		092F6F802AA3CD080074FB53 /* sharedCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 092F6F7E2AA3CD080074FB53 /* sharedCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4137AFC82A5F082E000787E3 /* multiplatformAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137AFC72A5F082E000787E3 /* multiplatformAppApp.swift */; };
 		4137AFCA2A5F082E000787E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137AFC92A5F082E000787E3 /* ContentView.swift */; };
 		4137AFCC2A5F0830000787E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137AFCB2A5F0830000787E3 /* Assets.xcassets */; };
 		4137AFD02A5F0830000787E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137AFCF2A5F0830000787E3 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		097B928A2AA3B45A007D8B40 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				092F6F802AA3CD080074FB53 /* sharedCore.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		092F6F7E2AA3CD080074FB53 /* sharedCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sharedCore.xcframework; path = "../shared-core/build/cocoapods/publish/release/sharedCore.xcframework"; sourceTree = "<group>"; };
 		4137AFC42A5F082E000787E3 /* multiplatformApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = multiplatformApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4137AFC72A5F082E000787E3 /* multiplatformAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = multiplatformAppApp.swift; sourceTree = "<group>"; };
 		4137AFC92A5F082E000787E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092F6F7F2AA3CD080074FB53 /* sharedCore.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +91,7 @@
 		4137AFD62A5F0902000787E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				092F6F7E2AA3CD080074FB53 /* sharedCore.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -87,6 +106,7 @@
 				4137AFC02A5F082E000787E3 /* Sources */,
 				4137AFC12A5F082E000787E3 /* Frameworks */,
 				4137AFC22A5F082E000787E3 /* Resources */,
+				097B928A2AA3B45A007D8B40 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

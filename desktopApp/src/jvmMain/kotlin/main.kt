@@ -31,9 +31,9 @@ import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.di.initKoin
 import dev.giuliopime.shared_core.logic.IBreakManager
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
-import dev.giuliopime.shared_ui.ZenBreakUi
-import dev.giuliopime.shared_ui.components.BreakPopup
-import dev.giuliopime.shared_ui.core.toColor
+import dev.giuliopime.shared_compose.ZenBreakUi
+import dev.giuliopime.shared_compose.components.BreakPopup
+import dev.giuliopime.shared_compose.core.toColor
 
 private val koin = initKoin().koin
 
