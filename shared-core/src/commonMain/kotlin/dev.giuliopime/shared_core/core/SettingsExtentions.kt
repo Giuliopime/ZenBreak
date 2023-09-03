@@ -1,5 +1,6 @@
 package dev.giuliopime.shared_core.core
 
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesIgnore
 import com.russhwolf.settings.ExperimentalSettingsApi
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.coroutines.FlowSettings
@@ -10,6 +11,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 @OptIn(ExperimentalSettingsApi::class)
+@NativeCoroutinesIgnore
 inline fun <reified T> FlowSettings.decodeValueFlow(
     key: String,
     defaultValue: T

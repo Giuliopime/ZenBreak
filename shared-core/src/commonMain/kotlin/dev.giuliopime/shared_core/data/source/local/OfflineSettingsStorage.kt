@@ -21,7 +21,6 @@ class OfflineSettingsStorage: SettingsStorage, KoinComponent {
 
     private val defaultValues = ZbSettings()
 
-    @NativeCoroutines
     override fun getZbSettingsFlow(): Flow<ZbSettings> {
         return settings.decodeValueFlow(OfflineStorageKeys.SETTINGS, defaultValues)
     }

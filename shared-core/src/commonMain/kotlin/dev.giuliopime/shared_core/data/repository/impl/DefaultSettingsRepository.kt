@@ -14,7 +14,6 @@ class DefaultSettingsRepository : ISettingsRepository, KoinComponent {
 
     override fun getSettings() : ZbSettings = settingsStorage.getZbSettings()
 
-    @NativeCoroutines
     override fun getSettingsFlow() : Flow<ZbSettings> = settingsStorage.getZbSettingsFlow()
 
     override fun setHasCompletedFirstRun(completed: Boolean) = settingsStorage.setHasCompletedFirstRun(completed)
