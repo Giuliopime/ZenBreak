@@ -24,8 +24,9 @@ kotlin {
         version = "1.0.0"
         summary = "Core logic package for ZenBreak"
         homepage = "https://github.com/Giuliopime/ZenBreak"
+        // TODO: Add build step on xcode
         framework {
-            baseName = "SharedCore"
+            baseName = "sharedCore"
             isStatic = true
         }
         noPodspec()
