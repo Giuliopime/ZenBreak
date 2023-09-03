@@ -1,10 +1,12 @@
 package dev.giuliopime.shared_core.viewmodel
 
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.data.model.ZbTimeData
 import kotlinx.coroutines.flow.Flow
 
 interface IZenBreakViewModel {
+    @NativeCoroutines
     fun getSettings(): Flow<ZbSettings>
 
     fun setHasCompletedFirstRun(completed: Boolean)

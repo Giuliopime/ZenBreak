@@ -1,5 +1,6 @@
 package dev.giuliopime.shared_core.data.source.local
 
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import com.russhwolf.settings.ExperimentalSettingsApi
 import com.russhwolf.settings.coroutines.FlowSettings
 import com.russhwolf.settings.coroutines.toBlockingSettings
@@ -20,6 +21,7 @@ class OfflineSettingsStorage: SettingsStorage, KoinComponent {
 
     private val defaultValues = ZbSettings()
 
+    @NativeCoroutines
     override fun getZbSettingsFlow(): Flow<ZbSettings> {
         return settings.decodeValueFlow(OfflineStorageKeys.SETTINGS, defaultValues)
     }

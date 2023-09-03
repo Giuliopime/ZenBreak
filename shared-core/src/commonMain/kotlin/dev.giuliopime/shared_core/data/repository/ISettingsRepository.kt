@@ -1,11 +1,14 @@
 package dev.giuliopime.shared_core.data.repository
 
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.data.model.ZbTimeData
 import kotlinx.coroutines.flow.Flow
 
 interface ISettingsRepository {
     fun getSettings() : ZbSettings
+
+    @NativeCoroutines
     fun getSettingsFlow() : Flow<ZbSettings>
 
     fun setHasCompletedFirstRun(completed: Boolean)

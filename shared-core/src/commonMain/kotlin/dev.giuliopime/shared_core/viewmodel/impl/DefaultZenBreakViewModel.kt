@@ -1,5 +1,6 @@
 package dev.giuliopime.shared_core.viewmodel.impl
 
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.data.model.ZbTimeData
 import dev.giuliopime.shared_core.data.repository.ISettingsRepository
@@ -13,6 +14,7 @@ class DefaultZenBreakViewModel: IZenBreakViewModel, KoinComponent {
     private val settingsRepository: ISettingsRepository by inject()
     private val breakManager: IBreakManager by inject()
 
+    @NativeCoroutines
     override fun getSettings(): Flow<ZbSettings> = settingsRepository.getSettingsFlow()
 
     override fun setHasCompletedFirstRun(completed: Boolean) = settingsRepository.setHasCompletedFirstRun(completed)

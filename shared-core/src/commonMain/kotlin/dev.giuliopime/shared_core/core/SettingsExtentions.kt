@@ -19,7 +19,6 @@ inline fun <reified T> FlowSettings.decodeValueFlow(
     } ?: defaultValue
 }
 
-@OptIn(ExperimentalSettingsApi::class)
 inline fun <reified T> Settings.decodeValue(
     key: String,
     defaultValue: T
@@ -27,7 +26,6 @@ inline fun <reified T> Settings.decodeValue(
     Json.decodeFromString(it)
 } ?: defaultValue
 
-@OptIn(ExperimentalSettingsApi::class)
 inline fun <reified T> Settings.encodeValue(
     key: String,
     value: T,

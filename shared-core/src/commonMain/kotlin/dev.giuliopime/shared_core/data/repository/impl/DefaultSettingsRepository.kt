@@ -1,5 +1,6 @@
 package dev.giuliopime.shared_core.data.repository.impl
 
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.data.model.ZbTimeData
 import dev.giuliopime.shared_core.data.repository.ISettingsRepository
@@ -13,6 +14,7 @@ class DefaultSettingsRepository : ISettingsRepository, KoinComponent {
 
     override fun getSettings() : ZbSettings = settingsStorage.getZbSettings()
 
+    @NativeCoroutines
     override fun getSettingsFlow() : Flow<ZbSettings> = settingsStorage.getZbSettingsFlow()
 
     override fun setHasCompletedFirstRun(completed: Boolean) = settingsStorage.setHasCompletedFirstRun(completed)

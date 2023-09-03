@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.plugin.serialization)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.android.library)
+    alias(libs.plugins.native.coroutines)
     alias(libs.plugins.native.cocoapods)
 }
 
@@ -73,6 +75,10 @@ kotlin {
             macosArm64Main.dependsOn(this)
         }
     }
+}
+
+kotlin.sourceSets.all {
+    languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
 }
 
 android {
