@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import sharedCore
 
 private enum NotificationType {
     case popup, notification
 }
 
 struct AppereanceTabView: View {
+    @ObservedObject var viewModel: ZbViewModel
+    
     @State private var notificationType = NotificationType.popup
     @State private var primary = Color.blue
     @State private var text = Color.white
@@ -53,6 +56,6 @@ struct AppereanceTabView: View {
 
 struct AppereanceTabView_Previews: PreviewProvider {
     static var previews: some View {
-        AppereanceTabView()
+        AppereanceTabView(viewModel: ZbViewModel(repository: DefaultSettingsRepository()))
     }
 }

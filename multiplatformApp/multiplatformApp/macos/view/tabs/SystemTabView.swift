@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import sharedCore
 
 struct SystemTabView: View {
+    @ObservedObject var viewModel: ZbViewModel
+    
     @State private var skipping = true
     @State private var snoozing = false
     
@@ -29,6 +32,6 @@ struct SystemTabView: View {
 
 struct SystemTabView_Previews: PreviewProvider {
     static var previews: some View {
-        SystemTabView()
+        SystemTabView(viewModel: ZbViewModel(repository: DefaultSettingsRepository()))
     }
 }

@@ -6,25 +6,33 @@
 //
 
 import SwiftUI
+import sharedCore
 
 private enum ChildTabView {
     case behaviour, appereance, system
 }
 
 struct MenuBarWindow: View {
+    
+    @StateObject private var viewModel = ZbViewModel(
+        repository: DefaultSettingsRepository()
+    )
+    
     @State private var activeTabView = ChildTabView.behaviour
     
     var body: some View {
         VStack(spacing: 8) {
             Button {
-
+                viewModel.setEnabled(enabled: !viewModel.settings.enabled)
             } label: {
-                Text("Enable")
+                Text(viewModel.settings.enabled ? "Disable" : "Enable")
                     .font(.system(.body).monospacedDigit())
                     .frame(maxWidth: .infinity)
             }
             .controlSize(.large)
             .keyboardShortcut(.defaultAction)
+            .buttonStyle(.borderedProminent)
+            .tint(viewModel.settings.enabled ? .gray : .accentColor)
             
             Picker("", selection: $activeTabView) {
                 Text("Behaviour").tag(ChildTabView.behaviour)
@@ -38,11 +46,11 @@ struct MenuBarWindow: View {
             GroupBox {
                 switch activeTabView {
                 case .behaviour:
-                    BehaviourTabView()
+                    BehaviourTabView(viewModel: viewModel)
                 case .appereance:
-                    AppereanceTabView()
+                    AppereanceTabView(viewModel: viewModel)
                 case .system:
-                    SystemTabView()
+                    SystemTabView(viewModel: viewModel)
                 }
             }
             

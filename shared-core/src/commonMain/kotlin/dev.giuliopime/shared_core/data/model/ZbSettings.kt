@@ -35,4 +35,8 @@ data class ZbSettings(
     val textColor: String = "#000000",
     val resetOnIdle: Boolean = false,
     val startAtLogin: Boolean = false
-)
+) {
+    companion object {
+        val default = ZbSettings()
+    }
+}

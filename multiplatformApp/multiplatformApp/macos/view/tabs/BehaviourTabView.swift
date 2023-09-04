@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import sharedCore
 
 struct BehaviourTabView: View {
+    @ObservedObject var viewModel: ZbViewModel
+    
     @State private var frequency = 0
     @State private var skipping = true
     @State private var snoozing = false
@@ -42,6 +45,6 @@ struct BehaviourTabView: View {
 
 struct BehaviourTabView_Previews: PreviewProvider {
     static var previews: some View {
-        BehaviourTabView()
+        BehaviourTabView(viewModel: ZbViewModel(repository: DefaultSettingsRepository()))
     }
 }

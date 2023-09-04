@@ -35,6 +35,8 @@ data class ZbTimeData(
     val duration = millis.milliseconds
 
     companion object {
+        val default = ZbTimeData(0, 20, 0)
+
         /**
          * Converts a string to an integer representing 0-23 hours
          *
