@@ -13,26 +13,31 @@ private enum ChildTabView {
 }
 
 struct MenuBarWindow: View {
-    
     @StateObject private var viewModel = ZbViewModel(
         repository: DefaultSettingsRepository()
     )
     
     @State private var activeTabView = ChildTabView.behaviour
+    private var enabled: Binding<Bool> { Binding(
+        get: {
+            viewModel.settings.enabled
+        },
+        set: { enabled in
+            viewModel.setEnabled(enabled: enabled)
+        }
+    )}
+
     
     var body: some View {
         VStack(spacing: 8) {
-            Button {
-                viewModel.setEnabled(enabled: !viewModel.settings.enabled)
-            } label: {
-                Text(viewModel.settings.enabled ? "Disable" : "Enable")
-                    .font(.system(.body).monospacedDigit())
-                    .frame(maxWidth: .infinity)
+            Toggle(isOn: enabled) {
+                Text("ZenBreak - \(enabled.wrappedValue ? "enabled" : "disabled")")
+                    .font(.title3)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .controlSize(.large)
+            .toggleStyle(.switch)
             .keyboardShortcut(.defaultAction)
-            .buttonStyle(.borderedProminent)
-            .tint(viewModel.settings.enabled ? .gray : .accentColor)
+            
             
             Picker("", selection: $activeTabView) {
                 Text("Behaviour").tag(ChildTabView.behaviour)

@@ -20,6 +20,10 @@ struct AppereanceTabView: View {
     @State private var text = Color.white
     @State private var message = "Take a break"
     
+    init(viewModel: ZbViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         VStack {
             HStack {
