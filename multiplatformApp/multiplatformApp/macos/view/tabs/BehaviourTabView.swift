@@ -11,30 +11,62 @@ import sharedCore
 struct BehaviourTabView: View {
     @ObservedObject var viewModel: ZbViewModel
     
-    @State private var frequency = 0
-    @State private var skipping = true
-    @State private var snoozing = false
+    private var frequency: Binding<Int64> { Binding(
+        get: {
+            viewModel.settings.breakFrequency / 60000
+        },
+        set: { frequency in
+            viewModel.setBreakFrequency(frequency: frequency * 60000)
+        }
+    )}
+    
+    private var duration: Binding<Int64> { Binding(
+        get: {
+            viewModel.settings.breakDuration / 60000
+        },
+        set: { duration in
+            viewModel.setBreakDuration(duration: duration * 60000)
+        }
+    )}
+    
+    private var skipping: Binding<Bool> { Binding(
+        get: {
+            viewModel.settings.breakSkip
+        },
+        set: { skip in
+            viewModel.setBreakSkip(skip: skip)
+        }
+    )}
+    
+    private var snoozing: Binding<Bool> { Binding(
+        get: {
+            viewModel.settings.breakSnooze
+        },
+        set: { snooze in
+            viewModel.setBreakSnooze(snooze: snooze)
+        }
+    )}
     
     var body: some View {
         VStack {
-            Stepper(value: $frequency, in: 1 ... 60) {
+            Stepper(value: frequency, in: 1 ... 1440) {
                 Text("Break frequency")
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text("20 min")
             }
             
-            Stepper(value: $frequency, in: 1 ... 60) {
+            Stepper(value: duration, in: 1 ... 60) {
                 Text("Break duration")
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text("2 min")
             }
             
-            Toggle(isOn: $skipping) {
+            Toggle(isOn: skipping) {
                 Text("Allow skipping")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }.toggleStyle(.switch)
             
-            Toggle(isOn: $skipping) {
+            Toggle(isOn: snoozing) {
                 Text("Allow snoozing")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }.toggleStyle(.switch)

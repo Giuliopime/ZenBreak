@@ -1,6 +1,7 @@
 package dev.giuliopime.shared_core.data.model
 
 import kotlinx.serialization.Serializable
+import kotlin.time.Duration
 
 /**
  * ZenBreak Settings that gets stored on the device
@@ -24,11 +25,11 @@ import kotlinx.serialization.Serializable
 data class ZbSettings(
     val hasCompletedFirstRun: Boolean = false,
     val enabled: Boolean = false,
-    val breakFrequency: ZbTimeData = ZbTimeData(0, 20, 0),
-    val breakDuration: ZbTimeData = ZbTimeData(0, 3, 0),
+    val breakFrequency: Long = 1200000,
+    val breakDuration: Long = 180000,
     val breakSkip: Boolean = true,
     val breakSnooze: Boolean = false,
-    val breakSnoozeLength: ZbTimeData = ZbTimeData(0, 5, 0),
+    val breakSnoozeLength: Long = 300000,
     val popupNotification: Boolean = true,
     val breakMessage: String = "Rest your eyes, and do some stretching ^^",
     val primaryColor: String = "#90e0ef",

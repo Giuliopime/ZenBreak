@@ -25,14 +25,14 @@ actual class DefaultBreakManager: IBreakManager, KoinComponent {
         val settings  = settingsRepository.getSettings()
 
         if (settings.enabled) {
-            task = Timer().schedule(settings.breakFrequency.millis) {
+            task = Timer().schedule(settings.breakFrequency) {
                 println("BREAK RUNNING")
                 runBlocking(Dispatchers.IO) {
                     breakAction(settings)
                 }
             }
 
-            println("Break planned for ${settings.breakFrequency.millis}ms from now")
+            println("Break planned for ${settings.breakFrequency}ms from now")
         }
     }
 

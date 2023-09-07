@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0907C7CF2AA97D2800D6F33D /* ZBWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907C7CE2AA97D2800D6F33D /* ZBWindow.swift */; };
+		0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0907C7D12AA97FFE00D6F33D /* LaunchAtLogin */; };
+		098E91A72AA9709A000287D3 /* ColorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E91A62AA9709A000287D3 /* ColorExtentions.swift */; };
 		09A736762AA4D33E008B32A8 /* sharedCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A736752AA4D33E008B32A8 /* sharedCore.xcframework */; };
 		09A736772AA4D33E008B32A8 /* sharedCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09A736752AA4D33E008B32A8 /* sharedCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		09B5ED272AA48D98005413D7 /* MenuBarWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED262AA48D98005413D7 /* MenuBarWindow.swift */; };
+		09B5ED272AA48D98005413D7 /* ZbPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */; };
 		09B5ED2A2AA490B1005413D7 /* AppereanceTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED292AA490B1005413D7 /* AppereanceTabView.swift */; };
 		09B5ED2D2AA490C7005413D7 /* BehaviourTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED2C2AA490C7005413D7 /* BehaviourTabView.swift */; };
 		09B5ED2F2AA490D1005413D7 /* SystemTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED2E2AA490D1005413D7 /* SystemTabView.swift */; };
@@ -38,8 +41,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0907C7CE2AA97D2800D6F33D /* ZBWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZBWindow.swift; sourceTree = "<group>"; };
+		098E91A62AA9709A000287D3 /* ColorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentions.swift; sourceTree = "<group>"; };
 		09A736752AA4D33E008B32A8 /* sharedCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sharedCore.xcframework; path = "../shared-core/build/cocoapods/publish/release/sharedCore.xcframework"; sourceTree = "<group>"; };
-		09B5ED262AA48D98005413D7 /* MenuBarWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarWindow.swift; sourceTree = "<group>"; };
+		09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbPopoverView.swift; sourceTree = "<group>"; };
 		09B5ED292AA490B1005413D7 /* AppereanceTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppereanceTabView.swift; sourceTree = "<group>"; };
 		09B5ED2C2AA490C7005413D7 /* BehaviourTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviourTabView.swift; sourceTree = "<group>"; };
 		09B5ED2E2AA490D1005413D7 /* SystemTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemTabView.swift; sourceTree = "<group>"; };
@@ -60,6 +65,7 @@
 				09BF68FE2AA4C64F00195DC0 /* KMPNativeCoroutinesCombine in Frameworks */,
 				09A736762AA4D33E008B32A8 /* sharedCore.xcframework in Frameworks */,
 				09BF68FC2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync in Frameworks */,
+				0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */,
 				09BF69002AA4C64F00195DC0 /* KMPNativeCoroutinesCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +73,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		098E91A52AA97088000287D3 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				09E7B8152AA5D263003625F2 /* ZbViewModel.swift */,
+				09E7B81A2AA5D66C003625F2 /* FlowExtentions.swift */,
+				098E91A62AA9709A000287D3 /* ColorExtentions.swift */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
 		09B5ED232AA48D6E005413D7 /* macos */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				09B5ED282AA49098005413D7 /* tabs */,
-				09B5ED262AA48D98005413D7 /* MenuBarWindow.swift */,
+				09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */,
+				0907C7CE2AA97D2800D6F33D /* ZBWindow.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -114,13 +131,12 @@
 		4137AFC62A5F082E000787E3 /* multiplatformApp */ = {
 			isa = PBXGroup;
 			children = (
-				09E7B8152AA5D263003625F2 /* ZbViewModel.swift */,
+				098E91A52AA97088000287D3 /* core */,
 				09B5ED232AA48D6E005413D7 /* macos */,
 				4137AFC72A5F082E000787E3 /* multiplatformApp.swift */,
 				4137AFCB2A5F0830000787E3 /* Assets.xcassets */,
 				4137AFCD2A5F0830000787E3 /* multiplatformApp.entitlements */,
 				4137AFCE2A5F0830000787E3 /* Preview Content */,
-				09E7B81A2AA5D66C003625F2 /* FlowExtentions.swift */,
 			);
 			path = multiplatformApp;
 			sourceTree = "<group>";
@@ -162,6 +178,7 @@
 				09BF68FB2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync */,
 				09BF68FD2AA4C64F00195DC0 /* KMPNativeCoroutinesCombine */,
 				09BF68FF2AA4C64F00195DC0 /* KMPNativeCoroutinesCore */,
+				0907C7D12AA97FFE00D6F33D /* LaunchAtLogin */,
 			);
 			productName = multiplatformApp;
 			productReference = 4137AFC42A5F082E000787E3 /* multiplatformApp.app */;
@@ -193,6 +210,7 @@
 			mainGroup = 4137AFBB2A5F082E000787E3;
 			packageReferences = (
 				09BF68FA2AA4C64F00195DC0 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
+				0907C7D02AA97FFE00D6F33D /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 			);
 			productRefGroup = 4137AFC52A5F082E000787E3 /* Products */;
 			projectDirPath = "";
@@ -220,11 +238,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				098E91A72AA9709A000287D3 /* ColorExtentions.swift in Sources */,
 				09B5ED2A2AA490B1005413D7 /* AppereanceTabView.swift in Sources */,
+				0907C7CF2AA97D2800D6F33D /* ZBWindow.swift in Sources */,
 				09B5ED2F2AA490D1005413D7 /* SystemTabView.swift in Sources */,
 				09B5ED2D2AA490C7005413D7 /* BehaviourTabView.swift in Sources */,
 				4137AFC82A5F082E000787E3 /* multiplatformApp.swift in Sources */,
-				09B5ED272AA48D98005413D7 /* MenuBarWindow.swift in Sources */,
+				09B5ED272AA48D98005413D7 /* ZbPopoverView.swift in Sources */,
 				09E7B8162AA5D263003625F2 /* ZbViewModel.swift in Sources */,
 				09E7B81B2AA5D66C003625F2 /* FlowExtentions.swift in Sources */,
 			);
@@ -444,6 +464,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0907C7D02AA97FFE00D6F33D /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		09BF68FA2AA4C64F00195DC0 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
@@ -455,6 +483,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0907C7D12AA97FFE00D6F33D /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0907C7D02AA97FFE00D6F33D /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
 		09BF68FB2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 09BF68FA2AA4C64F00195DC0 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;

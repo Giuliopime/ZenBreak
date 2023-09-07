@@ -1,6 +1,5 @@
 package dev.giuliopime.shared_core.data.source.local
 
-import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import com.russhwolf.settings.ExperimentalSettingsApi
 import com.russhwolf.settings.coroutines.FlowSettings
 import com.russhwolf.settings.coroutines.toBlockingSettings
@@ -8,7 +7,6 @@ import dev.giuliopime.shared_core.core.decodeValue
 import dev.giuliopime.shared_core.core.encodeValue
 import dev.giuliopime.shared_core.core.decodeValueFlow
 import dev.giuliopime.shared_core.data.model.ZbSettings
-import dev.giuliopime.shared_core.data.model.ZbTimeData
 import dev.giuliopime.shared_core.data.source.SettingsStorage
 import kotlinx.coroutines.flow.Flow
 import org.koin.core.component.KoinComponent
@@ -45,7 +43,7 @@ class OfflineSettingsStorage: SettingsStorage, KoinComponent {
         )
     }
 
-    override fun setBreakFrequency(frequency: ZbTimeData) {
+    override fun setBreakFrequency(frequency: Long) {
         blockingSettings.encodeValue(
             OfflineStorageKeys.SETTINGS,
             getZbSettings().copy(
@@ -54,7 +52,7 @@ class OfflineSettingsStorage: SettingsStorage, KoinComponent {
         )
     }
 
-    override fun setBreakDuration(duration: ZbTimeData) {
+    override fun setBreakDuration(duration: Long) {
         blockingSettings.encodeValue(
             OfflineStorageKeys.SETTINGS,
             getZbSettings().copy(
@@ -81,7 +79,7 @@ class OfflineSettingsStorage: SettingsStorage, KoinComponent {
         )
     }
 
-    override fun setBreakSnoozeLength(snoozeLength: ZbTimeData) {
+    override fun setBreakSnoozeLength(snoozeLength: Long) {
         blockingSettings.encodeValue(
             OfflineStorageKeys.SETTINGS,
             getZbSettings().copy(

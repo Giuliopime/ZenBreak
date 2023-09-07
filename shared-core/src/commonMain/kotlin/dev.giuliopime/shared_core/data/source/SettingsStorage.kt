@@ -2,7 +2,6 @@ package dev.giuliopime.shared_core.data.source
 
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.giuliopime.shared_core.data.model.ZbSettings
-import dev.giuliopime.shared_core.data.model.ZbTimeData
 import kotlinx.coroutines.flow.Flow
 
 interface SettingsStorage {
@@ -15,15 +14,15 @@ interface SettingsStorage {
 
     fun setEnabled(enabled: Boolean)
 
-    fun setBreakFrequency(frequency: ZbTimeData)
+    fun setBreakFrequency(frequency: Long)
 
-    fun setBreakDuration(duration: ZbTimeData)
+    fun setBreakDuration(duration: Long)
 
     fun setBreakSkip(skip: Boolean)
 
     fun setBreakSnooze(snooze: Boolean)
 
-    fun setBreakSnoozeLength(snoozeLength: ZbTimeData)
+    fun setBreakSnoozeLength(snoozeLength: Long)
 
     fun setPopupNotification(popupNotification: Boolean)
 

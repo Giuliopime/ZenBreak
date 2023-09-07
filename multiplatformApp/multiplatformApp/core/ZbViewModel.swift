@@ -8,6 +8,7 @@
 import Foundation
 import KMPNativeCoroutinesAsync
 import sharedCore
+import LaunchAtLogin
 
 @MainActor
 class ZbViewModel: ObservableObject {
@@ -38,11 +39,11 @@ class ZbViewModel: ObservableObject {
         repository.setEnabled(enabled: enabled)
     }
 
-    func setBreakFrequency(frequency: ZbTimeData) {
+    func setBreakFrequency(frequency: Int64) {
         repository.setBreakFrequency(frequency: frequency)
     }
 
-    func setBreakDuration(duration: ZbTimeData) {
+    func setBreakDuration(duration: Int64) {
         repository.setBreakDuration(duration: duration)
     }
 
@@ -54,7 +55,7 @@ class ZbViewModel: ObservableObject {
         repository.setBreakSnooze(snooze: snooze)
     }
 
-    func setBreakSnoozeLength(snoozeLength: ZbTimeData) {
+    func setBreakSnoozeLength(snoozeLength: Int64) {
         repository.setBreakSnoozeLength(snoozeLength: snoozeLength)
     }
 
@@ -79,6 +80,7 @@ class ZbViewModel: ObservableObject {
     }
 
     func setStartAtLogin(start: Bool) {
+        LaunchAtLogin.isEnabled = start
         repository.setStartAtLogin(start: start)
     }
 }

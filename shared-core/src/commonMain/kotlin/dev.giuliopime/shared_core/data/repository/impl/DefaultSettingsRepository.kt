@@ -1,8 +1,6 @@
 package dev.giuliopime.shared_core.data.repository.impl
 
-import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.giuliopime.shared_core.data.model.ZbSettings
-import dev.giuliopime.shared_core.data.model.ZbTimeData
 import dev.giuliopime.shared_core.data.repository.ISettingsRepository
 import dev.giuliopime.shared_core.data.source.SettingsStorage
 import kotlinx.coroutines.flow.Flow
@@ -20,15 +18,15 @@ class DefaultSettingsRepository : ISettingsRepository, KoinComponent {
 
     override fun setEnabled(enabled: Boolean) = settingsStorage.setEnabled(enabled)
 
-    override fun setBreakFrequency(frequency: ZbTimeData) = settingsStorage.setBreakFrequency(frequency)
+    override fun setBreakFrequency(frequency: Long) = settingsStorage.setBreakFrequency(frequency)
 
-    override fun setBreakDuration(duration: ZbTimeData) = settingsStorage.setBreakDuration(duration)
+    override fun setBreakDuration(duration: Long) = settingsStorage.setBreakDuration(duration)
 
     override fun setBreakSkip(skip: Boolean) = settingsStorage.setBreakSkip(skip)
 
     override fun setBreakSnooze(snooze: Boolean) = settingsStorage.setBreakSnooze(snooze)
 
-    override fun setBreakSnoozeLength(snoozeLength: ZbTimeData) = settingsStorage.setBreakSnoozeLength(snoozeLength)
+    override fun setBreakSnoozeLength(snoozeLength: Long) = settingsStorage.setBreakSnoozeLength(snoozeLength)
 
     override fun setPopupNotification(popupNotification: Boolean) = settingsStorage.setPopupNotification(popupNotification)
 

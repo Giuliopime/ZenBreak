@@ -12,7 +12,7 @@ private enum ChildTabView {
     case behaviour, appereance, system
 }
 
-struct MenuBarWindow: View {
+struct ZbPopoverView: View {
     @StateObject private var viewModel = ZbViewModel(
         repository: DefaultSettingsRepository()
     )
@@ -87,6 +87,6 @@ struct MenuBarWindow: View {
 
 struct MenuBarWindow_Previews: PreviewProvider {
     static var previews: some View {
-        MenuBarWindow()
+        ZbPopoverView()
     }
 }

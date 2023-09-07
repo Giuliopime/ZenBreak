@@ -35,17 +35,16 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import dev.giuliopime.shared_core.data.model.ZbTimeData
 
 @Composable
 fun TimeInputSetting(
-    time: ZbTimeData,
-    onTimeChange: (ZbTimeData) -> Unit,
+    time: Long,
+    onTimeChange: (Long) -> Unit,
     name: String
 ) {
-    val hours = time.hours.toString().padStart(2, '0')
-    val minutes = time.minutes.toString().padStart(2, '0')
-    val seconds = time.seconds.toString().padStart(2, '0')
+    val hours = 0 // TODO time.hours.toString().padStart(2, '0')
+    val minutes = 0 // TOOD time.minutes.toString().padStart(2, '0')
+    val seconds = 0 // TODO time.seconds.toString().padStart(2, '0')
 
     val customTextSelectionColors = TextSelectionColors(
         handleColor = MaterialTheme.colorScheme.onPrimary,
@@ -87,29 +86,29 @@ fun TimeInputSetting(
                     .padding(4.dp)
             ) {
                 TimeInputField(
-                    value = hours,
+                    value = hours.toString(),
                     onValueChange = {
+                        /*
                         ZbTimeData.getHours(it)?.let { hours ->
                             onTimeChange(time.copy(hours = hours))
                         }
+
+                         */
+
                     }
                 )
                 TimeInputSeparator()
                 TimeInputField(
-                    value = minutes,
+                    value = minutes.toString(),
                     onValueChange = {
-                        ZbTimeData.getMinutes(it)?.let { minutes ->
-                            onTimeChange(time.copy(minutes = minutes))
-                        }
+
                     }
                 )
                 TimeInputSeparator()
                 TimeInputField(
-                    value = seconds,
+                    value = seconds.toString(),
                     onValueChange = {
-                        ZbTimeData.getSeconds(it)?.let { seconds ->
-                            onTimeChange(time.copy(seconds = seconds))
-                        }
+
                     }
                 )
             }

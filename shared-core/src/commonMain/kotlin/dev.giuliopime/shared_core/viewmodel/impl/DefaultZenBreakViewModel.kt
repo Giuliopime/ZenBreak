@@ -1,8 +1,6 @@
 package dev.giuliopime.shared_core.viewmodel.impl
 
-import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.giuliopime.shared_core.data.model.ZbSettings
-import dev.giuliopime.shared_core.data.model.ZbTimeData
 import dev.giuliopime.shared_core.data.repository.ISettingsRepository
 import dev.giuliopime.shared_core.logic.IBreakManager
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
@@ -23,18 +21,18 @@ class DefaultZenBreakViewModel: IZenBreakViewModel, KoinComponent {
         breakManager.planBreak()
     }
 
-    override fun setBreakFrequency(frequency: ZbTimeData) {
+    override fun setBreakFrequency(frequency: Long) {
         settingsRepository.setBreakFrequency(frequency)
         breakManager.planBreak()
     }
 
-    override fun setBreakDuration(duration: ZbTimeData) = settingsRepository.setBreakDuration(duration)
+    override fun setBreakDuration(duration: Long) = settingsRepository.setBreakDuration(duration)
 
     override fun setBreakSkip(skip: Boolean) = settingsRepository.setBreakSkip(skip)
 
     override fun setBreakSnooze(snooze: Boolean) = settingsRepository.setBreakSnooze(snooze)
 
-    override fun setBreakSnoozeLength(snoozeLength: ZbTimeData) = settingsRepository.setBreakSnoozeLength(snoozeLength)
+    override fun setBreakSnoozeLength(snoozeLength: Long) = settingsRepository.setBreakSnoozeLength(snoozeLength)
 
     override fun setPopupNotification(popupNotification: Boolean) = settingsRepository.setPopupNotification(popupNotification)
 

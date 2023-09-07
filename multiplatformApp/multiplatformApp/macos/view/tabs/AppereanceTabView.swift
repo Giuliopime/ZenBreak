@@ -15,21 +15,56 @@ private enum NotificationType {
 struct AppereanceTabView: View {
     @ObservedObject var viewModel: ZbViewModel
     
-    @State private var notificationType = NotificationType.popup
-    @State private var primary = Color.blue
-    @State private var text = Color.white
-    @State private var message = "Take a break"
+    private var notificationType: Binding<NotificationType> { Binding(
+        get: {
+            viewModel.settings.popupNotification ? NotificationType.popup : NotificationType.notification
+        },
+        set: { popup in
+            viewModel.setPopupNotification(popupNotification: popup == NotificationType.popup ? true : false)
+        }
+    )}
     
-    init(viewModel: ZbViewModel) {
-        self.viewModel = viewModel
-    }
+    private var primary: Binding<Color> { Binding(
+        get: {
+            Color(hex: viewModel.settings.primaryColor) ?? Color.primary
+        },
+        set: { color in
+            guard let hex = color.toHex() else {
+                return
+            }
+            
+            viewModel.setPrimaryColor(primary: hex)
+        }
+    )}
+    
+    private var text: Binding<Color> { Binding(
+        get: {
+            Color(hex: viewModel.settings.textColor) ?? Color.secondary
+        },
+        set: { color in
+            guard let hex = color.toHex() else {
+                return
+            }
+            
+            viewModel.setTextColor(text: hex)
+        }
+    )}
+    
+    private var message: Binding<String> { Binding(
+        get: {
+            viewModel.settings.breakMessage
+        },
+        set: { message in
+            viewModel.setBreakMessage(message: message)
+        }
+    )}
     
     var body: some View {
         VStack {
             HStack {
                 Text("Notification type")
                 Spacer()
-                Picker("Notification type", selection: $notificationType) {
+                Picker("Notification type", selection: notificationType) {
                     Text("Popup")
                         .tag(NotificationType.popup)
                     
@@ -41,17 +76,17 @@ struct AppereanceTabView: View {
                 .labelsHidden()
             }
             
-            ColorPicker(selection: $primary) {
+            ColorPicker(selection: primary, supportsOpacity: false) {
                 Text("Primary color")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             
-            ColorPicker(selection: $text) {
+            ColorPicker(selection: text, supportsOpacity: false) {
                 Text("Text color")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             
-            TextField("Message", text: $message, axis: .vertical)
+            TextField("Message", text: message, axis: .vertical)
                 .lineLimit(2...)
         }
         .padding(4)

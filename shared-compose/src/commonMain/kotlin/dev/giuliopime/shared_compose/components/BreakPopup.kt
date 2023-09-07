@@ -29,13 +29,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import dev.giuliopime.shared_core.data.model.ZbTimeData
 import dev.giuliopime.shared_compose.theme.ZenBreakTheme
 
 @Composable
 fun BreakPopup(
     message: String,
-    duration: ZbTimeData,
+    duration: Long,
     onSkipClicked: () -> Unit,
     onTimeFinished: () -> Unit,
     primaryColor: Color,
@@ -47,7 +46,7 @@ fun BreakPopup(
     val animatedProgress by animateFloatAsState(
         targetValue = targetProgress,
         animationSpec = tween(
-            durationMillis = duration.millis.toInt(),
+            durationMillis = duration.toInt(),
             easing = LinearEasing
         ),
         finishedListener = {
