@@ -9,13 +9,14 @@ import SwiftUI
 import sharedCore
 
 @main
-struct multiplatformApp: App {
+struct MultiplatformApp: App {
     @NSApplicationDelegateAdaptor(ZbStatusItem.self) var appDelegate
     
     init() {
-        ZbStatusItem.shared = appDelegate
-        
+        // Init dependency injection
         KoinKt.doInitKoin { _ in }
+        
+        ZbStatusItem.shared = appDelegate
     }
     
     var body: some Scene {

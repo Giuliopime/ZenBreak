@@ -8,7 +8,7 @@
 import SwiftUI
 import sharedCore
 
-private enum NotificationType {
+enum NotificationType {
     case popup, notification
 }
 
@@ -95,6 +95,6 @@ struct AppereanceTabView: View {
 
 struct AppereanceTabView_Previews: PreviewProvider {
     static var previews: some View {
-        AppereanceTabView(viewModel: ZbViewModel(repository: DefaultSettingsRepository()))
+        AppereanceTabView(viewModel: ZbViewModel())
     }
 }

@@ -13,9 +13,7 @@ private enum ChildTabView {
 }
 
 struct ZbPopoverView: View {
-    @StateObject private var viewModel = ZbViewModel(
-        repository: DefaultSettingsRepository()
-    )
+    @StateObject private var viewModel = ZbViewModel()
     
     @State private var activeTabView = ChildTabView.behaviour
     private var enabled: Binding<Bool> { Binding(

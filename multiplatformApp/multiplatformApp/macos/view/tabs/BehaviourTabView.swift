@@ -52,13 +52,13 @@ struct BehaviourTabView: View {
             Stepper(value: frequency, in: 1 ... 1440) {
                 Text("Break frequency")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("20 min")
+                Text("\(frequency.wrappedValue) min")
             }
             
             Stepper(value: duration, in: 1 ... 60) {
                 Text("Break duration")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("2 min")
+                Text("\(duration.wrappedValue) min")
             }
             
             Toggle(isOn: skipping) {
@@ -77,6 +77,6 @@ struct BehaviourTabView: View {
 
 struct BehaviourTabView_Previews: PreviewProvider {
     static var previews: some View {
-        BehaviourTabView(viewModel: ZbViewModel(repository: DefaultSettingsRepository()))
+        BehaviourTabView(viewModel: ZbViewModel())
     }
 }

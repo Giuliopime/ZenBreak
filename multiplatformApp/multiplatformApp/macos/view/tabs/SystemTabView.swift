@@ -48,6 +48,6 @@ struct SystemTabView: View {
 
 struct SystemTabView_Previews: PreviewProvider {
     static var previews: some View {
-        SystemTabView(viewModel: ZbViewModel(repository: DefaultSettingsRepository()))
+        SystemTabView(viewModel: ZbViewModel())
     }
 }
