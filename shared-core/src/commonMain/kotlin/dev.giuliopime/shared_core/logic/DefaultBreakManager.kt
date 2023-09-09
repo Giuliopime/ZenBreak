@@ -14,6 +14,11 @@ interface IBreakManager {
     fun setAction(breakAction: (ZbSettings) -> Unit)
 
     /**
+     * Sets the action that gets executed when a break ends
+     */
+    fun setEndedAction(breakEndedAction: (ZbSettings) -> Unit)
+
+    /**
      * Plans a break
      */
     fun planBreak(snoozed: Boolean = false)

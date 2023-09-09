@@ -26,7 +26,7 @@ class DefaultSettingsRepository : ISettingsRepository, KoinComponent {
 
     override fun setBreakSnooze(snooze: Boolean) = settingsStorage.setBreakSnooze(snooze)
 
-    override fun setBreakSnoozeLength(snoozeLength: Long) = settingsStorage.setBreakSnoozeLength(snoozeLength)
+    override fun setBreakSnoozeDuration(snoozeDuration: Long) = settingsStorage.setBreakSnoozeDuration(snoozeDuration)
 
     override fun setPopupNotification(popupNotification: Boolean) = settingsStorage.setPopupNotification(popupNotification)
 

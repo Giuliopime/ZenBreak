@@ -33,17 +33,21 @@ class ZbViewModel: ObservableObject {
                     body: settings.breakMessage,
                     category: .breakStarted,
                     delay: nil
-                ) {
-                    self.notificationCenter.send(
-                        title: "Break ended",
-                        body: "The break has finished!",
-                        category: .breakFinished,
-                        delay: Double(settings.breakDuration)
-                    ) {
-                        self.breakManager.planBreak(snoozed: false)
-                    }
-                }
+                )
             }
+        }
+        
+        breakManager.setEndedAction { settings in
+            if (!settings.popupNotification) {
+                self.notificationCenter.send(
+                    title: "Break ended",
+                    body: "The break has finished!",
+                    category: .breakFinished,
+                    delay: nil
+                )
+            }
+            
+            self.breakManager.planBreak(snoozed: false)
         }
     }
     
@@ -103,8 +107,8 @@ class ZbViewModel: ObservableObject {
         repository.setBreakSnooze(snooze: snooze)
     }
 
-    func setBreakSnoozeLength(snoozeLength: Int64) {
-        repository.setBreakSnoozeLength(snoozeLength: snoozeLength)
+    func setBreakSnoozeDuration(snoozeDuration: Int64) {
+        repository.setBreakSnoozeDuration(snoozeDuration: snoozeDuration)
     }
 
     func setPopupNotification(popupNotification: Bool) {

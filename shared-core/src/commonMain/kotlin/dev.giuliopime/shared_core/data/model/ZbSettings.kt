@@ -1,7 +1,6 @@
 package dev.giuliopime.shared_core.data.model
 
 import kotlinx.serialization.Serializable
-import kotlin.time.Duration
 
 /**
  * ZenBreak Settings that gets stored on the device
@@ -13,7 +12,7 @@ import kotlin.time.Duration
  * @param breakDuration duration of a break in ms
  * @param breakSkip whether skipping breaks is allowed
  * @param breakSnooze whether snoozing breaks is allowed
- * @param breakSnoozeLength duration of a snooze in ms
+ * @param breakSnoozeDuration duration of a snooze in ms
  * @param popupNotification whether the break appears as a popup or a simple notification
  * @param breakMessage the message of the break
  * @param primaryColor primary color for the break, format **must be #RRGGBB**
@@ -29,7 +28,7 @@ data class ZbSettings(
     val breakDuration: Long = 180000,
     val breakSkip: Boolean = true,
     val breakSnooze: Boolean = false,
-    val breakSnoozeLength: Long = 300000,
+    val breakSnoozeDuration: Long = 300000,
     val popupNotification: Boolean = true,
     val breakMessage: String = "Rest your eyes, and do some stretching ^^",
     val primaryColor: String = "#90e0ef",

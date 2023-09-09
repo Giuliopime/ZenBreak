@@ -7,6 +7,10 @@ actual class DefaultBreakManager: IBreakManager {
         TODO("Not yet implemented")
     }
 
+    override fun setEndedAction(breakEndedAction: (ZbSettings) -> Unit) {
+        TODO("Not yet implemented")
+    }
+
     override fun planBreak(snoozed: Boolean) {
         TODO()
     }

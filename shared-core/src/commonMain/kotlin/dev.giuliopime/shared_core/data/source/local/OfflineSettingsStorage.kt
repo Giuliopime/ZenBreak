@@ -79,11 +79,11 @@ class OfflineSettingsStorage: SettingsStorage, KoinComponent {
         )
     }
 
-    override fun setBreakSnoozeLength(snoozeLength: Long) {
+    override fun setBreakSnoozeDuration(snoozeDuration: Long) {
         blockingSettings.encodeValue(
             OfflineStorageKeys.SETTINGS,
             getZbSettings().copy(
-                breakSnoozeLength = snoozeLength
+                breakSnoozeDuration = snoozeDuration
             )
         )
     }

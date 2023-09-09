@@ -9,10 +9,16 @@ import platform.Foundation.NSTimer
 actual class DefaultBreakManager: IBreakManager, KoinComponent {
     private val settingsRepository: ISettingsRepository by inject()
     private var breakAction: (ZbSettings) -> Unit = {}
-    private var timer: NSTimer? = null
+    private var breakEndedAction: (ZbSettings) -> Unit = {}
+    private var breakTimer: NSTimer? = null
+    private var breakEndedTimer: NSTimer? = null
 
     override fun setAction(breakAction: (ZbSettings) -> Unit) {
         this.breakAction = breakAction
+    }
+
+    override fun setEndedAction(breakEndedAction: (ZbSettings) -> Unit) {
+        this.breakEndedAction = breakEndedAction
     }
 
     override fun planBreak(snoozed: Boolean) {
@@ -24,23 +30,33 @@ actual class DefaultBreakManager: IBreakManager, KoinComponent {
             return
 
         val delay = if (snoozed)
-            settings.breakSnoozeLength
+            settings.breakSnoozeDuration
         else
             settings.breakFrequency
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(delay.div(1000).toDouble(), false) {
+        breakTimer = NSTimer.scheduledTimerWithTimeInterval(delay.div(1000).toDouble(), false) {
             println("Break running")
             breakAction(settings)
+
+            breakEndedTimer = NSTimer.scheduledTimerWithTimeInterval(settings.breakDuration.div(1000).toDouble(), false) {
+                println("Break end action running")
+                breakEndedAction(settings)
+            }
         }
 
         println("Break planned for ${delay}ms from now")
     }
 
     override fun cancelBreak() {
-        timer?.invalidate()?.let {
+        breakTimer?.invalidate()?.let {
             println("Break canceled")
         }
 
-        timer = null
+        breakEndedTimer?.invalidate()?.let {
+            println("Break end canceled")
+        }
+
+        breakTimer = null
+        breakEndedTimer = null
     }
 }

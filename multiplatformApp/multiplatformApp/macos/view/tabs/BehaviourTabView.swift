@@ -29,6 +29,15 @@ struct BehaviourTabView: View {
         }
     )}
     
+    private var snoozeDuration: Binding<Int64> { Binding(
+        get: {
+            viewModel.settings.breakSnoozeDuration / 60000
+        },
+        set: { snoozeDuration in
+            viewModel.setBreakSnoozeDuration(snoozeDuration: snoozeDuration * 60000)
+        }
+    )}
+    
     private var skipping: Binding<Bool> { Binding(
         get: {
             viewModel.settings.breakSkip
@@ -70,6 +79,14 @@ struct BehaviourTabView: View {
                 Text("Allow snoozing")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }.toggleStyle(.switch)
+            
+            if (snoozing.wrappedValue) {
+                Stepper(value: snoozeDuration, in: 1 ... 1440) {
+                    Text("Snooze duration")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("\(snoozeDuration.wrappedValue) min")
+                }
+            }
         }
         .padding(4)
     }

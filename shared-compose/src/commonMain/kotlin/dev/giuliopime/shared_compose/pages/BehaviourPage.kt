@@ -76,9 +76,9 @@ fun BehaviourPage(
 
     AnimatedVisibility(settings.breakSnooze) {
         TimeInputSetting(
-            time = settings.breakSnoozeLength,
+            time = settings.breakSnoozeDuration,
             onTimeChange = {
-                viewModel.setBreakSnoozeLength(it)
+                viewModel.setBreakSnoozeDuration(it)
             },
             name = "Snooze length"
         )

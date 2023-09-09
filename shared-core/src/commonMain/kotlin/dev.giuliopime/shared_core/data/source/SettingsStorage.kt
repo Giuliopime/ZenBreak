@@ -22,7 +22,7 @@ interface SettingsStorage {
 
     fun setBreakSnooze(snooze: Boolean)
 
-    fun setBreakSnoozeLength(snoozeLength: Long)
+    fun setBreakSnoozeDuration(snoozeDuration: Long)
 
     fun setPopupNotification(popupNotification: Boolean)
 

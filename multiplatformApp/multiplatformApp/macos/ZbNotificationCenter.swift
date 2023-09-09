@@ -82,7 +82,12 @@ class ZbNotificationCenter: NSObject, UNUserNotificationCenterDelegate {
         }
     }
 
-    func send(title: String, body: String, category: ZbNotification.Category, delay: Double?, onSent: @escaping () -> Void) {
+    func send(
+        title: String,
+        body: String,
+        category: ZbNotification.Category,
+        delay: Double?
+    ) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
@@ -102,8 +107,6 @@ class ZbNotificationCenter: NSObject, UNUserNotificationCenterDelegate {
         center.add(request) { error in
             if (error != nil) {
                 print("Error adding notification: \(error!)")
-            } else {
-                onSent()
             }
         }
     }

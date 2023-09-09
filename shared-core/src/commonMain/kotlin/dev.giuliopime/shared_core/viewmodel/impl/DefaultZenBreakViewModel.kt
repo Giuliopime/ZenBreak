@@ -32,7 +32,7 @@ class DefaultZenBreakViewModel: IZenBreakViewModel, KoinComponent {
 
     override fun setBreakSnooze(snooze: Boolean) = settingsRepository.setBreakSnooze(snooze)
 
-    override fun setBreakSnoozeLength(snoozeLength: Long) = settingsRepository.setBreakSnoozeLength(snoozeLength)
+    override fun setBreakSnoozeDuration(snoozeDuration: Long) = settingsRepository.setBreakSnoozeDuration(snoozeDuration)
 
     override fun setPopupNotification(popupNotification: Boolean) = settingsRepository.setPopupNotification(popupNotification)
 
