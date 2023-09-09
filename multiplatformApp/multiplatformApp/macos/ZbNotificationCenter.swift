@@ -30,7 +30,7 @@ class ZbNotificationCenter: NSObject, UNUserNotificationCenterDelegate {
     override init() {
         super.init()
 
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { _, error in
+        center.requestAuthorization(options: [.alert, .sound]) { _, error in
             if let error = error {
                 print("Error requesting notification authorization: \(error)")
             }
@@ -109,11 +109,5 @@ class ZbNotificationCenter: NSObject, UNUserNotificationCenterDelegate {
                 print("Error adding notification: \(error!)")
             }
         }
-    }
-    
-    func cancelNotification(category: ZbNotification.Category) {
-        center.removePendingNotificationRequests(
-            withIdentifiers: [category.rawValue]
-        )
     }
 }

@@ -21,6 +21,7 @@ class ZbViewModel: ObservableObject {
     init() {
         listenToSettingsFlow()
         initBreakManager()
+        self.notificationCenter.setActionHandler(handler: onNotificationAction)
     }
     
     private func initBreakManager() {
@@ -67,10 +68,8 @@ class ZbViewModel: ObservableObject {
     private func onNotificationAction(action: ZbNotification.Action) {
         switch action {
         case .skip:
-            self.notificationCenter.cancelNotification(category: .breakFinished)
             self.breakManager.planBreak(snoozed: false)
         case .snooze:
-            self.notificationCenter.cancelNotification(category: .breakFinished)
             self.breakManager.snoozeBreak()
         }
     }
