@@ -19,27 +19,33 @@ actual class DefaultBreakManager: IBreakManager, KoinComponent {
         this.breakAction = breakAction
     }
 
-    override fun planBreak() {
+    override fun planBreak(snoozed: Boolean) {
         cancelBreak()
 
         val settings  = settingsRepository.getSettings()
 
-        if (settings.enabled) {
-            task = Timer().schedule(settings.breakFrequency) {
-                println("BREAK RUNNING")
-                runBlocking(Dispatchers.IO) {
-                    breakAction(settings)
-                }
-            }
+        if (!settings.enabled)
+            return
 
-            println("Break planned for ${settings.breakFrequency}ms from now")
+        val delay = if (snoozed)
+            settings.breakSnoozeLength
+        else
+            settings.breakFrequency
+
+        task = Timer().schedule(delay) {
+            println("Break running")
+            breakAction(settings)
         }
+
+        println("Break planned for ${delay}ms from now")
     }
 
     override fun cancelBreak() {
         task?.cancel()?.let {
             if (it)
-                println("BREAK CANCELED!")
+                println("Break canceled")
         }
+
+        task = null
     }
 }

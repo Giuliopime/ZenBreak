@@ -16,7 +16,12 @@ interface IBreakManager {
     /**
      * Plans a break
      */
-    fun planBreak()
+    fun planBreak(snoozed: Boolean = false)
+
+    /**
+     * Snoozes a break
+     */
+    fun snoozeBreak() = planBreak(true)
 
     /**
      * Cancels the planned break if it exists
