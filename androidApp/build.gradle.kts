@@ -11,7 +11,8 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(project(":shared-core"))
-                implementation(project(":shared-compose"))
+                implementation(project(":shared-compose-settings"))
+                implementation(project(":shared-compose-popup"))
 
                 implementation(libs.androidx.activity)
                 implementation(libs.androidx.ktx)

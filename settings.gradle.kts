@@ -1,7 +1,9 @@
 rootProject.name = "ZenBreak"
 
 include(":shared-core")
-include(":shared-compose")
+include(":shared-compose-core")
+include(":shared-compose-settings")
+include(":shared-compose-popup")
 include(":androidApp")
 include(":desktopApp")
 
@@ -20,3 +22,4 @@ dependencyResolutionManagement {
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
+include(":shared-compose-popup")

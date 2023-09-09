@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
-import dev.giuliopime.shared_compose.ZenBreakUi
+import dev.giuliopime.shared_compose_settings.ZenBreakUi
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {

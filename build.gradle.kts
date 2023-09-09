@@ -9,4 +9,5 @@ plugins {
     alias(libs.plugins.compose).apply(false)
     alias(libs.plugins.native.coroutines).apply(false)
     alias(libs.plugins.native.cocoapods).apply(false)
+    alias(libs.plugins.jvm).apply(false)
 }

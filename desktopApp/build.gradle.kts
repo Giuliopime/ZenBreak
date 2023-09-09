@@ -14,7 +14,9 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(project(":shared-core"))
-                implementation(project(":shared-compose"))
+                implementation(project(":shared-compose-core"))
+                implementation(project(":shared-compose-settings"))
+                implementation(project(":shared-compose-popup"))
                 api(libs.koin.core)
             }
         }

@@ -27,13 +27,12 @@ import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
 import androidx.compose.ui.window.rememberWindowState
+import dev.giuliopime.shared_compose_popup.ZbBreakPopup
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.di.initKoin
 import dev.giuliopime.shared_core.logic.IBreakManager
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
-import dev.giuliopime.shared_compose.ZenBreakUi
-import dev.giuliopime.shared_compose.components.BreakPopup
-import dev.giuliopime.shared_compose.core.toColor
+import dev.giuliopime.shared_compose_settings.ZenBreakUi
 
 private val koin = initKoin().koin
 
@@ -143,9 +142,9 @@ fun main() = application {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    BreakPopup(
+                    ZbBreakPopup(
                         message = settings.value.breakMessage,
-                        duration = settings.value.breakDuration.copy(),
+                        duration = settings.value.breakDuration,
                         onSkipClicked = {
                             isPopupWindowVisible = false
                             breakManager.planBreak()
