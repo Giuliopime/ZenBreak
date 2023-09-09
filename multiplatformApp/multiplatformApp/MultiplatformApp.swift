@@ -7,6 +7,7 @@
 
 import SwiftUI
 import sharedCore
+import sharedComposePopup
 
 @main
 struct MultiplatformApp: App {
@@ -24,6 +25,10 @@ struct MultiplatformApp: App {
         MenuBarExtra("ZenBreak", systemImage: "tree.fill") {
             ZbPopoverView()
         }.menuBarExtraStyle(.window)
+        
+        WindowGroup {
+            ZbBreakPopupView()
+        }
         #endif
     }
 }

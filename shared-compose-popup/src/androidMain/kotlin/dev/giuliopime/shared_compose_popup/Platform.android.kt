@@ -1,1 +1,1 @@
-package dev.giuliopime.shared_compose_settings
+package dev.giuliopime.shared_compose_popup

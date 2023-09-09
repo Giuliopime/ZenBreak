@@ -11,6 +11,9 @@
 		0907C7CF2AA97D2800D6F33D /* ZBWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907C7CE2AA97D2800D6F33D /* ZBWindow.swift */; };
 		0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0907C7D12AA97FFE00D6F33D /* LaunchAtLogin */; };
 		098E91A72AA9709A000287D3 /* ColorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E91A62AA9709A000287D3 /* ColorExtentions.swift */; };
+		09A5592F2AAD1BBA00D61535 /* sharedComposePopup.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A5592E2AAD1BBA00D61535 /* sharedComposePopup.xcframework */; };
+		09A559302AAD1BBA00D61535 /* sharedComposePopup.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09A5592E2AAD1BBA00D61535 /* sharedComposePopup.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09A559322AAD1C6E00D61535 /* ZbBreakPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A559312AAD1C6E00D61535 /* ZbBreakPopupView.swift */; };
 		09A736762AA4D33E008B32A8 /* sharedCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A736752AA4D33E008B32A8 /* sharedCore.xcframework */; };
 		09A736772AA4D33E008B32A8 /* sharedCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09A736752AA4D33E008B32A8 /* sharedCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09B5ED272AA48D98005413D7 /* ZbPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */; };
@@ -34,6 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				09A559302AAD1BBA00D61535 /* sharedComposePopup.xcframework in Embed Frameworks */,
 				09A736772AA4D33E008B32A8 /* sharedCore.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -45,6 +49,8 @@
 		090126602AAC731C002402F1 /* ZbNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbNotificationCenter.swift; sourceTree = "<group>"; };
 		0907C7CE2AA97D2800D6F33D /* ZBWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZBWindow.swift; sourceTree = "<group>"; };
 		098E91A62AA9709A000287D3 /* ColorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentions.swift; sourceTree = "<group>"; };
+		09A5592E2AAD1BBA00D61535 /* sharedComposePopup.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sharedComposePopup.xcframework; path = "../shared-compose-popup/build/cocoapods/publish/release/sharedComposePopup.xcframework"; sourceTree = "<group>"; };
+		09A559312AAD1C6E00D61535 /* ZbBreakPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakPopupView.swift; sourceTree = "<group>"; };
 		09A736752AA4D33E008B32A8 /* sharedCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sharedCore.xcframework; path = "../shared-core/build/cocoapods/publish/release/sharedCore.xcframework"; sourceTree = "<group>"; };
 		09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbPopoverView.swift; sourceTree = "<group>"; };
 		09B5ED292AA490B1005413D7 /* AppereanceTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppereanceTabView.swift; sourceTree = "<group>"; };
@@ -66,6 +72,7 @@
 			files = (
 				09BF68FE2AA4C64F00195DC0 /* KMPNativeCoroutinesCombine in Frameworks */,
 				09A736762AA4D33E008B32A8 /* sharedCore.xcframework in Frameworks */,
+				09A5592F2AAD1BBA00D61535 /* sharedComposePopup.xcframework in Frameworks */,
 				09BF68FC2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync in Frameworks */,
 				0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */,
 				09BF69002AA4C64F00195DC0 /* KMPNativeCoroutinesCore in Frameworks */,
@@ -100,6 +107,7 @@
 				09B5ED282AA49098005413D7 /* tabs */,
 				09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */,
 				0907C7CE2AA97D2800D6F33D /* ZBWindow.swift */,
+				09A559312AAD1C6E00D61535 /* ZbBreakPopupView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -155,6 +163,7 @@
 		4137AFD62A5F0902000787E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09A5592E2AAD1BBA00D61535 /* sharedComposePopup.xcframework */,
 				09A736752AA4D33E008B32A8 /* sharedCore.xcframework */,
 			);
 			name = Frameworks;
@@ -251,6 +260,7 @@
 				09E7B8162AA5D263003625F2 /* ZbViewModel.swift in Sources */,
 				090126612AAC731C002402F1 /* ZbNotificationCenter.swift in Sources */,
 				09E7B81B2AA5D66C003625F2 /* FlowExtentions.swift in Sources */,
+				09A559322AAD1C6E00D61535 /* ZbBreakPopupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
