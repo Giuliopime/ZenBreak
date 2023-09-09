@@ -28,7 +28,7 @@ actual class DefaultBreakManager: IBreakManager, KoinComponent {
         else
             settings.breakFrequency
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(delay.toDouble(), false) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(delay.div(1000).toDouble(), false) {
             println("Break running")
             breakAction(settings)
         }
