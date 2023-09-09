@@ -18,6 +18,16 @@ struct MultiplatformApp: App {
         KoinKt.doInitKoin { _ in }
         
         ZbStatusItem.shared = appDelegate
+        
+        Platform_macosKt.BreakPopupView(
+            message: "message",
+            duration: 40000,
+            onSkipClicked: {},
+            onSnoozeClicked: {},
+            onTimeFinished: {},
+            primaryColor: "#000000",
+            textColor: "#FFFFFF"
+        )
     }
     
     var body: some Scene {
@@ -26,9 +36,9 @@ struct MultiplatformApp: App {
             ZbPopoverView()
         }.menuBarExtraStyle(.window)
         
-        WindowGroup {
-            ZbBreakPopupView()
-        }
+        //WindowGroup {
+        //    ZbBreakPopupView()
+        //}
         #endif
     }
 }

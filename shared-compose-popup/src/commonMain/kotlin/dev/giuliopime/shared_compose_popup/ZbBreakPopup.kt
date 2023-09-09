@@ -7,11 +7,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -30,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.giuliopime.shared_compose_core.theme.ZenBreakTheme
+import dev.giuliopime.shared_compose_core.toColor
 
 @Composable
 fun ZbBreakPopup(
@@ -38,8 +41,8 @@ fun ZbBreakPopup(
     onSkipClicked: () -> Unit,
     onSnoozeClicked: () -> Unit,
     onTimeFinished: () -> Unit,
-    primaryColor: Color,
-    textColor: Color
+    primaryColor: String,
+    textColor: String
 ) {
     var targetProgress by remember {
         mutableStateOf(1F)
@@ -71,32 +74,46 @@ fun ZbBreakPopup(
                 modifier = Modifier
                     .fillMaxSize()
                     .clip(CircleShape)
-                    .background(primaryColor)
+                    .background(primaryColor.toColor(Color.White))
                     .padding(64.dp)
             ) {
                 Text(
                     text = message,
-                    color = textColor,
+                    color = textColor.toColor(Color.Black),
                     style = MaterialTheme.typography.headlineMedium,
                     textAlign = TextAlign.Center
                 )
 
                 Spacer(Modifier.height(16.dp))
 
-                Button(
-                    onClick = onSkipClicked,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.inverseSurface,
-                        contentColor = MaterialTheme.colorScheme.inverseOnSurface
-                    )
-                ) {
-                    Text("Skip")
+                Row {
+                    Button(
+                        onClick = onSkipClicked,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.inverseSurface,
+                            contentColor = MaterialTheme.colorScheme.inverseOnSurface
+                        )
+                    ) {
+                        Text("Skip")
+                    }
+
+                    Spacer(Modifier.width(12.dp))
+
+                    Button(
+                        onClick = onSnoozeClicked,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.inverseSurface,
+                            contentColor = MaterialTheme.colorScheme.inverseOnSurface
+                        )
+                    ) {
+                        Text("Snooze")
+                    }
                 }
             }
 
             RoundedCornersCircularProgressIndicator(
                 progress = animatedProgress,
-                color = textColor,
+                color = textColor.toColor(Color.Black),
                 strokeWidth = 8.dp,
                 modifier = Modifier
                     .fillMaxSize()

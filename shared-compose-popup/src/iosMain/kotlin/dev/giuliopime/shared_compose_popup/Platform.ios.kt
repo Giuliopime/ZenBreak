@@ -1,6 +1,5 @@
 package dev.giuliopime.shared_compose_popup
 
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.window.ComposeUIViewController
 
 fun BreakPopupView(
@@ -9,8 +8,8 @@ fun BreakPopupView(
     onSkipClicked: () -> Unit,
     onSnoozeClicked: () -> Unit,
     onTimeFinished: () -> Unit,
-    primaryColor: Color,
-    textColor: Color
+    primaryColor: String,
+    textColor: String
 ) = ComposeUIViewController {
     ZbBreakPopup(
         message = message,

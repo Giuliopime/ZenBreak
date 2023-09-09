@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.native.cocoapods)
 }
 
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     // Android
     androidTarget()
@@ -43,7 +42,6 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
-                implementation(project(":shared-core"))
                 implementation(project(":shared-compose-core"))
             }
         }
