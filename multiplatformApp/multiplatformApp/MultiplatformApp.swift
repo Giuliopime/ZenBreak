@@ -19,6 +19,7 @@ struct MultiplatformApp: App {
         
         ZbStatusItem.shared = appDelegate
         
+        /**
         Platform_macosKt.BreakPopupView(
             message: "message",
             duration: 40000,
@@ -28,6 +29,7 @@ struct MultiplatformApp: App {
             primaryColor: "#000000",
             textColor: "#FFFFFF"
         )
+         **/
     }
     
     var body: some Scene {
@@ -35,10 +37,6 @@ struct MultiplatformApp: App {
         MenuBarExtra("ZenBreak", systemImage: "tree.fill") {
             ZbPopoverView()
         }.menuBarExtraStyle(.window)
-        
-        //WindowGroup {
-        //    ZbBreakPopupView()
-        //}
         #endif
     }
 }

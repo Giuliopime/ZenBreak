@@ -9,13 +9,18 @@ import SwiftUI
 import sharedComposePopup
 
 struct ZbBreakPopupView: View {
+    @ObservedObject var viewModel: ZbViewModel
+    
     var body: some View {
         EmptyView()
+            .fullScreenCover(isPresented: $viewModel.breakPopupIsShown) {
+                
+            }
     }
 }
 
 struct ZbBreakPopupView_Previews: PreviewProvider {
     static var previews: some View {
-        ZbBreakPopupView()
+        ZbBreakPopupView(viewModel: ZbViewModel())
     }
 }
