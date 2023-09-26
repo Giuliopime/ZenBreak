@@ -11,25 +11,13 @@ import sharedComposePopup
 
 @main
 struct MultiplatformApp: App {
-    @NSApplicationDelegateAdaptor(ZbStatusItem.self) var appDelegate
+    @NSApplicationDelegateAdaptor(ZbAppDelegate.self) var appDelegate
     
     init() {
         // Init dependency injection
         KoinKt.doInitKoin { _ in }
         
-        ZbStatusItem.shared = appDelegate
-        
-        /**
-        Platform_macosKt.BreakPopupView(
-            message: "message",
-            duration: 40000,
-            onSkipClicked: {},
-            onSnoozeClicked: {},
-            onTimeFinished: {},
-            primaryColor: "#000000",
-            textColor: "#FFFFFF"
-        )
-         **/
+        ZbAppDelegate.shared = appDelegate
     }
     
     var body: some Scene {
@@ -41,12 +29,19 @@ struct MultiplatformApp: App {
     }
 }
 
-class ZbStatusItem: NSObject, NSApplicationDelegate {
+class ZbAppDelegate: NSObject, NSApplicationDelegate {
     private var popover = NSPopover()
+    private var breakWindowController = ZbBreakWindowController()
     private var statusBarItem: NSStatusItem?
-    static var shared: ZbStatusItem!
+    static var shared: ZbAppDelegate!
 
     func applicationDidFinishLaunching(_: Notification) {
         NSApp.activate(ignoringOtherApps: true)
+        NSApp.presentationOptions = [.hideDock, .hideMenuBar]
+    }
+    
+    func showBreakWindow() {
+        breakWindowController.window?.makeKeyAndOrderFront(nil)
+        // breakWindowController.showWindow(nil)
     }
 }

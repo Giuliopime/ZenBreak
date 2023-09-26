@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		090126612AAC731C002402F1 /* ZbNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090126602AAC731C002402F1 /* ZbNotificationCenter.swift */; };
-		0907C7CF2AA97D2800D6F33D /* ZBWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907C7CE2AA97D2800D6F33D /* ZBWindow.swift */; };
 		0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0907C7D12AA97FFE00D6F33D /* LaunchAtLogin */; };
-		0907CF4A2AAD2926001D513D /* sharedComposePopup.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0907CF492AAD2926001D513D /* sharedComposePopup.xcframework */; };
-		0907CF4B2AAD2926001D513D /* sharedComposePopup.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0907CF492AAD2926001D513D /* sharedComposePopup.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		094B66662AC24A9300536E48 /* ZbBreakWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094B66652AC24A9300536E48 /* ZbBreakWindowController.swift */; };
+		096416432AC2D77E005995AE /* ZbBreakWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096416422AC2D77D005995AE /* ZbBreakWindow.swift */; };
 		098E91A72AA9709A000287D3 /* ColorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E91A62AA9709A000287D3 /* ColorExtentions.swift */; };
-		09A559322AAD1C6E00D61535 /* ZbBreakPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A559312AAD1C6E00D61535 /* ZbBreakPopupView.swift */; };
+		09A559322AAD1C6E00D61535 /* ZbBreakWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A559312AAD1C6E00D61535 /* ZbBreakWindowView.swift */; };
 		09A736762AA4D33E008B32A8 /* sharedCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A736752AA4D33E008B32A8 /* sharedCore.xcframework */; };
 		09A736772AA4D33E008B32A8 /* sharedCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09A736752AA4D33E008B32A8 /* sharedCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09B5ED272AA48D98005413D7 /* ZbPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */; };
@@ -37,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0907CF4B2AAD2926001D513D /* sharedComposePopup.xcframework in Embed Frameworks */,
 				09A736772AA4D33E008B32A8 /* sharedCore.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -47,10 +45,11 @@
 
 /* Begin PBXFileReference section */
 		090126602AAC731C002402F1 /* ZbNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbNotificationCenter.swift; sourceTree = "<group>"; };
-		0907C7CE2AA97D2800D6F33D /* ZBWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZBWindow.swift; sourceTree = "<group>"; };
 		0907CF492AAD2926001D513D /* sharedComposePopup.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sharedComposePopup.xcframework; path = "../shared-compose-popup/build/cocoapods/publish/release/sharedComposePopup.xcframework"; sourceTree = "<group>"; };
+		094B66652AC24A9300536E48 /* ZbBreakWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindowController.swift; sourceTree = "<group>"; };
+		096416422AC2D77D005995AE /* ZbBreakWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindow.swift; sourceTree = "<group>"; };
 		098E91A62AA9709A000287D3 /* ColorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentions.swift; sourceTree = "<group>"; };
-		09A559312AAD1C6E00D61535 /* ZbBreakPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakPopupView.swift; sourceTree = "<group>"; };
+		09A559312AAD1C6E00D61535 /* ZbBreakWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindowView.swift; sourceTree = "<group>"; };
 		09A736752AA4D33E008B32A8 /* sharedCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sharedCore.xcframework; path = "../shared-core/build/cocoapods/publish/release/sharedCore.xcframework"; sourceTree = "<group>"; };
 		09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbPopoverView.swift; sourceTree = "<group>"; };
 		09B5ED292AA490B1005413D7 /* AppereanceTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppereanceTabView.swift; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 			files = (
 				09BF68FE2AA4C64F00195DC0 /* KMPNativeCoroutinesCombine in Frameworks */,
 				09A736762AA4D33E008B32A8 /* sharedCore.xcframework in Frameworks */,
-				0907CF4A2AAD2926001D513D /* sharedComposePopup.xcframework in Frameworks */,
 				09BF68FC2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync in Frameworks */,
 				0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */,
 				09BF69002AA4C64F00195DC0 /* KMPNativeCoroutinesCore in Frameworks */,
@@ -82,6 +80,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		094B66642AC24A5700536E48 /* window */ = {
+			isa = PBXGroup;
+			children = (
+				094B66652AC24A9300536E48 /* ZbBreakWindowController.swift */,
+				096416422AC2D77D005995AE /* ZbBreakWindow.swift */,
+			);
+			path = window;
+			sourceTree = "<group>";
+		};
 		098E91A52AA97088000287D3 /* core */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +102,7 @@
 		09B5ED232AA48D6E005413D7 /* macos */ = {
 			isa = PBXGroup;
 			children = (
+				094B66642AC24A5700536E48 /* window */,
 				09B5ED252AA48D7F005413D7 /* view */,
 				090126602AAC731C002402F1 /* ZbNotificationCenter.swift */,
 			);
@@ -106,8 +114,7 @@
 			children = (
 				09B5ED282AA49098005413D7 /* tabs */,
 				09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */,
-				0907C7CE2AA97D2800D6F33D /* ZBWindow.swift */,
-				09A559312AAD1C6E00D61535 /* ZbBreakPopupView.swift */,
+				09A559312AAD1C6E00D61535 /* ZbBreakWindowView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -252,15 +259,16 @@
 			files = (
 				098E91A72AA9709A000287D3 /* ColorExtentions.swift in Sources */,
 				09B5ED2A2AA490B1005413D7 /* AppereanceTabView.swift in Sources */,
-				0907C7CF2AA97D2800D6F33D /* ZBWindow.swift in Sources */,
 				09B5ED2F2AA490D1005413D7 /* SystemTabView.swift in Sources */,
 				09B5ED2D2AA490C7005413D7 /* BehaviourTabView.swift in Sources */,
 				4137AFC82A5F082E000787E3 /* MultiplatformApp.swift in Sources */,
 				09B5ED272AA48D98005413D7 /* ZbPopoverView.swift in Sources */,
 				09E7B8162AA5D263003625F2 /* ZbViewModel.swift in Sources */,
+				096416432AC2D77E005995AE /* ZbBreakWindow.swift in Sources */,
+				094B66662AC24A9300536E48 /* ZbBreakWindowController.swift in Sources */,
 				090126612AAC731C002402F1 /* ZbNotificationCenter.swift in Sources */,
 				09E7B81B2AA5D66C003625F2 /* FlowExtentions.swift in Sources */,
-				09A559322AAD1C6E00D61535 /* ZbBreakPopupView.swift in Sources */,
+				09A559322AAD1C6E00D61535 /* ZbBreakWindowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +413,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.giuliopime.multiplatformApp;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.giuliopime.ZenBreak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -444,7 +452,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.giuliopime.multiplatformApp;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.giuliopime.ZenBreak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";

@@ -28,7 +28,7 @@ class ZbViewModel: ObservableObject {
     private func initBreakManager() {
         breakManager.setAction { settings in
             if (settings.popupNotification) {
-                // TODO: Either use compose stuff but it isn't well supported or create a Window here
+                ZbAppDelegate.shared.showBreakWindow()
             } else {
                 self.notificationCenter.send(
                     title: "Time for a break",
