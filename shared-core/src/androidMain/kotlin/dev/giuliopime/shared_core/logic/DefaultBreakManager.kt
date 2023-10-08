@@ -11,6 +11,10 @@ actual class DefaultBreakManager: IBreakManager {
         TODO("Not yet implemented")
     }
 
+    override fun startBreak() {
+        TODO("Not yet implemented")
+    }
+
     override fun planBreak(snoozed: Boolean) {
         TODO()
     }

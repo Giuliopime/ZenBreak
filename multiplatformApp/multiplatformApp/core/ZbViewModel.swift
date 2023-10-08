@@ -17,7 +17,6 @@ class ZbViewModel: ObservableObject {
     private var notificationCenter = ZbNotificationCenter()
     
     @Published var settings: ZbSettings = ZbSettings.Companion.shared.default_
-    @Published var breakPopupIsShown = false
     
     init() {
         listenToSettingsFlow()
@@ -28,7 +27,7 @@ class ZbViewModel: ObservableObject {
     private func initBreakManager() {
         breakManager.setAction { settings in
             if (settings.popupNotification) {
-                ZbAppDelegate.shared.showBreakWindow()
+                self.showPopup()
             } else {
                 self.notificationCenter.send(
                     title: "Time for a break",
@@ -40,7 +39,9 @@ class ZbViewModel: ObservableObject {
         }
         
         breakManager.setEndedAction { settings in
-            if (!settings.popupNotification) {
+            if (settings.popupNotification) {
+                self.closePopup()
+            } else {
                 self.notificationCenter.send(
                     title: "Break ended",
                     body: "The break has finished!",
@@ -69,10 +70,32 @@ class ZbViewModel: ObservableObject {
     private func onNotificationAction(action: ZbNotification.Action) {
         switch action {
         case .skip:
-            self.breakManager.planBreak(snoozed: false)
+            skipBreak()
         case .snooze:
-            self.breakManager.snoozeBreak()
+            snoozeBreak()
         }
+    }
+    
+    private func showPopup() {
+        ZbAppDelegate.shared.showBreakWindow()
+    }
+    
+    private func closePopup() {
+        ZbAppDelegate.shared.hideBreakWindow()
+    }
+    
+    func startBreak() {
+        breakManager.startBreak()
+    }
+    
+    func skipBreak() {
+        breakManager.planBreak(snoozed: false)
+        closePopup()
+    }
+    
+    func snoozeBreak() {
+        breakManager.snoozeBreak()
+        closePopup()
     }
     
     func setHasCompletedFirstRun(completed: Bool) {
@@ -83,16 +106,16 @@ class ZbViewModel: ObservableObject {
         repository.setEnabled(enabled: enabled)
         
         if (enabled) {
-            self.breakManager.planBreak(snoozed: false)
+            breakManager.planBreak(snoozed: false)
         } else {
-            self.breakManager.cancelBreak()
+            breakManager.cancelBreak()
         }
     }
 
     func setBreakFrequency(frequency: Int64) {
         repository.setBreakFrequency(frequency: frequency)
         
-        self.breakManager.planBreak(snoozed: false)
+        breakManager.planBreak(snoozed: false)
     }
 
     func setBreakDuration(duration: Int64) {

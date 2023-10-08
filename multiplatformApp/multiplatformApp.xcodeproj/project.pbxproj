@@ -45,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		090126602AAC731C002402F1 /* ZbNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbNotificationCenter.swift; sourceTree = "<group>"; };
-		0907CF492AAD2926001D513D /* sharedComposePopup.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sharedComposePopup.xcframework; path = "../shared-compose-popup/build/cocoapods/publish/release/sharedComposePopup.xcframework"; sourceTree = "<group>"; };
 		094B66652AC24A9300536E48 /* ZbBreakWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindowController.swift; sourceTree = "<group>"; };
 		096416422AC2D77D005995AE /* ZbBreakWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindow.swift; sourceTree = "<group>"; };
 		098E91A62AA9709A000287D3 /* ColorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentions.swift; sourceTree = "<group>"; };
@@ -170,7 +169,6 @@
 		4137AFD62A5F0902000787E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0907CF492AAD2926001D513D /* sharedComposePopup.xcframework */,
 				09A736752AA4D33E008B32A8 /* sharedCore.xcframework */,
 			);
 			name = Frameworks;
@@ -211,7 +209,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					4137AFC32A5F082E000787E3 = {
 						CreatedOnToolsVersion = 14.3;
@@ -308,9 +306,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -366,9 +366,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -392,6 +394,7 @@
 				CODE_SIGN_ENTITLEMENTS = multiplatformApp/multiplatformApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"multiplatformApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -431,6 +434,7 @@
 				CODE_SIGN_ENTITLEMENTS = multiplatformApp/multiplatformApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"multiplatformApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

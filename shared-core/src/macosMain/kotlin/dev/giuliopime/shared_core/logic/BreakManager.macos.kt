@@ -21,6 +21,23 @@ actual class DefaultBreakManager: IBreakManager, KoinComponent {
         this.breakEndedAction = breakEndedAction
     }
 
+    override fun startBreak() {
+        cancelBreak()
+
+        val settings = settingsRepository.getSettings()
+
+        if (!settings.enabled)
+            return
+
+        println("Break running")
+        breakAction(settings)
+
+        breakEndedTimer = NSTimer.scheduledTimerWithTimeInterval(settings.breakDuration.div(1000).toDouble(), false) {
+            println("Break end action running")
+            breakEndedAction(settings)
+        }
+    }
+
     override fun planBreak(snoozed: Boolean) {
         cancelBreak()
 

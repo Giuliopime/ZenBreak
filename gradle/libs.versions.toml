@@ -13,7 +13,7 @@ nativeCoroutines="1.0.0-ALPHA-17"
 multiplatformCompose="1.5.0"
 
 # Android
-agp= "8.1.1"
+agp= "8.1.2"
 androidxKtx="1.10.1"
 androidxActivity="1.7.2"
 datastorePreferences="1.0.0"

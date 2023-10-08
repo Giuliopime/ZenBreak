@@ -7,7 +7,6 @@
 
 import SwiftUI
 import sharedCore
-import sharedComposePopup
 
 @main
 struct MultiplatformApp: App {
@@ -23,25 +22,30 @@ struct MultiplatformApp: App {
     var body: some Scene {
         #if os(macOS)
         MenuBarExtra("ZenBreak", systemImage: "tree.fill") {
-            ZbPopoverView()
+            ZbPopoverView(viewModel: ZbAppDelegate.shared.viewModel)
         }.menuBarExtraStyle(.window)
         #endif
     }
 }
 
 class ZbAppDelegate: NSObject, NSApplicationDelegate {
-    private var popover = NSPopover()
-    private var breakWindowController = ZbBreakWindowController()
-    private var statusBarItem: NSStatusItem?
     static var shared: ZbAppDelegate!
+    
+    private var popover = NSPopover()
+    private var breakWindowController: ZbBreakWindowController?
+    private var statusBarItem: NSStatusItem?
+    
+    @StateObject var viewModel = ZbViewModel()
 
     func applicationDidFinishLaunching(_: Notification) {
-        NSApp.activate(ignoringOtherApps: true)
-        NSApp.presentationOptions = [.hideDock, .hideMenuBar]
+        breakWindowController = ZbBreakWindowController(viewModel: viewModel)
     }
     
     func showBreakWindow() {
-        breakWindowController.window?.makeKeyAndOrderFront(nil)
-        // breakWindowController.showWindow(nil)
+        breakWindowController?.showWindow(self)
+    }
+    
+    func hideBreakWindow() {
+        breakWindowController?.window?.close()
     }
 }

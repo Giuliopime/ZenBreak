@@ -13,7 +13,7 @@ private enum ChildTabView {
 }
 
 struct ZbPopoverView: View {
-    @StateObject private var viewModel = ZbViewModel()
+    @ObservedObject var viewModel: ZbViewModel
     
     @State private var activeTabView = ChildTabView.behaviour
     private var enabled: Binding<Bool> { Binding(
@@ -59,6 +59,30 @@ struct ZbPopoverView: View {
             
             Group {
                 Button {
+                    viewModel.startBreak()
+                } label: {
+                    Text("Start break now")
+                    Spacer()
+                    Text("⌘ S")
+                        .foregroundColor(Color.gray)
+                }
+                .buttonStyle(.plain)
+                .keyboardShortcut("s")
+                
+                Button {
+                    viewModel.skipBreak()
+                } label: {
+                    Text("Reset break")
+                    Spacer()
+                    Text("⌘ R")
+                        .foregroundColor(Color.gray)
+                }
+                .buttonStyle(.plain)
+                .keyboardShortcut("r")
+                
+                Divider()
+                
+                Button {
                     NSApp.orderFrontStandardAboutPanel(self)
                 } label: {
                     Text("About")
@@ -85,6 +109,6 @@ struct ZbPopoverView: View {
 
 struct MenuBarWindow_Previews: PreviewProvider {
     static var previews: some View {
-        ZbPopoverView()
+        ZbPopoverView(viewModel: ZbViewModel())
     }
 }

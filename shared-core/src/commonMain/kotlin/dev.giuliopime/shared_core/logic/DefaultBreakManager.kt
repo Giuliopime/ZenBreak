@@ -19,6 +19,11 @@ interface IBreakManager {
     fun setEndedAction(breakEndedAction: (ZbSettings) -> Unit)
 
     /**
+     * Starts a break immediately
+     */
+    fun startBreak()
+
+    /**
      * Plans a break
      */
     fun planBreak(snoozed: Boolean = false)

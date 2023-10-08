@@ -35,7 +35,10 @@ struct SystemTabView: View {
             Toggle(isOn: reset) {
                 Text("Reset on idle")
                     .frame(maxWidth: .infinity, alignment: .leading)
-            }.toggleStyle(.switch)
+            }
+            .toggleStyle(.switch)
+            .disabled(true)
+            .help("Currently not supported")
             
             Toggle(isOn: startAtLogin) {
                 Text("Start at login")
