@@ -10,10 +10,8 @@ import AppKit
 import SwiftUI
 
 class ZbBreakWindowController: NSWindowController {
-    @ObservedObject var viewModel: ZbViewModel
     
-    init(viewModel: ZbViewModel) {
-        self.viewModel = viewModel
+    convenience init() {
         
         guard let screenFrame = NSScreen.main?.frame else {
             fatalError("Failed to obtain the main screen's frame")
@@ -39,17 +37,19 @@ class ZbBreakWindowController: NSWindowController {
         
         window.backgroundColor = NSColor.clear
         
-        window.contentView = NSHostingView(rootView: ZbBreakWindowView(viewModel: viewModel))
-        
         window.level = .floating
         window.center()
         
-        super.init(window: window)
+        self.init(window: window)
     }
     
-    // Override this as required per the class spec
-    @available(*, deprecated, message: "Use init(viewModel:) instead")
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented. Use init()")
+    func show(viewModel: ZbViewModel) {
+        window?.contentView = NSHostingView(rootView: ZbBreakWindowView(viewModel: viewModel))
+        showWindow(nil)
+    }
+    
+    func hide() {
+        window?.close()
+        window?.contentViewController?.view.removeFromSuperview()
     }
 }

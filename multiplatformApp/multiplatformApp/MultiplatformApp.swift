@@ -11,6 +11,7 @@ import sharedCore
 @main
 struct MultiplatformApp: App {
     @NSApplicationDelegateAdaptor(ZbAppDelegate.self) var appDelegate
+    @StateObject var viewModel = ZbViewModel.shared
     
     init() {
         // Init dependency injection
@@ -22,7 +23,7 @@ struct MultiplatformApp: App {
     var body: some Scene {
         #if os(macOS)
         MenuBarExtra("ZenBreak", systemImage: "tree.fill") {
-            ZbPopoverView(viewModel: ZbAppDelegate.shared.viewModel)
+            ZbPopoverView(viewModel: viewModel)
         }.menuBarExtraStyle(.window)
         #endif
     }
@@ -34,18 +35,16 @@ class ZbAppDelegate: NSObject, NSApplicationDelegate {
     private var popover = NSPopover()
     private var breakWindowController: ZbBreakWindowController?
     private var statusBarItem: NSStatusItem?
-    
-    @StateObject var viewModel = ZbViewModel()
 
     func applicationDidFinishLaunching(_: Notification) {
-        breakWindowController = ZbBreakWindowController(viewModel: viewModel)
+        breakWindowController = ZbBreakWindowController()
     }
     
     func showBreakWindow() {
-        breakWindowController?.showWindow(self)
+        breakWindowController?.show(viewModel: ZbViewModel.shared)
     }
     
     func hideBreakWindow() {
-        breakWindowController?.window?.close()
+        breakWindowController?.hide()
     }
 }

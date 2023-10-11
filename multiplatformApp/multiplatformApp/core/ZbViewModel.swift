@@ -9,14 +9,18 @@ import Foundation
 import KMPNativeCoroutinesAsync
 import sharedCore
 import LaunchAtLogin
+import SwiftUI
 
 @MainActor
 class ZbViewModel: ObservableObject {
+    static let shared = ZbViewModel()
+    
     private let repository = DefaultSettingsRepository()
     private let breakManager = DefaultBreakManager()
     private var notificationCenter = ZbNotificationCenter()
     
     @Published var settings: ZbSettings = ZbSettings.Companion.shared.default_
+    @Published var progressPercentageForBreakWindow: Double = 1.0
     
     init() {
         listenToSettingsFlow()
@@ -77,6 +81,7 @@ class ZbViewModel: ObservableObject {
     }
     
     private func showPopup() {
+        print("Show popup with duration \(settings.breakDuration / 1000) seconds")
         ZbAppDelegate.shared.showBreakWindow()
     }
     
@@ -109,6 +114,7 @@ class ZbViewModel: ObservableObject {
             breakManager.planBreak(snoozed: false)
         } else {
             breakManager.cancelBreak()
+            closePopup()
         }
     }
 

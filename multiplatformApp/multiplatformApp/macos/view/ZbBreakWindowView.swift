@@ -66,19 +66,17 @@ struct ZbBreakWindowView: View {
             }
             .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
         }
-        .onAppear {
-            withAnimation(Animation.linear(duration: Double(viewModel.settings.breakDuration / 1000))) {
-                percentage = 0.0
-            }
-        }
-        .onDisappear {
-            percentage = 1.0
-        }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Color(red: 0.07, green: 0.07, blue: 0.07)
                 .opacity(0.7)
         )
+        .onAppear {
+            print("Duration of \(viewModel.settings.breakDuration / 1000) seconds")
+            withAnimation(Animation.linear(duration: Double(viewModel.settings.breakDuration / 1000))) {
+                percentage = 0.0
+            }
+        }
     }
 }
 
