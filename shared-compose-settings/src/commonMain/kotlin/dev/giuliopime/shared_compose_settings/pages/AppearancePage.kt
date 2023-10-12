@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.giuliopime.shared_compose_settings.FeatureFlags
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
 import dev.giuliopime.shared_compose_settings.components.ColorSetting
@@ -13,7 +14,8 @@ import dev.giuliopime.shared_compose_settings.components.MultilineTextSetting
 @Composable
 fun AppearancePage(
     settings: ZbSettings,
-    viewModel: IZenBreakViewModel
+    viewModel: IZenBreakViewModel,
+    featureFlags: FeatureFlags
 ) {
 
     MultilineTextSetting(

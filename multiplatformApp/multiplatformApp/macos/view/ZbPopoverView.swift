@@ -37,7 +37,7 @@ struct ZbPopoverView: View {
             .keyboardShortcut(.defaultAction)
             
             
-            Picker("", selection: $activeTabView) {
+            Picker("", selection: $activeTabView.animation()) {
                 Text("Behaviour").tag(ChildTabView.behaviour)
                 Text("Appereance").tag(ChildTabView.appereance)
                 Text("System").tag(ChildTabView.system)
@@ -83,6 +83,7 @@ struct ZbPopoverView: View {
                 Divider()
                 
                 Button {
+                    NSApp.activate(ignoringOtherApps: true)
                     NSApp.orderFrontStandardAboutPanel(self)
                 } label: {
                     Text("About")
@@ -103,7 +104,8 @@ struct ZbPopoverView: View {
                 .buttonStyle(.plain)
                 .keyboardShortcut("q")
             }
-        }.padding(12)
+        }
+        .padding(12)
     }
 }
 

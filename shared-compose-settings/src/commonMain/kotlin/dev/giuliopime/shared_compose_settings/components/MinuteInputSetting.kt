@@ -37,7 +37,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun TimeInputSetting(
+fun MinuteInputSetting(
     time: Long,
     onTimeChange: (Long) -> Unit,
     name: String

@@ -22,6 +22,8 @@
 		09BF68FC2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 09BF68FB2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync */; };
 		09BF68FE2AA4C64F00195DC0 /* KMPNativeCoroutinesCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 09BF68FD2AA4C64F00195DC0 /* KMPNativeCoroutinesCombine */; };
 		09BF69002AA4C64F00195DC0 /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = 09BF68FF2AA4C64F00195DC0 /* KMPNativeCoroutinesCore */; };
+		09D6531B2AD8279A00E90B8B /* FluidMenuBarExtra in Frameworks */ = {isa = PBXBuildFile; productRef = 09D6531A2AD8279A00E90B8B /* FluidMenuBarExtra */; };
+		09D653202AD8353D00E90B8B /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 09D6531F2AD8353D00E90B8B /* DynamicColor */; };
 		09E7B8162AA5D263003625F2 /* ZbViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7B8152AA5D263003625F2 /* ZbViewModel.swift */; };
 		09E7B81B2AA5D66C003625F2 /* FlowExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7B81A2AA5D66C003625F2 /* FlowExtentions.swift */; };
 		4137AFC82A5F082E000787E3 /* MultiplatformApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137AFC72A5F082E000787E3 /* MultiplatformApp.swift */; };
@@ -69,7 +71,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				09BF68FE2AA4C64F00195DC0 /* KMPNativeCoroutinesCombine in Frameworks */,
+				09D6531B2AD8279A00E90B8B /* FluidMenuBarExtra in Frameworks */,
 				09A736762AA4D33E008B32A8 /* sharedCore.xcframework in Frameworks */,
+				09D653202AD8353D00E90B8B /* DynamicColor in Frameworks */,
 				09BF68FC2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync in Frameworks */,
 				0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */,
 				09BF69002AA4C64F00195DC0 /* KMPNativeCoroutinesCore in Frameworks */,
@@ -196,6 +200,8 @@
 				09BF68FD2AA4C64F00195DC0 /* KMPNativeCoroutinesCombine */,
 				09BF68FF2AA4C64F00195DC0 /* KMPNativeCoroutinesCore */,
 				0907C7D12AA97FFE00D6F33D /* LaunchAtLogin */,
+				09D6531A2AD8279A00E90B8B /* FluidMenuBarExtra */,
+				09D6531F2AD8353D00E90B8B /* DynamicColor */,
 			);
 			productName = multiplatformApp;
 			productReference = 4137AFC42A5F082E000787E3 /* multiplatformApp.app */;
@@ -228,6 +234,8 @@
 			packageReferences = (
 				09BF68FA2AA4C64F00195DC0 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
 				0907C7D02AA97FFE00D6F33D /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+				09D653172AD81C8E00E90B8B /* XCRemoteSwiftPackageReference "fluid-menu-bar-extra" */,
+				09D6531E2AD8353D00E90B8B /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = 4137AFC52A5F082E000787E3 /* Products */;
 			projectDirPath = "";
@@ -506,6 +514,22 @@
 				version = "1.0.0-ALPHA-17";
 			};
 		};
+		09D653172AD81C8E00E90B8B /* XCRemoteSwiftPackageReference "fluid-menu-bar-extra" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lfroms/fluid-menu-bar-extra.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		09D6531E2AD8353D00E90B8B /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -528,6 +552,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 09BF68FA2AA4C64F00195DC0 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
 			productName = KMPNativeCoroutinesCore;
+		};
+		09D6531A2AD8279A00E90B8B /* FluidMenuBarExtra */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09D653172AD81C8E00E90B8B /* XCRemoteSwiftPackageReference "fluid-menu-bar-extra" */;
+			productName = FluidMenuBarExtra;
+		};
+		09D6531F2AD8353D00E90B8B /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09D6531E2AD8353D00E90B8B /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

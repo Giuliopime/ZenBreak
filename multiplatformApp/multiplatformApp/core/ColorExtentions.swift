@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+import AppKit
 
+/*
 extension Color {
     init?(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -42,14 +44,24 @@ extension Color {
     }
     
     func toHex() -> String? {
-        guard let components = self.cgColor?.components else {
-            return "#000000" // Return black if color cannot be converted
+        let uic = NSColor(self)
+        guard let components = uic.cgColor.components, components.count >= 3 else {
+            return nil
         }
-        
-        let red = Int(components[0] * 255)
-        let green = Int(components[1] * 255)
-        let blue = Int(components[2] * 255)
-        
-        return String(format: "#%02X%02X%02X", red, green, blue)
+        let r = Float(components[0])
+        let g = Float(components[1])
+        let b = Float(components[2])
+        var a = Float(1.0)
+
+        if components.count >= 4 {
+            a = Float(components[3])
+        }
+
+        if a != Float(1.0) {
+            return String(format: "%02lX%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255), lroundf(a * 255))
+        } else {
+            return String(format: "%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
+        }
     }
 }
+*/

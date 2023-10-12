@@ -7,12 +7,14 @@
 
 import SwiftUI
 import sharedCore
+import DynamicColor
 
 enum NotificationType {
     case popup, notification
 }
 
 struct AppereanceTabView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var viewModel: ZbViewModel
     
     private var notificationType: Binding<NotificationType> { Binding(
@@ -26,25 +28,32 @@ struct AppereanceTabView: View {
     
     private var primary: Binding<Color> { Binding(
         get: {
-            Color(hex: viewModel.settings.primaryColor) ?? Color.primary
+            Color(hexString: viewModel.settings.primaryColor)
         },
         set: { color in
-            guard let hex = color.toHex() else {
-                return
-            }
+            var hex = ""
+            #if os(macOS)
+            hex = NSColor(color).toHexString()
+            #elseif os(iOS)
+            hex = UIColor(color).toHexString()
+            #endif
             
             viewModel.setPrimaryColor(primary: hex)
         }
     )}
     
-    private var text: Binding<Color> { Binding(
+    private var textColor: Binding<Color> { Binding(
         get: {
-            Color(hex: viewModel.settings.textColor) ?? Color.secondary
+            Color(hexString: viewModel.settings.textColor)
         },
         set: { color in
-            guard let hex = color.toHex() else {
-                return
-            }
+            var hex = ""
+            
+            #if os(macOS)
+            hex = NSColor(color).toHexString()
+            #elseif os(iOS)
+            hex = UIColor(color).toHexString()
+            #endif
             
             viewModel.setTextColor(text: hex)
         }
@@ -70,26 +79,31 @@ struct AppereanceTabView: View {
                     
                     Text("Notification")
                         .tag(NotificationType.notification)
-
+                    
                 }
                 .fixedSize()
                 .labelsHidden()
             }
             
-            ColorPicker(selection: primary, supportsOpacity: false) {
-                Text("Primary color")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            
-            ColorPicker(selection: text, supportsOpacity: false) {
-                Text("Text color")
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            if (notificationType.wrappedValue == NotificationType.popup) {
+                ColorPicker(selection: primary, supportsOpacity: false) {
+                    Text("Primary color")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                
+                ColorPicker(selection: textColor, supportsOpacity: false) {
+                    Text("Text color")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
             
             TextField("Message", text: message, axis: .vertical)
                 .lineLimit(2...)
         }
         .padding(4)
+        .onChange(of: scenePhase) { phase in
+            NSApp.activate(ignoringOtherApps: true)
+        }
     }
 }
 

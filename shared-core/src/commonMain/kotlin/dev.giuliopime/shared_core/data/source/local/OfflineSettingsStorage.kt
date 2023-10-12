@@ -17,7 +17,7 @@ class OfflineSettingsStorage: SettingsStorage, KoinComponent {
     private val settings: FlowSettings by inject()
     private val blockingSettings by lazy { settings.toBlockingSettings() }
 
-    private val defaultValues = ZbSettings()
+    private val defaultValues = ZbSettings.default
 
     override fun getZbSettingsFlow(): Flow<ZbSettings> {
         return settings.decodeValueFlow(OfflineStorageKeys.SETTINGS, defaultValues)

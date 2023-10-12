@@ -13,6 +13,7 @@ kotlin {
         val jvmMain by getting  {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation(compose.uiTooling)
                 implementation(project(":shared-core"))
                 implementation(project(":shared-compose-core"))
                 implementation(project(":shared-compose-settings"))

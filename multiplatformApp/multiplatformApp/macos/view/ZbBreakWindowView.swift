@@ -27,7 +27,7 @@ struct ZbBreakWindowView: View {
                     .background(Circle()
                         .padding(4)
                         .foregroundColor(
-                            Color(hex: viewModel.settings.primaryColor) ?? Color.secondary
+                            Color(hexString: viewModel.settings.primaryColor)
                         )
                     )
                 
@@ -36,7 +36,7 @@ struct ZbBreakWindowView: View {
                         .font(.largeTitle.weight(.bold))
                         .multilineTextAlignment(.center)
                         .lineLimit(nil)
-                        .foregroundStyle(Color(hex: viewModel.settings.textColor) ?? Color.primary)
+                        .foregroundStyle(Color(hexString: viewModel.settings.textColor))
                     
                     HStack {
                         if (viewModel.settings.breakSkip) {
@@ -45,7 +45,7 @@ struct ZbBreakWindowView: View {
                             }) {
                                 Text("Skip")
                             }
-                            .buttonStyle(.borderedProminent)
+                            .controlSize(.large)
                             .keyboardShortcut("s")
                         }
                         
@@ -55,7 +55,7 @@ struct ZbBreakWindowView: View {
                             }) {
                                 Text("Snooze")
                             }
-                            .buttonStyle(.borderedProminent)
+                            .controlSize(.large)
                             .keyboardShortcut("z")
                         }
                     }

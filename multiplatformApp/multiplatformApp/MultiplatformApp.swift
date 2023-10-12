@@ -7,6 +7,7 @@
 
 import SwiftUI
 import sharedCore
+import FluidMenuBarExtra
 
 @main
 struct MultiplatformApp: App {
@@ -22,9 +23,16 @@ struct MultiplatformApp: App {
     
     var body: some Scene {
         #if os(macOS)
+        Settings {
+            EmptyView()
+        }
+        
+        /*
+         This has weird resizing animations
         MenuBarExtra("ZenBreak", systemImage: "tree.fill") {
             ZbPopoverView(viewModel: viewModel)
         }.menuBarExtraStyle(.window)
+         */
         #endif
     }
 }
@@ -32,11 +40,15 @@ struct MultiplatformApp: App {
 class ZbAppDelegate: NSObject, NSApplicationDelegate {
     static var shared: ZbAppDelegate!
     
-    private var popover = NSPopover()
+    private var menuBarExtra: FluidMenuBarExtra?
     private var breakWindowController: ZbBreakWindowController?
-    private var statusBarItem: NSStatusItem?
 
     func applicationDidFinishLaunching(_: Notification) {
+        self.menuBarExtra = FluidMenuBarExtra(title: "ZenBreak", systemImage: "cloud.fill") {
+            ZbPopoverView(viewModel: ZbViewModel.shared)
+                .frame(width: 300)
+        }
+        
         breakWindowController = ZbBreakWindowController()
     }
     

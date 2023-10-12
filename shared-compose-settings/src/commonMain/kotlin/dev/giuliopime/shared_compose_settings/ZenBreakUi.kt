@@ -37,7 +37,8 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ZenBreakUi(
-    viewModel: IZenBreakViewModel
+    viewModel: IZenBreakViewModel,
+    featureFlags: FeatureFlags
 ) {
     val scope = rememberCoroutineScope()
     var tabIndex by remember { mutableStateOf(0) }
@@ -97,15 +98,18 @@ fun ZenBreakUi(
                                 when (tabIndex) {
                                     0 -> BehaviourPage(
                                         settings = settings,
-                                        viewModel = viewModel
+                                        viewModel = viewModel,
+                                        featureFlags = featureFlags
                                     )
                                     1 -> AppearancePage(
                                         settings = settings,
-                                        viewModel = viewModel
+                                        viewModel = viewModel,
+                                        featureFlags = featureFlags
                                     )
                                     2 -> SystemPage(
                                         settings = settings,
-                                        viewModel = viewModel
+                                        viewModel = viewModel,
+                                        featureFlags = featureFlags
                                     )
                                 }
                             }

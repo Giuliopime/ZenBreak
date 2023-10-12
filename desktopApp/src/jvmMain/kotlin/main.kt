@@ -28,12 +28,17 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberTrayState
 import androidx.compose.ui.window.rememberWindowState
 import dev.giuliopime.shared_compose_popup.ZbBreakPopup
+import dev.giuliopime.shared_compose_settings.FeatureFlags
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.di.initKoin
 import dev.giuliopime.shared_core.logic.IBreakManager
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
 import dev.giuliopime.shared_compose_settings.ZenBreakUi
 
+private val featureFlags = FeatureFlags(
+    startAtLogin = false,
+    resetOnIdle = false
+)
 private val koin = initKoin().koin
 
 fun main() = application {
@@ -101,7 +106,7 @@ fun main() = application {
         },
         icon = WindowIcon
     ) {
-        ZenBreakUi(viewModel)
+        ZenBreakUi(viewModel, featureFlags)
     }
 
     // Composables don't get disposed when the window is not visible anymore
@@ -149,12 +154,16 @@ fun main() = application {
                             isPopupWindowVisible = false
                             breakManager.planBreak()
                         },
+                        onSnoozeClicked = {
+                            isPopupWindowVisible = false
+                            breakManager.snoozeBreak()
+                        },
                         onTimeFinished = {
                             isPopupWindowVisible = false
                             breakManager.planBreak()
                         },
-                        primaryColor = settings.value.primaryColor.toColor(Color.Black),
-                        textColor = settings.value.textColor.toColor(Color.White)
+                        primaryColor = settings.value.primaryColor,
+                        textColor = settings.value.textColor
                     )
                 }
             }

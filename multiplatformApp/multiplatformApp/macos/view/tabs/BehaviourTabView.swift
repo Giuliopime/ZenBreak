@@ -16,7 +16,7 @@ struct BehaviourTabView: View {
             viewModel.settings.breakFrequency / 60000
         },
         set: { frequency in
-            viewModel.setBreakFrequency(frequency: 1000)// frequency * 60000)
+            viewModel.setBreakFrequency(frequency: frequency * 60000)
         }
     )}
     

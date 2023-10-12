@@ -7,18 +7,20 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.giuliopime.shared_compose_settings.FeatureFlags
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
 import dev.giuliopime.shared_compose_settings.components.BooleanSetting
 import dev.giuliopime.shared_compose_settings.components.DoubleChoiceSetting
-import dev.giuliopime.shared_compose_settings.components.TimeInputSetting
+import dev.giuliopime.shared_compose_settings.components.MinuteInputSetting
 
 @Composable
 fun BehaviourPage(
     settings: ZbSettings,
     viewModel: IZenBreakViewModel,
+    featureFlags: FeatureFlags
 ) {
-    TimeInputSetting(
+    MinuteInputSetting(
         time = settings.breakFrequency,
         onTimeChange = {
             viewModel.setBreakFrequency(it)
@@ -42,7 +44,7 @@ fun BehaviourPage(
 
     AnimatedVisibility(settings.popupNotification) {
         Column {
-            TimeInputSetting(
+            MinuteInputSetting(
                 time = settings.breakDuration,
                 onTimeChange = {
                     viewModel.setBreakDuration(it)
@@ -75,7 +77,7 @@ fun BehaviourPage(
     Spacer(Modifier.height(8.dp))
 
     AnimatedVisibility(settings.breakSnooze) {
-        TimeInputSetting(
+        MinuteInputSetting(
             time = settings.breakSnoozeDuration,
             onTimeChange = {
                 viewModel.setBreakSnoozeDuration(it)
