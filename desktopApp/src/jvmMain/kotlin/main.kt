@@ -16,10 +16,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Notification
 import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
@@ -46,12 +46,16 @@ fun main() = application {
     val breakManager: IBreakManager by koin.inject()
 
     val trayState = rememberTrayState()
+
     var isPopupWindowVisible by remember { mutableStateOf(false) }
     val popupWindowState = rememberWindowState(placement = WindowPlacement.Maximized)
 
-    val settings = viewModel.getSettings().collectAsState(ZbSettings())
-    var isSettingsWindowVisible by remember(settings.value.hasCompletedFirstRun) {
-        mutableStateOf(settings.value.hasCompletedFirstRun)
+    val settings by viewModel.getSettings().collectAsState(ZbSettings())
+    val settingsWindowState = rememberWindowState(
+        size = DpSize(width = 400.dp, height = 600.dp)
+    )
+    var isSettingsWindowVisible by remember(settings.hasCompletedFirstRun) {
+        mutableStateOf(settings.hasCompletedFirstRun)
     }
 
     breakManager.setAction {
@@ -64,21 +68,48 @@ fun main() = application {
                     message = it.breakMessage
                 )
             )
-            breakManager.planBreak()
         }
+    }
+
+    breakManager.setEndedAction {
+        if (!it.popupNotification) {
+            trayState.sendNotification(
+                Notification(
+                    title = "Break ended",
+                    message = "The break has finished!"
+                )
+            )
+        }
+
+        breakManager.planBreak()
     }
 
     Tray(
         state = trayState,
-        icon = TrayIcon,
+        icon = painterResource("logo_tray.png"),
         onAction = {
             isSettingsWindowVisible = true
         },
         menu = {
             Item(
-                text = if (settings.value.enabled) "Disable" else "Enable",
+                text = if (settings.enabled) "Disable" else "Enable",
                 onClick = {
-                    viewModel.setEnabled(!settings.value.enabled)
+                    viewModel.setEnabled(!settings.enabled)
+                }
+            )
+
+            Item(
+                "Start break now",
+                onClick = {
+                    breakManager.startBreak()
+                }
+            )
+
+            Item(
+                "Reset break",
+                onClick = {
+                    isPopupWindowVisible = false
+                    breakManager.planBreak()
                 }
             )
 
@@ -100,11 +131,12 @@ fun main() = application {
 
     Window(
         title = "ZenBreak settings",
+        state = settingsWindowState,
         visible = isSettingsWindowVisible,
         onCloseRequest = {
             isSettingsWindowVisible = false
         },
-        icon = WindowIcon
+        icon = painterResource("logo.png")
     ) {
         ZenBreakUi(viewModel, featureFlags)
     }
@@ -148,8 +180,8 @@ fun main() = application {
                     verticalArrangement = Arrangement.Center
                 ) {
                     ZbBreakPopup(
-                        message = settings.value.breakMessage,
-                        duration = settings.value.breakDuration,
+                        message = settings.breakMessage,
+                        duration = settings.breakDuration,
                         onSkipClicked = {
                             isPopupWindowVisible = false
                             breakManager.planBreak()
@@ -160,29 +192,14 @@ fun main() = application {
                         },
                         onTimeFinished = {
                             isPopupWindowVisible = false
-                            breakManager.planBreak()
                         },
-                        primaryColor = settings.value.primaryColor,
-                        textColor = settings.value.textColor
+                        primaryColor = settings.primaryColor,
+                        textColor = settings.textColor,
+                        allowSkip = settings.breakSkip,
+                        allowSnooze = settings.breakSnooze
                     )
                 }
             }
         }
-    }
-}
-
-object TrayIcon : Painter() {
-    override val intrinsicSize = Size(256f, 256f)
-
-    override fun DrawScope.onDraw() {
-        drawOval(Color(0xFFFFA500))
-    }
-}
-
-object WindowIcon : Painter() {
-    override val intrinsicSize = Size(256f, 256f)
-
-    override fun DrawScope.onDraw() {
-        drawOval(Color(0xFFFFA500))
     }
 }

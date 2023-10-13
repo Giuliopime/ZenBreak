@@ -8,13 +8,21 @@ import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilledIconButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,10 +50,58 @@ fun MinuteInputSetting(
     onTimeChange: (Long) -> Unit,
     name: String
 ) {
-    val hours = 0 // TODO time.hours.toString().padStart(2, '0')
-    val minutes = 0 // TOOD time.minutes.toString().padStart(2, '0')
-    val seconds = 0 // TODO time.seconds.toString().padStart(2, '0')
+    val minutes by remember(time) {
+        mutableStateOf(time / 60000)
+    }
 
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column {
+            Text(name)
+
+            Text("$minutes min", style = MaterialTheme.typography.labelMedium)
+        }
+
+        Column(
+            verticalArrangement = Arrangement.spacedBy(
+                space = 2.dp
+            )
+        ) {
+            FilledIconButton(
+                onClick = {
+                    onTimeChange(time + 60000)
+                },
+                shape = RoundedCornerShape(
+                    topStart = 6.dp,
+                    topEnd = 6.dp
+                ),
+                modifier = Modifier.size(width = 36.dp, height = 24.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.KeyboardArrowUp,
+                    contentDescription = "Increment $name"
+                )
+            }
+
+            FilledIconButton(
+                onClick = {
+                    onTimeChange(time - 60000)
+                },
+                shape = RoundedCornerShape(
+                    bottomStart = 6.dp,
+                    bottomEnd = 6.dp
+                ),
+                modifier = Modifier.size(width = 36.dp, height = 24.dp)
+            ) {
+                Icon(Icons.Default.KeyboardArrowDown, "Decrement $name")
+            }
+        }
+    }
+
+    /*
     val customTextSelectionColors = TextSelectionColors(
         handleColor = MaterialTheme.colorScheme.onPrimary,
         backgroundColor = MaterialTheme.colorScheme.onPrimaryContainer
@@ -112,10 +168,11 @@ fun MinuteInputSetting(
                     }
                 )
             }
-        }
-    }
+            }
+            }
+     */
 }
-
+/*
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun TimeInputField(
@@ -167,3 +224,4 @@ fun TimeInputField(
 fun TimeInputSeparator() {
     Text(text = ":", color = MaterialTheme.colorScheme.onPrimary, textAlign = TextAlign.Center, fontWeight = FontWeight.SemiBold)
 }
+ */

@@ -21,7 +21,8 @@ fun SystemPage(
         onCheckedChange = {
             viewModel.setResetOnIdle(it)
         },
-        name = "Reset on idle"
+        name = "Reset on idle",
+        enabled = featureFlags.resetOnIdle
     )
 
     Spacer(Modifier.height(16.dp))
@@ -31,6 +32,7 @@ fun SystemPage(
         onCheckedChange = {
             viewModel.setStartAtLogin(it)
         },
-        name = "Start at login"
+        name = "Start at login",
+        enabled = featureFlags.startAtLogin
     )
 }

@@ -22,8 +22,8 @@ struct ZbBreakWindowView: View {
                     .stroke(style: StrokeStyle(lineWidth: 8.0, lineCap: .round))
                     .foregroundColor(.black)
                     .frame(
-                        width: geo.size.width * 0.7,
-                        height: geo.size.height * 0.7
+                        width: geo.size.width * 0.5,
+                        height: geo.size.height * 0.5
                     )
                     .padding(12)
                     .background(Circle()
@@ -63,8 +63,8 @@ struct ZbBreakWindowView: View {
                         }
                     }
                 }.frame(
-                    width: geo.size.width * 0.4,
-                    height: geo.size.height * 0.4
+                    width: geo.size.width * 0.3,
+                    height: geo.size.height * 0.3
                 )
             }
             .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
@@ -75,7 +75,6 @@ struct ZbBreakWindowView: View {
                 .opacity(0.7)
         )
         .onAppear {
-            print("Duration of \(viewModel.settings.breakDuration / 1000) seconds")
             withAnimation(Animation.linear(duration: Double(viewModel.settings.breakDuration / 1000))) {
                 percentage = 0.0
             }

@@ -10,7 +10,7 @@ koin="3.4.3"
 nativeCoroutines="1.0.0-ALPHA-17"
 
 # Shared Compose
-multiplatformCompose="1.5.0"
+multiplatformCompose="1.5.3"
 
 # Android
 agp= "8.1.2"

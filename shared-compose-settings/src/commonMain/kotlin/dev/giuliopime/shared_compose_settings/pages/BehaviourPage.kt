@@ -30,31 +30,15 @@ fun BehaviourPage(
 
     Spacer(Modifier.height(16.dp))
 
-    DoubleChoiceSetting(
-        name = "Notification type",
-        value = settings.popupNotification,
-        onValueChange = {
-            viewModel.setPopupNotification(it)
+    MinuteInputSetting(
+        time = settings.breakDuration,
+        onTimeChange = {
+            viewModel.setBreakDuration(it)
         },
-        positiveName = "Popup",
-        negativeName = "Notification"
+        name = "Break duration"
     )
 
     Spacer(Modifier.height(16.dp))
-
-    AnimatedVisibility(settings.popupNotification) {
-        Column {
-            MinuteInputSetting(
-                time = settings.breakDuration,
-                onTimeChange = {
-                    viewModel.setBreakDuration(it)
-                },
-                name = "Break duration"
-            )
-
-            Spacer(Modifier.height(16.dp))
-        }
-    }
 
     BooleanSetting(
         checked = settings.breakSkip,
@@ -74,15 +58,17 @@ fun BehaviourPage(
         name = "Allow to snooze break"
     )
 
-    Spacer(Modifier.height(8.dp))
-
     AnimatedVisibility(settings.breakSnooze) {
-        MinuteInputSetting(
-            time = settings.breakSnoozeDuration,
-            onTimeChange = {
-                viewModel.setBreakSnoozeDuration(it)
-            },
-            name = "Snooze length"
-        )
+        Column {
+            Spacer(Modifier.height(16.dp))
+
+            MinuteInputSetting(
+                time = settings.breakSnoozeDuration,
+                onTimeChange = {
+                    viewModel.setBreakSnoozeDuration(it)
+                },
+                name = "Snooze length"
+            )
+        }
     }
 }

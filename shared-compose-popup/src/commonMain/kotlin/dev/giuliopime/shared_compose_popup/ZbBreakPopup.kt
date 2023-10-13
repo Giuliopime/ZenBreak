@@ -42,7 +42,9 @@ fun ZbBreakPopup(
     onSnoozeClicked: () -> Unit,
     onTimeFinished: () -> Unit,
     primaryColor: String,
-    textColor: String
+    textColor: String,
+    allowSkip: Boolean,
+    allowSnooze: Boolean
 ) {
     var targetProgress by remember {
         mutableStateOf(1F)
@@ -86,27 +88,33 @@ fun ZbBreakPopup(
 
                 Spacer(Modifier.height(16.dp))
 
-                Row {
-                    Button(
-                        onClick = onSkipClicked,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.inverseSurface,
-                            contentColor = MaterialTheme.colorScheme.inverseOnSurface
-                        )
-                    ) {
-                        Text("Skip")
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(
+                        space = 12.dp
+                    )
+                ) {
+                    if (allowSkip) {
+                        Button(
+                            onClick = onSkipClicked,
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.inverseSurface,
+                                contentColor = MaterialTheme.colorScheme.inverseOnSurface
+                            )
+                        ) {
+                            Text("Skip")
+                        }
                     }
 
-                    Spacer(Modifier.width(12.dp))
-
-                    Button(
-                        onClick = onSnoozeClicked,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.inverseSurface,
-                            contentColor = MaterialTheme.colorScheme.inverseOnSurface
-                        )
-                    ) {
-                        Text("Snooze")
+                    if (allowSnooze) {
+                        Button(
+                            onClick = onSnoozeClicked,
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.inverseSurface,
+                                contentColor = MaterialTheme.colorScheme.inverseOnSurface
+                            )
+                        ) {
+                            Text("Snooze")
+                        }
                     }
                 }
             }
