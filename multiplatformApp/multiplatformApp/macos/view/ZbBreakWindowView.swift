@@ -20,12 +20,13 @@ struct ZbBreakWindowView: View {
                     .trim(from: 0, to: percentage)
                     .rotation(.degrees(-90))
                     .stroke(style: StrokeStyle(lineWidth: 8.0, lineCap: .round))
+                    .foregroundColor(.black)
                     .frame(
                         width: geo.size.width * 0.7,
                         height: geo.size.height * 0.7
                     )
+                    .padding(12)
                     .background(Circle()
-                        .padding(4)
                         .foregroundColor(
                             Color(hexString: viewModel.settings.primaryColor)
                         )
@@ -44,6 +45,7 @@ struct ZbBreakWindowView: View {
                                 viewModel.skipBreak()
                             }) {
                                 Text("Skip")
+                                    .foregroundStyle(.black)
                             }
                             .controlSize(.large)
                             .keyboardShortcut("s")
@@ -54,6 +56,7 @@ struct ZbBreakWindowView: View {
                                 viewModel.snoozeBreak()
                             }) {
                                 Text("Snooze")
+                                    .foregroundStyle(.black)
                             }
                             .controlSize(.large)
                             .keyboardShortcut("z")

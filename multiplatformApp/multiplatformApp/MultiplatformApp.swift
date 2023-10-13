@@ -42,9 +42,11 @@ class ZbAppDelegate: NSObject, NSApplicationDelegate {
     
     private var menuBarExtra: FluidMenuBarExtra?
     private var breakWindowController: ZbBreakWindowController?
+    // another logo idea meh - private let image = "circle.circle.fill" // "swirl.circle.righthalf.filled"
+    private let image = "swirl.circle.righthalf.filled"
 
     func applicationDidFinishLaunching(_: Notification) {
-        self.menuBarExtra = FluidMenuBarExtra(title: "ZenBreak", systemImage: "cloud.fill") {
+        self.menuBarExtra = FluidMenuBarExtra(title: "ZenBreak", systemImage: image) {
             ZbPopoverView(viewModel: ZbViewModel.shared)
                 .frame(width: 300)
         }

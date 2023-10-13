@@ -11,7 +11,6 @@
 		0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0907C7D12AA97FFE00D6F33D /* LaunchAtLogin */; };
 		094B66662AC24A9300536E48 /* ZbBreakWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094B66652AC24A9300536E48 /* ZbBreakWindowController.swift */; };
 		096416432AC2D77E005995AE /* ZbBreakWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096416422AC2D77D005995AE /* ZbBreakWindow.swift */; };
-		098E91A72AA9709A000287D3 /* ColorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E91A62AA9709A000287D3 /* ColorExtentions.swift */; };
 		09A559322AAD1C6E00D61535 /* ZbBreakWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A559312AAD1C6E00D61535 /* ZbBreakWindowView.swift */; };
 		09A736762AA4D33E008B32A8 /* sharedCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A736752AA4D33E008B32A8 /* sharedCore.xcframework */; };
 		09A736772AA4D33E008B32A8 /* sharedCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09A736752AA4D33E008B32A8 /* sharedCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -49,7 +48,6 @@
 		090126602AAC731C002402F1 /* ZbNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbNotificationCenter.swift; sourceTree = "<group>"; };
 		094B66652AC24A9300536E48 /* ZbBreakWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindowController.swift; sourceTree = "<group>"; };
 		096416422AC2D77D005995AE /* ZbBreakWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindow.swift; sourceTree = "<group>"; };
-		098E91A62AA9709A000287D3 /* ColorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentions.swift; sourceTree = "<group>"; };
 		09A559312AAD1C6E00D61535 /* ZbBreakWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindowView.swift; sourceTree = "<group>"; };
 		09A736752AA4D33E008B32A8 /* sharedCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sharedCore.xcframework; path = "../shared-core/build/cocoapods/publish/release/sharedCore.xcframework"; sourceTree = "<group>"; };
 		09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbPopoverView.swift; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 			children = (
 				09E7B8152AA5D263003625F2 /* ZbViewModel.swift */,
 				09E7B81A2AA5D66C003625F2 /* FlowExtentions.swift */,
-				098E91A62AA9709A000287D3 /* ColorExtentions.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -263,7 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				098E91A72AA9709A000287D3 /* ColorExtentions.swift in Sources */,
 				09B5ED2A2AA490B1005413D7 /* AppereanceTabView.swift in Sources */,
 				09B5ED2F2AA490D1005413D7 /* SystemTabView.swift in Sources */,
 				09B5ED2D2AA490C7005413D7 /* BehaviourTabView.swift in Sources */,
