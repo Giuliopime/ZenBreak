@@ -1,13 +1,18 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.compose)
+    alias(libs.plugins.conveyor)
 }
+
+group = "dev.giuliopime.zenbreak"
+version = "1.0.0"
 
 kotlin {
 
-    jvm()
+    jvm {
+        withJava()
+    }
+    jvmToolchain(17)
 
     sourceSets {
         val jvmMain by getting  {
@@ -29,9 +34,25 @@ compose.desktop {
         mainClass = "MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "ZenBreakDesktopApplication"
-            packageVersion = "1.0.0"
+            vendor = "Hydraulic Software"
+            description = "An app that reminds you to take a break from your screen!"
         }
     }
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "MainKt"
+    }
+}
+
+configurations.all {
+    attributes {
+        attribute(Attribute.of("ui", String::class.java), "awt")
+    }
+}
+
+dependencies {
+    linuxAmd64(compose.desktop.linux_x64)
+    windowsAmd64(compose.desktop.windows_x64)
 }
