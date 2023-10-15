@@ -12,6 +12,9 @@ nativeCoroutines="1.0.0-ALPHA-17"
 # Shared Compose
 multiplatformCompose="1.5.3"
 
+# Desktop
+conveyor="1.6"
+
 # Android
 agp= "8.1.2"
 androidxKtx="1.10.1"
@@ -23,10 +26,15 @@ jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+conveyor = { id = "dev.hydraulic.conveyor", version.ref = "conveyor" }
+
 android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp"}
+
 compose = { id = "org.jetbrains.compose", version.ref = "multiplatformCompose" }
+
 native-coroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "nativeCoroutines" }
 native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 
