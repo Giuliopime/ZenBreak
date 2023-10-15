@@ -15,13 +15,12 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Run Conveyor
-      - uses: hydraulic-software/conveyor/actions/build@v9.2
+        uses: hydraulic-software/conveyor/actions/build@v9.2
         env:
           OAUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
         with:
           command: 'make app'
           signing_key: ${{ secrets.SIGNING_KEY }}
           agree_to_license: 1
-      - name: Checkout
-        uses: actions/checkout@v3
