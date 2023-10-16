@@ -56,7 +56,7 @@
 		09B5ED2E2AA490D1005413D7 /* SystemTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemTabView.swift; sourceTree = "<group>"; };
 		09E7B8152AA5D263003625F2 /* ZbViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbViewModel.swift; sourceTree = "<group>"; };
 		09E7B81A2AA5D66C003625F2 /* FlowExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowExtentions.swift; sourceTree = "<group>"; };
-		4137AFC42A5F082E000787E3 /* multiplatformApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = multiplatformApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4137AFC42A5F082E000787E3 /* ZenBreak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenBreak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4137AFC72A5F082E000787E3 /* MultiplatformApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplatformApp.swift; sourceTree = "<group>"; };
 		4137AFCB2A5F0830000787E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4137AFCD2A5F0830000787E3 /* multiplatformApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = multiplatformApp.entitlements; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 		4137AFC52A5F082E000787E3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4137AFC42A5F082E000787E3 /* multiplatformApp.app */,
+				4137AFC42A5F082E000787E3 /* ZenBreak.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 				09D6531F2AD8353D00E90B8B /* DynamicColor */,
 			);
 			productName = multiplatformApp;
-			productReference = 4137AFC42A5F082E000787E3 /* multiplatformApp.app */;
+			productReference = 4137AFC42A5F082E000787E3 /* ZenBreak.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -421,7 +421,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.giuliopime.ZenBreak;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ZenBreak;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -461,7 +461,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.giuliopime.ZenBreak;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ZenBreak;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
