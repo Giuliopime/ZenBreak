@@ -21,7 +21,7 @@ jobs:
         run: ./gradlew jar
 
       - name: Run Conveyor
-        uses: hydraulic-software/conveyor/actions/build@v9.2
+        uses: hydraulic-software/conveyor/actions/build@v11.4
         env:
           OAUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
         with:
