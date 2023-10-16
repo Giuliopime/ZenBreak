@@ -22,8 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Navigate to desktop dir
-        run: cd ./desktopApp
       - name: Run Conveyor
         uses: hydraulic-software/conveyor/actions/build@v9.2
         env:
