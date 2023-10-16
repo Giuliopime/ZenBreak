@@ -25,6 +25,6 @@ jobs:
         env:
           OAUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
         with:
-          command: 'make site'
+          command: make copied-site
           signing_key: ${{ secrets.SIGNING_KEY }}
           agree_to_license: 1
