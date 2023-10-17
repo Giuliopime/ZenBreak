@@ -27,11 +27,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import dev.giuliopime.shared_compose_core.theme.ZenBreakTheme
-import dev.giuliopime.shared_core.data.model.ZbSettings
-import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
 import dev.giuliopime.shared_compose_settings.pages.AppearancePage
 import dev.giuliopime.shared_compose_settings.pages.BehaviourPage
 import dev.giuliopime.shared_compose_settings.pages.SystemPage
+import dev.giuliopime.shared_core.data.model.ZbSettings
+import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

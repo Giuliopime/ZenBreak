@@ -8,11 +8,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.giuliopime.shared_compose_settings.FeatureFlags
-import dev.giuliopime.shared_core.data.model.ZbSettings
-import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
 import dev.giuliopime.shared_compose_settings.components.ColorSetting
 import dev.giuliopime.shared_compose_settings.components.DoubleChoiceSetting
 import dev.giuliopime.shared_compose_settings.components.MultilineTextSetting
+import dev.giuliopime.shared_compose_settings.dialogs.defaultColorPickerColors
+import dev.giuliopime.shared_core.data.model.ZbSettings
+import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
 
 @Composable
 fun AppearancePage(
@@ -49,7 +50,8 @@ fun AppearancePage(
                 color = settings.textColor,
                 onColorChange = {
                     viewModel.setTextColor(it)
-                }
+                },
+                colors = defaultColorPickerColors.toMutableList().apply { addAll(0, listOf("#000000", "#FFFFFF")) }
             )
 
             Spacer(Modifier.height(16.dp))

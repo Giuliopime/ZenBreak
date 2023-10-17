@@ -29,11 +29,12 @@ import androidx.compose.ui.window.rememberTrayState
 import androidx.compose.ui.window.rememberWindowState
 import dev.giuliopime.shared_compose_popup.ZbBreakPopup
 import dev.giuliopime.shared_compose_settings.FeatureFlags
+import dev.giuliopime.shared_compose_settings.ZenBreakUi
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.di.initKoin
 import dev.giuliopime.shared_core.logic.IBreakManager
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
-import dev.giuliopime.shared_compose_settings.ZenBreakUi
+import kotlinx.coroutines.delay
 
 private val featureFlags = FeatureFlags(
     startAtLogin = false,
@@ -54,8 +55,19 @@ fun main() = application {
     val settingsWindowState = rememberWindowState(
         size = DpSize(width = 400.dp, height = 600.dp)
     )
-    var isSettingsWindowVisible by remember(settings.hasCompletedFirstRun) {
-        mutableStateOf(settings.hasCompletedFirstRun)
+    var isSettingsWindowVisible by remember {
+        mutableStateOf(false)
+    }
+
+    LaunchedEffect(Unit) {
+        delay(2000)
+
+        if (!settings.hasCompletedFirstRun) {
+            isSettingsWindowVisible = true
+            viewModel.setHasCompletedFirstRun(true)
+        }
+
+        breakManager.planBreak(false)
     }
 
     breakManager.setAction {

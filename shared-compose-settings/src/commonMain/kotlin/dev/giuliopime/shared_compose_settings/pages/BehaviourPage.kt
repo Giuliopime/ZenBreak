@@ -8,11 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.giuliopime.shared_compose_settings.FeatureFlags
+import dev.giuliopime.shared_compose_settings.components.BooleanSetting
+import dev.giuliopime.shared_compose_settings.components.MinuteInputSetting
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
-import dev.giuliopime.shared_compose_settings.components.BooleanSetting
-import dev.giuliopime.shared_compose_settings.components.DoubleChoiceSetting
-import dev.giuliopime.shared_compose_settings.components.MinuteInputSetting
 
 @Composable
 fun BehaviourPage(

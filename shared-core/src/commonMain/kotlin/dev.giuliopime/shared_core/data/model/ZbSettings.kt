@@ -30,8 +30,8 @@ data class ZbSettings(
     val breakSnooze: Boolean = false,
     val breakSnoozeDuration: Long = 300000,
     val popupNotification: Boolean = true,
-    val breakMessage: String = "Rest your eyes, and do some stretching ^^",
-    val primaryColor: String = "#90e0ef",
+    val breakMessage: String = "Rest your eyes, do some stretching and relax ^^",
+    val primaryColor: String = "#C1D9B0",
     val textColor: String = "#000000",
     val resetOnIdle: Boolean = false,
     val startAtLogin: Boolean = false

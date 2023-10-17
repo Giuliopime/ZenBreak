@@ -19,3 +19,15 @@ fun String.toColorInt(): Int {
     }
     return color.toInt()
 }
+
+fun Color.contrastColor(): Color {
+    // Calculate the perceptive luminance (aka luma) - human eye favors green color...
+    val luma = (0.299 * red) + (0.587 * green) + (0.114 * blue)
+
+    // Return black for bright colors, white for dark colors
+    return if (luma > 0.6) {
+        Color.Black
+    } else {
+        Color.White
+    }
+}
