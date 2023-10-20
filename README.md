@@ -30,7 +30,7 @@ It currently supports MacOS, Windows and Linux, but I'll consider porting it to 
 ## Installing  
 You can install the app via [zenbreak.app](https://zenbreak.app) or via [GitHub releases](https://github.com/Giuliopime/ZenBreak/releases).  
 
-If you are on mac you can use Brew too:
+If you are on mac you can use brew too:
 ```sh
 brew install --cask zenbreak
 ``` 
@@ -42,6 +42,8 @@ I didn't want a js runtime just for a simple menu bar app so I took the opportun
 I've found a few projects that really helped learning the technologies used in this project:
 - [John O'Reilly](https://johnoreilly.dev/)  
 thank you so much for all the open source repos of your GitHub and the blog, helped a ton expecially with macOS related stuff!
+- [Rick Clephas](https://github.com/rickclephas)  
+amazing Kotlin native libraries 🫶🏼
 - [TomatoBar](https://github.com/ivoronin/TomatoBar)  
 great open source macOS menu bar app, gave me a solid base for the macOS app!
 - [Conveyor](https://conveyor.hydraulic.dev/)  
