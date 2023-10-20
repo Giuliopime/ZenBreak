@@ -1,4 +1,4 @@
-# ZenBreak Privacy Policy
+# Privacy Policy
 
 *Effective Date: 20 October 2023*
 

@@ -1,4 +1,4 @@
-# ZenBreak - Terms of Use
+# Terms of Use
 
 *Effective Date: 20 October 2023*
 

@@ -6,7 +6,7 @@
 
 
 
-<div class="h-auto w-full flex justify-center items-center my-12">
+<div class="h-auto w-full flex justify-center items-center py-12 px-4">
     <div class="prose">
         <SvelteMarkdown {source} />
     </div>
