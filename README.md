@@ -1,4 +1,49 @@
-# ZenBreak
+<p align="center">
+   <a href="https://zenbreak.app">
+      <img src="https://raw.githubusercontent.com/Giuliopime/ZenBreak/main/assets/logo_macos.png" alt="ZenBreak" width="124">
+   </a>
+<p>
+ 
+<h1 align="center">ZenBreak</h1>
+<p align="center">
+   <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Giuliopime/ZenBreak/total">
+   <img alt="GitHub release (with filter)" src="https://img.shields.io/github/v/release/Giuliopime/ZenBreak">
+   <img alt="homebrew cask" src="https://img.shields.io/homebrew/cask/v/zenbreak">
+</p>
+
+
+## Overview
+<p align="center">
+      <img src="https://raw.githubusercontent.com/Giuliopime/ZenBreak/main/assets/screenshot.png" alt="ZenBreak screenshot">
+</p>
+<br>
+
+This app simply reminds you to take a break from the screen, it has customisable behaviour and appereance to suit everyone needs.  
+(*Check out the [website](https://zenbreak.app) for more screenshots*)  
+
+
+This is a [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) app built for the [Jetbrains Contest](https://blog.jetbrains.com/kotlin/2022/10/join-the-kotlin-multiplatform-contest/) and for personal use!  
+It currently supports MacOS, Windows and Linux, but I'll consider porting it to Android and iOS if I receive many requests for that.  
+
+## Inspiration and resources  
+This project has been insipired by [BreakTimer](https://breaktimer.app).  
+I didn't want a js runtime just for a simple menu bar app so I took the opportunity to build ZenBreak ^^  
+
+I've found a few projects that really helped learning the technologies used in this project:
+- [John O'Reilly](https://johnoreilly.dev/)  
+thank you so much for all the open source repos of your GitHub and the blog, helped a ton expecially with macOS related stuff!
+- [TomatoBar](https://github.com/ivoronin/TomatoBar)  
+great open source macOS menu bar app, gave me a solid base for the macOS app!
+- [Conveyor](https://conveyor.hydraulic.dev/)  
+amazing tool to built desktop installers for your app, recommend 💯
+- [Kotlin Community](https://kotlinlang.org/community/) of course :>
+
+
+## Contributing
+Feel free to contribute to the project!  
+You can take a look at the [issues](https://github.com/Giuliopime/ZenBreak/issues) to see what's currently missing or needs improvement.  
+
+Checkout the following section to learn how the project is structured.
 
 ## Development
 #### Set up the environment
@@ -48,15 +93,22 @@ Open the project in Android Studio and switch the view from **Android** to **Pro
 
 This Compose Multiplatform project includes 4 modules:
 - `shared-core`
-- `shared-compose`
+- `shared-compose-core`
+- `shared-compose-popup`
+- `shared-compose-settings`
 - `androidApp`
 - `desktopApp`
 - `multiplatformApp`
+- `zenbreak.app`
 
 Each module contains a README file, refer to those for informations about each module.  
 All plugins and dependencies are handled via the version catalog, which you can find in `gradle/libs.versions.toml`.
 
 #### Run the application
+
+##### Running on macOS
+Open the `multiplatformApp` folder with XCode and run the project from XCode directly.
+
 ##### On desktop
 To run the desktop application in Android Studio, select `desktopApp` in the list of run configurations and click **Run**:  
 You can also run Gradle tasks in the terminal:
@@ -71,45 +123,3 @@ To run the application on an Android emulator:
 3. Choose your virtual device and click **Run**:
 
 To install the Android application on a real Android device or an emulator, run `./gradlew installDebug` in the terminal.
-
-##### On iOS and macOS
-
-###### Running on macOS
-Open the `multiplatformApp` folder with XCode and run the project from XCode directly.
-###### Running on a simulator
-To run the application on an iOS simulator in Android Studio, modify the `iosApp` run configuration:
-1. In the list of run configurations, select **Edit Configurations**
-2. Navigate to **iOS Application** | **iosApp**
-3. In the **Execution target** list, select your target device. Click **OK**
-4. The `iosApp` run configuration is now available. Click **Run** next to your virtual device:
-
-###### Running on a real iOS device
-You can run the application on a real iOS device for free.  
-To do so, you'll need the following:
-- The `TEAM_ID` associated with your [Apple ID](https://support.apple.com/en-us/HT204316)
-- The iOS device registered in Xcode
-
-> **Note**  
-> Before you continue, we suggest creating a simple "Hello, world!" project in Xcode to ensure you can successfully run apps on your device.  
-> You can follow the instructions below or watch this [Stanford CS193P lecture recording](https://youtu.be/bqu6BquVi2M?start=716&end=1399).
-
-###### Finding your Team ID
-In the terminal, run `kdoctor --team-ids` to find your Team ID.  
-KDoctor will list all Team IDs currently configured on your system, for example:
-```text  
-3ABC246XYZ (Max Sample)  
-ZABCW6SXYZ (SampleTech Inc.)  
-```  
-###### Alternative way to find your Team ID
-If KDoctor doesn't work for you, try this alternative method:
-1. In Android Studio, run the `iosApp` configuration with the selected real device. The build should fail
-2. Open the `multiplatformApp` folder with XCode
-3. In the left-hand menu, select `multiplatformApp`
-4. Navigate to **Signing & Capabilities**.
-5. In the **Team** list, select your team.
-
-If you haven't set up your team yet, use the **Add account** option and follow the steps.  
-To run the application, set the `TEAM_ID`:
-1. Navigate to the `multiplatformApp/Configuration/Config.xcconfig` file.
-2. Set your `TEAM_ID`.
-3. Re-open the project in Android Studio. It should show the registered iOS device in the `iosApp` run configuration.  
