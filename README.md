@@ -14,7 +14,9 @@
 
 ## Overview
 <p align="center">
-      <img src="https://raw.githubusercontent.com/Giuliopime/ZenBreak/main/assets/screenshot.png" alt="ZenBreak screenshot">
+      <img src="https://raw.githubusercontent.com/Giuliopime/ZenBreak/main/assets/screenshot.png" alt="ZenBreak screenshot"
+      width="50%"
+      align="right">
 </p>
 <br>
 
@@ -24,6 +26,14 @@ This app simply reminds you to take a break from the screen, it has customisable
 
 This is a [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) app built for the [Jetbrains Contest](https://blog.jetbrains.com/kotlin/2022/10/join-the-kotlin-multiplatform-contest/) and for personal use!  
 It currently supports MacOS, Windows and Linux, but I'll consider porting it to Android and iOS if I receive many requests for that.  
+
+## Installing  
+You can install the app via [zenbreak.app](https://zenbreak.app) or via [GitHub releases](https://github.com/Giuliopime/ZenBreak/releases).  
+
+If you are on mac you can use Brew too:
+```sh
+brew install --cask zenbreak
+``` 
 
 ## Inspiration and resources  
 This project has been insipired by [BreakTimer](https://breaktimer.app).  
