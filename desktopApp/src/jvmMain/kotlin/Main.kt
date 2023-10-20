@@ -34,6 +34,11 @@ import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.di.initKoin
 import dev.giuliopime.shared_core.logic.IBreakManager
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
+/*
+import dorkbox.systemTray.MenuItem
+import dorkbox.systemTray.Separator
+import dorkbox.systemTray.SystemTray
+ */
 import kotlinx.coroutines.delay
 
 private val featureFlags = FeatureFlags(
@@ -46,6 +51,7 @@ fun main() = application {
     val viewModel: IZenBreakViewModel by koin.inject()
     val breakManager: IBreakManager by koin.inject()
 
+    // val tray by remember { mutableStateOf(SystemTray.get()!!) }
     val trayState = rememberTrayState()
 
     var isPopupWindowVisible by remember { mutableStateOf(false) }
@@ -58,6 +64,51 @@ fun main() = application {
     var isSettingsWindowVisible by remember {
         mutableStateOf(false)
     }
+
+    /*
+    LaunchedEffect(Unit) {
+        tray.setTooltip("ZenBreak")
+        tray.setImage(javaClass.getResourceAsStream("/icon.png")) // Use icon in src/main/resources/icon.png
+        tray.menu.apply {
+            setCallback {
+                isSettingsWindowVisible = true
+            }
+
+            add(MenuItem(if (settings.enabled) "Disable" else "Enable").apply {
+                setCallback {
+                    viewModel.setEnabled(!settings.enabled)
+                }
+            })
+
+            add(MenuItem("Start break now").apply {
+                setCallback {
+                    breakManager.startBreak()
+                }
+            })
+
+            add(MenuItem("Reset break").apply {
+                setCallback {
+                    isPopupWindowVisible = false
+                    breakManager.planBreak()
+                }
+            })
+
+            add(Separator())
+
+            add(MenuItem("Settings").apply {
+                setCallback {
+                    isSettingsWindowVisible = true
+                }
+            })
+
+            add(MenuItem("Quit").apply {
+                setCallback {
+                    exitApplication()
+                }
+            })
+        }
+    }
+     */
 
     LaunchedEffect(Unit) {
         delay(2000)

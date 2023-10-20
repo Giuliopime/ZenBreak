@@ -40,6 +40,16 @@ struct MultiplatformApp: App {
 class ZbAppDelegate: NSObject, NSApplicationDelegate {
     static var shared: ZbAppDelegate!
     
+    private let aboutOptions: [NSApplication.AboutPanelOptionKey : Any] = [
+        NSApplication.AboutPanelOptionKey.credits: NSAttributedString(
+            string: "Privacy Policy: https://zenbreak.app/privacy\n\nTerms of Use: https://zenbreak.app/terms",
+            attributes: [
+                NSAttributedString.Key.font: NSFont.systemFont(
+                    ofSize: 10)
+            ]
+        )
+    ]
+    
     private var menuBarExtra: FluidMenuBarExtra?
     private var breakWindowController: ZbBreakWindowController?
     // another logo idea meh - private let image = "circle.circle.fill" // "swirl.circle.righthalf.filled"
@@ -60,5 +70,10 @@ class ZbAppDelegate: NSObject, NSApplicationDelegate {
     
     func hideBreakWindow() {
         breakWindowController?.hide()
+    }
+    
+    func showAboutDialog() {
+        NSApp.activate(ignoringOtherApps: true)
+        NSApp.orderFrontStandardAboutPanel(options: aboutOptions)
     }
 }

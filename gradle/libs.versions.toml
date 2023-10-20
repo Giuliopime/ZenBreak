@@ -14,6 +14,7 @@ multiplatformCompose="1.5.3"
 
 # Desktop
 conveyor="1.6"
+systemTray="4.4"
 
 # Android
 agp= "8.1.2"
@@ -54,6 +55,7 @@ androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "andr
 androidx-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastorePreferences" }
 
+system-tray = { group = "com.dorkbox", name = "SystemTray", version.ref = "systemTray"}
 [bundles]
 multiplatformSettings = [
     "multiplatform-settings",

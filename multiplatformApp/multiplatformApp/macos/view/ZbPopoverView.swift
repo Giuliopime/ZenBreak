@@ -83,8 +83,7 @@ struct ZbPopoverView: View {
                 Divider()
                 
                 Button {
-                    NSApp.activate(ignoringOtherApps: true)
-                    NSApp.orderFrontStandardAboutPanel(self)
+                    ZbAppDelegate.shared.showAboutDialog()
                 } label: {
                     Text("About")
                     Spacer()

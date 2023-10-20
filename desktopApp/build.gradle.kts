@@ -20,6 +20,12 @@ kotlin {
         val jvmMain by getting  {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                /*
+                // https://github.com/gradle/gradle/issues/20274
+                implementation("com.dorkbox:SystemTray:4.4") {
+                    exclude("java.desktop")
+                }
+                 */
                 implementation(compose.uiTooling)
                 implementation(project(":shared-core"))
                 implementation(project(":shared-compose-core"))
