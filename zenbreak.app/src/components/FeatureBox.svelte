@@ -30,7 +30,7 @@
      on:mouseleave={() => hovered=false}
      on:mousemove={(e) => console.log(e)}
      role="none"
-     class="flex flex-col gap-5 max-w-xs border-neutral-950 border-[1px] rounded-xl p-4 torch-div">
+     class="flex flex-col gap-5 max-w-xs h-72 border-neutral-950 border-[1px] rounded-xl p-4 torch-div">
     <svelte:component this={logo} class="grayscale w-16 h-16"/>
 
     <span class="text-xl font-semibold">{title}</span>

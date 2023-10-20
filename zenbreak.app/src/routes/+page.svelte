@@ -1,4 +1,6 @@
 <script>
+	import { onMount } from 'svelte';
+
 	// App images
 	import macosBreakImg from "$lib/images/demo/macos/macos_break.png"
 	import macosBehaviourImg from "$lib/images/demo/macos/macos_behaviour.png"
@@ -24,6 +26,9 @@
 	import MultiplatformLogo from "virtual:icons/logos/compose-multiplatform";
 	import OpenSourceLogo from "virtual:icons/mdi/github";
 	import NativeLogo from "virtual:icons/cib/swift";
+
+	// Functions
+	import { getOS } from "../utils/os.js";
 
 	// Page components
 	import HorizontalSelector from "../components/HorizontalSelector.svelte";
@@ -58,6 +63,23 @@
 				break;
 		}
 	}
+
+	onMount(() => {
+		const os = getOS()
+		switch (os) {
+			case "mac":
+				selectedPlatformIndex = 0;
+				break;
+			case "win":
+				selectedPlatformIndex = 1;
+				break;
+			case "lin":
+				selectedPlatformIndex = 2;
+				break;
+			case "unknown":
+				console.log("unknown operating system")
+		}
+	})
 </script>
 
 <svelte:head>
