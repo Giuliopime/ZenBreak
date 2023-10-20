@@ -67,13 +67,13 @@
 	onMount(() => {
 		const os = getOS()
 		switch (os) {
-			case "mac":
+			case "macos":
 				selectedPlatformIndex = 0;
 				break;
-			case "win":
+			case "windows":
 				selectedPlatformIndex = 1;
 				break;
-			case "lin":
+			case "linux":
 				selectedPlatformIndex = 2;
 				break;
 			case "unknown":

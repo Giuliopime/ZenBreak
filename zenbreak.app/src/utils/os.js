@@ -1,16 +1,22 @@
 /**
  *
- * @returns {string} the os shortname: mac | win | lin | unknown
+ * @returns {string} the os: macos | windows | linux | android | iphone | ipad | unknown
  */
 export function getOS() {
-    if (navigator.userAgent.includes("Mac"))
-        return "mac";
-    if (navigator.userAgent.includes("Win"))
-        return "win";
-    if (navigator.userAgent.includes("X11"))
-        return "lin";
-    if (navigator.userAgent.includes("Linux"))
-        return "lin";
+    if (navigator.userAgent.toLowerCase().includes("mac"))
+        return "macos";
+    if (navigator.userAgent.toLowerCase().includes("win"))
+        return "windows";
+    if (navigator.userAgent.toLowerCase().includes("x11"))
+        return "linux";
+    if (navigator.userAgent.toLowerCase().includes("android"))
+        return "android";
+    if (navigator.userAgent.toLowerCase().includes("iphone"))
+        return "iphone";
+    if (navigator.userAgent.toLowerCase().includes("ipad"))
+        return "ipad";
+    if (navigator.userAgent.toLowerCase().includes("linux"))
+        return "linux";
 
     return "unknown";
 }
