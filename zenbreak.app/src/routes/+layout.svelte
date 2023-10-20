@@ -1,12 +1,15 @@
 <script>
 	import '../app.css';
-	import Footer from "./Footer.svelte";
+	import Footer from "../components/Footer.svelte";
 </script>
 
 <div class="app">
-	<main>
+	<div class="absolute h-full w-full bg-hero -z-20"></div>
+	<main class="flex flex-col w-full">
 		<slot />
-	</main>
 
-	<Footer />
+		<div class="mt-32 w-full">
+			<Footer />
+		</div>
+	</main>
 </div>

@@ -1,5 +1,5 @@
 <script>
-    import CarouselIcon from "./CarouselIcon.svelte";
+    import CarouselArrow from "virtual:icons/ri/arrow-up-s-line";
 
     /** @type string[] **/
     export let images;
@@ -32,12 +32,12 @@
          class="aspect-auto rounded-2xl select-none max-h-80"
          src="{image}">
 
-    <div class="absolute w-full h-full flex flex-row place-content-between p-2 z-10">
-        <button on:click={decrement} class="hover:opacity-80">
-            <CarouselIcon rotated={true} />
+    <div class="absolute w-full h-full flex flex-row place-content-between p-2 z-10 text-transparent hover:text-gray-400">
+        <button on:click={decrement} class="opacity-70 hover:opacity-100">
+            <CarouselArrow class="-rotate-90 w-12 h-12" />
         </button>
-        <button on:click={increment} class="hover:opacity-80">
-            <CarouselIcon rotated={false} />
+        <button on:click={increment} class="opacity-70 hover:opacity-100">
+            <CarouselArrow class="rotate-90 w-12 h-12" />
         </button>
     </div>
 </div>

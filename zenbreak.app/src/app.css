@@ -2,3 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+.app,
+main {
+	@apply h-full;
+}
+
+body {
+	@apply accent-primary;
+	@apply selection:bg-secondary selection:text-black;
+}
+
+.bg-hero {
+	background: radial-gradient(circle, #fff 0, #ceeabe 34.56%, #eafce2 68.64%, #c1d9b0 100%);
+	filter: blur(60px);
+}
+
+a {
+	@apply underline-offset-4 hover:underline hover:opacity-80 transition-all;
+}
