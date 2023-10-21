@@ -12,8 +12,6 @@
 		094B66662AC24A9300536E48 /* ZbBreakWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094B66652AC24A9300536E48 /* ZbBreakWindowController.swift */; };
 		096416432AC2D77E005995AE /* ZbBreakWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096416422AC2D77D005995AE /* ZbBreakWindow.swift */; };
 		09A559322AAD1C6E00D61535 /* ZbBreakWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A559312AAD1C6E00D61535 /* ZbBreakWindowView.swift */; };
-		09A736762AA4D33E008B32A8 /* sharedCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A736752AA4D33E008B32A8 /* sharedCore.xcframework */; };
-		09A736772AA4D33E008B32A8 /* sharedCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09A736752AA4D33E008B32A8 /* sharedCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09B5ED272AA48D98005413D7 /* ZbPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */; };
 		09B5ED2A2AA490B1005413D7 /* AppereanceTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED292AA490B1005413D7 /* AppereanceTabView.swift */; };
 		09B5ED2D2AA490C7005413D7 /* BehaviourTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED2C2AA490C7005413D7 /* BehaviourTabView.swift */; };
@@ -30,27 +28,12 @@
 		4137AFD02A5F0830000787E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137AFCF2A5F0830000787E3 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		09A736782AA4D33E008B32A8 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				09A736772AA4D33E008B32A8 /* sharedCore.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		090126602AAC731C002402F1 /* ZbNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbNotificationCenter.swift; sourceTree = "<group>"; };
 		094B66652AC24A9300536E48 /* ZbBreakWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindowController.swift; sourceTree = "<group>"; };
 		094CFE7C2AE2D83800FFD0E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		096416422AC2D77D005995AE /* ZbBreakWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindow.swift; sourceTree = "<group>"; };
 		09A559312AAD1C6E00D61535 /* ZbBreakWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbBreakWindowView.swift; sourceTree = "<group>"; };
-		09A736752AA4D33E008B32A8 /* sharedCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sharedCore.xcframework; path = "../shared-core/build/cocoapods/publish/release/sharedCore.xcframework"; sourceTree = "<group>"; };
 		09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbPopoverView.swift; sourceTree = "<group>"; };
 		09B5ED292AA490B1005413D7 /* AppereanceTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppereanceTabView.swift; sourceTree = "<group>"; };
 		09B5ED2C2AA490C7005413D7 /* BehaviourTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviourTabView.swift; sourceTree = "<group>"; };
@@ -71,7 +54,6 @@
 			files = (
 				09BF68FE2AA4C64F00195DC0 /* KMPNativeCoroutinesCombine in Frameworks */,
 				09D6531B2AD8279A00E90B8B /* FluidMenuBarExtra in Frameworks */,
-				09A736762AA4D33E008B32A8 /* sharedCore.xcframework in Frameworks */,
 				09D653202AD8353D00E90B8B /* DynamicColor in Frameworks */,
 				09BF68FC2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync in Frameworks */,
 				0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */,
@@ -172,7 +154,6 @@
 		4137AFD62A5F0902000787E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				09A736752AA4D33E008B32A8 /* sharedCore.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -187,7 +168,6 @@
 				4137AFC02A5F082E000787E3 /* Sources */,
 				4137AFC12A5F082E000787E3 /* Frameworks */,
 				4137AFC22A5F082E000787E3 /* Resources */,
-				09A736782AA4D33E008B32A8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,6 +215,7 @@
 				0907C7D02AA97FFE00D6F33D /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 				09D653172AD81C8E00E90B8B /* XCRemoteSwiftPackageReference "fluid-menu-bar-extra" */,
 				09D6531E2AD8353D00E90B8B /* XCRemoteSwiftPackageReference "DynamicColor" */,
+				099A533F2AE4397B00E360E7 /* XCRemoteSwiftPackageReference "ZenBreak" */,
 			);
 			productRefGroup = 4137AFC52A5F082E000787E3 /* Products */;
 			projectDirPath = "";
@@ -508,6 +489,14 @@
 			requirement = {
 				branch = main;
 				kind = branch;
+			};
+		};
+		099A533F2AE4397B00E360E7 /* XCRemoteSwiftPackageReference "ZenBreak" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Giuliopime/ZenBreak";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		09BF68FA2AA4C64F00195DC0 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
