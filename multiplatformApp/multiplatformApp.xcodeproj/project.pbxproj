@@ -215,7 +215,6 @@
 				0907C7D02AA97FFE00D6F33D /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 				09D653172AD81C8E00E90B8B /* XCRemoteSwiftPackageReference "fluid-menu-bar-extra" */,
 				09D6531E2AD8353D00E90B8B /* XCRemoteSwiftPackageReference "DynamicColor" */,
-				099A533F2AE4397B00E360E7 /* XCRemoteSwiftPackageReference "ZenBreak" */,
 			);
 			productRefGroup = 4137AFC52A5F082E000787E3 /* Products */;
 			projectDirPath = "";
@@ -489,14 +488,6 @@
 			requirement = {
 				branch = main;
 				kind = branch;
-			};
-		};
-		099A533F2AE4397B00E360E7 /* XCRemoteSwiftPackageReference "ZenBreak" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Giuliopime/ZenBreak";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
 			};
 		};
 		09BF68FA2AA4C64F00195DC0 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
