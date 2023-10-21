@@ -32,7 +32,7 @@
     <div class="flex gap-4 items-start w-full text-neutral-300 flex-wrap">
         <a href="privacy">Privacy & Security</a>
         <a href="terms">Terms of Use</a>
-        <a href="mailto:giuliopime@gmail.com">Contact</a>
+        <a href="https://discord.gg/MunKMgKAJp">Contact</a>
     </div>
 
     <div class="flex flex-col md:flex-row gap-4 md:gap-0 justify-between w-full text-neutral-500">

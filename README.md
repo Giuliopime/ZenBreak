@@ -9,6 +9,9 @@
    <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Giuliopime/ZenBreak/total">
    <img alt="GitHub release (with filter)" src="https://img.shields.io/github/v/release/Giuliopime/ZenBreak">
    <img alt="homebrew cask" src="https://img.shields.io/homebrew/cask/v/zenbreak">
+   <a href="https://discord.gg/MunKMgKAJp">
+      <img alt="Discord" src="https://img.shields.io/discord/1043536767934021713">
+   </a>
 </p>
 
 
