@@ -3,29 +3,12 @@ name: Release macOS
 on: [workflow_dispatch]
 
 jobs:
-  compile-kotlin-native:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: "temurin"
-          java-version: 17
-
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-        
-      - name: Compile shared-core
-        run: ./gradlew shared-core:podPublishXCFramework
-  
   build-app:
-    needs: compile-kotlin-native
     runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-       - uses: maierj/fastlane-action@v2.2.0
-         with:
+
+      - uses: maierj/fastlane-action@v2.2.0
+        with:
           lane: 'release'

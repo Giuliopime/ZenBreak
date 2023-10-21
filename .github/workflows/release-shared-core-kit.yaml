@@ -1,7 +1,6 @@
 name: Release ZenBreakCoreKit
 
-on:
-  workflow_dispatch:
+on: [workflow_dispatch]
 
 jobs:
   call-kmmbridge-publish:
