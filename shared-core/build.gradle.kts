@@ -8,9 +8,6 @@ plugins {
     `maven-publish`
 }
 
-group = "dev.giuliopime.zenbreak.core"
-version = "1.0.1"
-
 kotlin {
     androidTarget()
 
