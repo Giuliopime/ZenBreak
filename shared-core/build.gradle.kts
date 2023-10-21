@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "dev.giuliopime.zenbreak.core"
-version = "0.1"
+version = "1.0.1"
 
 kotlin {
     androidTarget()
