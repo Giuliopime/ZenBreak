@@ -20,7 +20,7 @@ kotlin {
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
-        it.binaries.framework {
+        it.binaries.framework("ZenBreakCoreKit") {
             isStatic = true
         }
     }
@@ -30,7 +30,7 @@ kotlin {
         macosX64(),
         macosArm64()
     ).forEach {
-        it.binaries.framework {
+        it.binaries.framework("ZenBreakCoreKit") {
             isStatic = true
         }
     }
