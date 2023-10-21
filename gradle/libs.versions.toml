@@ -8,6 +8,7 @@ kotlinxSerialization="1.6.0"
 multiplatformSettings="1.0.0"
 koin="3.4.3"
 nativeCoroutines="1.0.0-ALPHA-17"
+kmmBridge="0.5.0"
 
 # Shared Compose
 multiplatformCompose="1.5.3"
@@ -27,6 +28,7 @@ jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kmm-bridge = { id = "co.touchlab.kmmbridge", version.ref = "kmmBridge" }
 
 conveyor = { id = "dev.hydraulic.conveyor", version.ref = "conveyor" }
 
@@ -37,7 +39,6 @@ android-library = { id = "com.android.library", version.ref = "agp"}
 compose = { id = "org.jetbrains.compose", version.ref = "multiplatformCompose" }
 
 native-coroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "nativeCoroutines" }
-native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 
 [libraries]
 kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }

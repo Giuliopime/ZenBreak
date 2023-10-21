@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose)
-    alias(libs.plugins.native.cocoapods)
 }
 
 kotlin {
@@ -20,18 +19,6 @@ kotlin {
     // macOS
     macosX64()
     macosArm64()
-
-    cocoapods {
-        version = "1.0.0"
-        summary = "Break popup UI for ZenBreak"
-        homepage = "https://github.com/Giuliopime/ZenBreak"
-        // TODO: Add build step on xcode
-        framework {
-            baseName = "sharedComposePopup"
-            isStatic = true
-        }
-        noPodspec()
-    }
 
     sourceSets {
         val commonMain by getting {

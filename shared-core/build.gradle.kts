@@ -4,8 +4,12 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.android.library)
     alias(libs.plugins.native.coroutines)
-    alias(libs.plugins.native.cocoapods)
+    alias(libs.plugins.kmm.bridge)
+    `maven-publish`
 }
+
+group = "dev.giuliopime.zenbreak.core"
+version = "1.0.0"
 
 kotlin {
     androidTarget()
@@ -14,14 +18,29 @@ kotlin {
     jvm("desktop")
 
     // iOS
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "ZenBreakCoreKit"
+            isStatic = true
+        }
+    }
 
     // macOS
-    macosX64()
-    macosArm64()
+    listOf(
+        macosX64(),
+        macosArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "ZenBreakCoreKit"
+            isStatic = true
+        }
+    }
 
+    /*
     cocoapods {
         version = "1.0.0"
         summary = "Core logic package for ZenBreak"
@@ -33,6 +52,7 @@ kotlin {
         }
         noPodspec()
     }
+     */
 
     sourceSets {
         val commonMain by getting {
@@ -93,10 +113,18 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlin {
-        jvmToolchain(11)
+        jvmToolchain(17)
     }
 }
+
+kmmbridge {
+    frameworkName.set("ZenBreakCoreKit")
+    spm()
+    mavenPublishArtifacts()
+}
+
+addGithubPackagesRepository()

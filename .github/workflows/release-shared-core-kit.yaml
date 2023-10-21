@@ -1,0 +1,14 @@
+name: Release ZenBreakCoreKit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-kmmbridge-publish:
+    permissions:
+      contents: write
+      packages: write
+    uses: touchlab/KMMBridgeGithubWorkflow/.github/workflows/faktorybuildautoversion.yml@v1.0
+    with:
+      jvmVersion: 17
+      versionBaseProperty: LIBRARY_VERSION
