@@ -21,7 +21,6 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "ZenBreakCoreKit"
             isStatic = true
         }
     }
@@ -32,24 +31,9 @@ kotlin {
         macosArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "ZenBreakCoreKit"
             isStatic = true
         }
     }
-
-    /*
-    cocoapods {
-        version = "1.0.0"
-        summary = "Core logic package for ZenBreak"
-        homepage = "https://github.com/Giuliopime/ZenBreak"
-        // TODO: Add build step on xcode
-        framework {
-            baseName = "sharedCore"
-            isStatic = true
-        }
-        noPodspec()
-    }
-     */
 
     sourceSets {
         val commonMain by getting {
