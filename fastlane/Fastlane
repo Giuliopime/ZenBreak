@@ -1,3 +1,0 @@
-lane :release do
-  gym(scheme: "<your schema>")
-end
