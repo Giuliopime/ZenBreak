@@ -21,6 +21,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
+            baseName = "ZenBreakCoreKit"
             isStatic = true
         }
     }
@@ -31,6 +32,7 @@ kotlin {
         macosArm64()
     ).forEach {
         it.binaries.framework {
+            baseName = "ZenBreakCoreKit"
             isStatic = true
         }
     }
@@ -102,9 +104,10 @@ android {
     }
 }
 
+addGithubPackagesRepository()
+
 kmmbridge {
+    frameworkName.set("ZenBreakCoreKit")
     spm()
     mavenPublishArtifacts()
 }
-
-addGithubPackagesRepository()

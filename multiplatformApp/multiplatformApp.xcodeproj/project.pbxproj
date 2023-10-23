@@ -384,6 +384,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"multiplatformApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 79VJQ9DB34;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = multiplatformApp/Info.plist;
@@ -409,10 +410,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.giuliopime.ZenBreak;
 				PRODUCT_NAME = ZenBreak;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -426,6 +427,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"multiplatformApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 79VJQ9DB34;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = multiplatformApp/Info.plist;
@@ -451,10 +453,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.giuliopime.ZenBreak;
 				PRODUCT_NAME = ZenBreak;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
