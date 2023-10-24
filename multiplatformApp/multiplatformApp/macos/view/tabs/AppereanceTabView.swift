@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import sharedCore
+import ZenBreakCoreKit
 import DynamicColor
 
 enum NotificationType {

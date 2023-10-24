@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import sharedCore
+import ZenBreakCoreKit
 
 private enum ChildTabView {
     case behaviour, appereance, system

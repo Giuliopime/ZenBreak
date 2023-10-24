@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import sharedCore
+import ZenBreakCoreKit
 
 struct BehaviourTabView: View {
     @ObservedObject var viewModel: ZbViewModel

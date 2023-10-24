@@ -44,6 +44,15 @@
         "revision" : "9dcaa4b333db437b0fbfaf453fad29069044a8b4",
         "version" : "6.6.0"
       }
+    },
+    {
+      "identity" : "zenbreak",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Giuliopime/ZenBreak",
+      "state" : {
+        "revision" : "3ad98ed5fdc91927b7f5a4369c9f84908512d799",
+        "version" : "0.1.0"
+      }
     }
   ],
   "version" : 2

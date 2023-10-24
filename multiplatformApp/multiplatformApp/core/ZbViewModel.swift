@@ -7,7 +7,7 @@
 
 import Foundation
 import KMPNativeCoroutinesAsync
-import sharedCore
+import ZenBreakCoreKit
 import LaunchAtLogin
 import SwiftUI
 

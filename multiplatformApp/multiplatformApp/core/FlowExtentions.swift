@@ -7,7 +7,7 @@
 
 import Foundation
 import KMPNativeCoroutinesAsync
-import sharedCore
+import ZenBreakCoreKit
 
 extension ISettingsRepository {
     func getSettingsFlow() -> NativeFlowAsyncSequence<ZbSettings, Error, KotlinUnit> {

@@ -11,6 +11,7 @@
 		0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0907C7D12AA97FFE00D6F33D /* LaunchAtLogin */; };
 		094B66662AC24A9300536E48 /* ZbBreakWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094B66652AC24A9300536E48 /* ZbBreakWindowController.swift */; };
 		096416432AC2D77E005995AE /* ZbBreakWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096416422AC2D77D005995AE /* ZbBreakWindow.swift */; };
+		0991F35D2AE87A6600A7E222 /* ZenBreakCoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0991F35C2AE87A6600A7E222 /* ZenBreakCoreKit */; };
 		09A559322AAD1C6E00D61535 /* ZbBreakWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A559312AAD1C6E00D61535 /* ZbBreakWindowView.swift */; };
 		09B5ED272AA48D98005413D7 /* ZbPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED262AA48D98005413D7 /* ZbPopoverView.swift */; };
 		09B5ED2A2AA490B1005413D7 /* AppereanceTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5ED292AA490B1005413D7 /* AppereanceTabView.swift */; };
@@ -55,6 +56,7 @@
 				09BF68FE2AA4C64F00195DC0 /* KMPNativeCoroutinesCombine in Frameworks */,
 				09D6531B2AD8279A00E90B8B /* FluidMenuBarExtra in Frameworks */,
 				09D653202AD8353D00E90B8B /* DynamicColor in Frameworks */,
+				0991F35D2AE87A6600A7E222 /* ZenBreakCoreKit in Frameworks */,
 				09BF68FC2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync in Frameworks */,
 				0907C7D22AA97FFE00D6F33D /* LaunchAtLogin in Frameworks */,
 				09BF69002AA4C64F00195DC0 /* KMPNativeCoroutinesCore in Frameworks */,
@@ -181,6 +183,7 @@
 				0907C7D12AA97FFE00D6F33D /* LaunchAtLogin */,
 				09D6531A2AD8279A00E90B8B /* FluidMenuBarExtra */,
 				09D6531F2AD8353D00E90B8B /* DynamicColor */,
+				0991F35C2AE87A6600A7E222 /* ZenBreakCoreKit */,
 			);
 			productName = multiplatformApp;
 			productReference = 4137AFC42A5F082E000787E3 /* ZenBreak.app */;
@@ -215,6 +218,7 @@
 				0907C7D02AA97FFE00D6F33D /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 				09D653172AD81C8E00E90B8B /* XCRemoteSwiftPackageReference "fluid-menu-bar-extra" */,
 				09D6531E2AD8353D00E90B8B /* XCRemoteSwiftPackageReference "DynamicColor" */,
+				0991F35B2AE87A6600A7E222 /* XCRemoteSwiftPackageReference "ZenBreak" */,
 			);
 			productRefGroup = 4137AFC52A5F082E000787E3 /* Products */;
 			projectDirPath = "";
@@ -492,6 +496,14 @@
 				kind = branch;
 			};
 		};
+		0991F35B2AE87A6600A7E222 /* XCRemoteSwiftPackageReference "ZenBreak" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Giuliopime/ZenBreak";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		09BF68FA2AA4C64F00195DC0 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
@@ -523,6 +535,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0907C7D02AA97FFE00D6F33D /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
 			productName = LaunchAtLogin;
+		};
+		0991F35C2AE87A6600A7E222 /* ZenBreakCoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0991F35B2AE87A6600A7E222 /* XCRemoteSwiftPackageReference "ZenBreak" */;
+			productName = ZenBreakCoreKit;
 		};
 		09BF68FB2AA4C64F00195DC0 /* KMPNativeCoroutinesAsync */ = {
 			isa = XCSwiftPackageProductDependency;

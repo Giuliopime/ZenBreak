@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import sharedCore
+import ZenBreakCoreKit
 import LaunchAtLogin
 
 struct SystemTabView: View {

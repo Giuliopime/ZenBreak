@@ -9,7 +9,7 @@
 
 import Foundation
 import UserNotifications
-import sharedCore
+import ZenBreakCoreKit
 
 enum ZbNotification {
     enum Category: String {
