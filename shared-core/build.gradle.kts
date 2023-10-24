@@ -8,6 +8,9 @@ plugins {
     `maven-publish`
 }
 
+group = "dev.giuliopime.zenbreakcorekit"
+version = "AUTO_VERSION"
+
 kotlin {
     androidTarget()
 
