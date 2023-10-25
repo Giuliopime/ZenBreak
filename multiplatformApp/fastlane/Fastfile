@@ -19,7 +19,12 @@ platform :mac do
   desc "Release a beta on TestFlight"
   lane :beta do
     setup_ci if ENV['CI']
-    app_store_connect_api_key()
+    app_store_connect_api_key(
+      key_id: ENV['APP_STORE_CONNECT_KEY_ID'],
+      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
+      key: ENV['APP_STORE_CONNECT_API_KEY_KEY'],
+      in_house: ENV['APP_STORE_CONNECT_API_KEY_IN_HOUSE']
+    )
     increment_build_number
     match(type: "appstore")
     build_mac_app
