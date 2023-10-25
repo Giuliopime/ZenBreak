@@ -1,0 +1,26 @@
+# For more information about this configuration visit
+# https://docs.fastlane.tools/actions/gym/#gymfile
+
+# In general, you can use the options available
+# fastlane gym --help
+
+# Remove the # in front of the line to enable the option
+
+scheme("multiplatformApp")
+
+export_options({
+  method: "app-store",
+  provisioningProfiles: {
+    "dev.giuliopime.ZenBreak" => "match AppStore dev.giuliopime.ZenBreak",
+  }
+})
+
+output_directory("./fastlane/builds")
+
+include_bitcode(false)
+
+include_symbols(false)
+
+# sdk("iphoneos9.0")
+
+output_directory("./")

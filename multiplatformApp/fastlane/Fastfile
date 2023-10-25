@@ -19,5 +19,9 @@ platform :mac do
   desc "Release a beta on TestFlight"
   lane :beta do
     app_store_connect_api_key()
+    sync_certificates
+    increment_build_number
+    build_mac_app
+    upload_to_testflight
   end
 end
