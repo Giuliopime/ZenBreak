@@ -8,6 +8,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup netrc
+        env:
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN_SWIFT_PACKAGES }}
+        run: echo -e "machine github.com\n login $AUTH_TOKEN" >> ~/.netrc
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
