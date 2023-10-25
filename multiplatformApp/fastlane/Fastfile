@@ -18,6 +18,7 @@ default_platform(:mac)
 platform :mac do
   desc "Release a beta on TestFlight"
   lane :beta do
+    setup_ci if ENV['CI']
     app_store_connect_api_key()
     sync_certificates
     increment_build_number
