@@ -8,7 +8,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - uses: maierj/fastlane-action@v2.2.0
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
         with:
-          lane: 'release'
+          ruby-version: '3.0'
+          bundler-cache: true
+          working-directory: 'multiplatformApp'
+
+      - uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'beta'
+          subdirectory: 'multiplatformApp'
