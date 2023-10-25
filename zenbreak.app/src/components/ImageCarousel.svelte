@@ -29,10 +29,10 @@
 
 <div class="relative flex items-center justify-center w-fit">
     <img alt="image {index}"
-         class="aspect-auto rounded-2xl select-none max-h-80"
+         class="aspect-auto rounded-2xl select-none max-h-80 border-2 border-neutral-900"
          src="{image}">
 
-    <div class="absolute w-full h-full flex flex-row place-content-between p-2 z-10 text-transparent hover:text-gray-400">
+    <div class="absolute w-full h-full flex flex-row place-content-between z-10 text-transparent hover:text-gray-400">
         <button on:click={decrement} class="opacity-70 hover:opacity-100">
             <CarouselArrow class="-rotate-90 w-12 h-12" />
         </button>

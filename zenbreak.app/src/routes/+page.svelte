@@ -2,20 +2,20 @@
 	import { onMount } from 'svelte';
 
 	// App images
-	import macosBreakImg from "$lib/images/demo/macos/macos_break.png"
-	import macosBehaviourImg from "$lib/images/demo/macos/macos_behaviour.png"
-	import macosAppereanceImg from "$lib/images/demo/macos/macos_appereance.png"
-	import macosSystemImg from "$lib/images/demo/macos/macos_system.png"
+	import macosBreakImg from "$lib/images/screenshots/zb_ss_mac_1.png"
+	import macosBehaviourImg from "$lib/images/screenshots/zb_ss_mac_2.png"
+	import macosAppereanceImg from "$lib/images/screenshots/zb_ss_mac_3.png"
+	import macosSystemImg from "$lib/images/screenshots/zb_ss_mac_4.png"
 
-	import windowsBreakImg from "$lib/images/demo/windows/windows_break.png"
-	import windowsBehaviourImg from "$lib/images/demo/windows/windows_behaviour.png"
-	import windowsAppearanceImg from "$lib/images/demo/windows/windows_appereance.png"
-	import windowsSystemImg from "$lib/images/demo/windows/windows_system.png"
+	import windowsBreakImg from "$lib/images/screenshots/zb_ss_win_1.png"
+	import windowsBehaviourImg from "$lib/images/screenshots/zb_ss_win_2.png"
+	import windowsAppearanceImg from "$lib/images/screenshots/zb_ss_win_3.png"
+	import windowsSystemImg from "$lib/images/screenshots/zb_ss_win_4.png"
 
-	import linuxBreakImg from "$lib/images/demo/linux/linux_break.png"
-	import linuxBehaviourImg from "$lib/images/demo/linux/linux_behaviour.png"
-	import linuxAppearanceImg from "$lib/images/demo/linux/linux_appereance.png"
-	import linuxSystemImg from "$lib/images/demo/linux/linux_system.png"
+	import linuxBreakImg from "$lib/images/screenshots/zb_ss_win_1.png"
+	import linuxBehaviourImg from "$lib/images/screenshots/zb_ss_win_2.png"
+	import linuxAppearanceImg from "$lib/images/screenshots/zb_ss_win_3.png"
+	import linuxSystemImg from "$lib/images/screenshots/zb_ss_win_4.png"
 
 	// Logos and Icons
 	import DropdownArrowIcon from "../components/icons/DropdownArrowIcon.svelte";
@@ -103,11 +103,11 @@
 				</span>
 
 				<div class="flex md:justify-start justify-center w-full gap-px text-white px-4">
-					<button class="bg-primary py-2 px-6 rounded-l-full hover:opacity-90 transition-opacity" on:click={() => {}}>
+					<button class="bg-contrast py-2 px-6 rounded-l-full hover:opacity-90 transition-opacity" on:click={() => {}}>
 						Download
 					</button>
 					<div class="relative">
-						<button class="w-full h-full flex gap-3 items-center justify-center bg-primary py-2 px-4 rounded-r-full cursor-pointer hover:opacity-90 transition-opacity"
+						<button class="w-full h-full flex gap-3 items-center justify-center bg-contrast py-2 px-4 rounded-r-full cursor-pointer hover:opacity-90 transition-opacity"
 								on:click={() => platformDropdownOpen = !platformDropdownOpen}
 						>
 							<svelte:component this={dropdownLogo} />

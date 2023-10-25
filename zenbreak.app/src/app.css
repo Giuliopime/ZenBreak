@@ -11,7 +11,7 @@ main {
 
 body {
 	@apply accent-primary;
-	@apply selection:bg-secondary selection:text-black;
+	@apply selection:bg-tertiary selection:text-black;
 }
 
 .bg-hero {
