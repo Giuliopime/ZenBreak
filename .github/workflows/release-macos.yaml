@@ -11,11 +11,6 @@ jobs:
       - name: Setup netrc
         env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN_SWIFT_PACKAGES }}
-          APP_STORE_CONNECT_API_KEY_IN_HOUSE: ${{ secrets.APP_STORE_CONNECT_API_KEY_IN_HOUSE }}
-          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
-          APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
-          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
-          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
         run: echo -e "machine github.com\n login $AUTH_TOKEN" >> ~/.netrc
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
