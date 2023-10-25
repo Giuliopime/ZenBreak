@@ -1,0 +1,14 @@
+git_url("https://github.com/Giuliopime/zenbreak-fastlane-match")
+
+storage_mode("git")
+
+type("development") # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier("dev.giuliopime.ZenBreak")
+username("giuliopime@gmail.com") # Your Apple Developer Portal username
+
+platform("macos")
+# For all available options run `fastlane match --help`
+# Remove the # in the beginning of the line to enable the other options
+
+# The docs are available on https://docs.fastlane.tools/actions/match
