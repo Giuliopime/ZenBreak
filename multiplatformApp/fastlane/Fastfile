@@ -20,8 +20,8 @@ platform :mac do
   lane :beta do
     setup_ci if ENV['CI']
     app_store_connect_api_key()
-    sync_certificates
     increment_build_number
+    match(type: "appstore")
     build_mac_app
     upload_to_testflight
   end
