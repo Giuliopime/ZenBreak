@@ -33,6 +33,10 @@ It currently supports MacOS, Windows and Linux, but I'll consider porting it to 
 ## Installing  
 You can install the app via [zenbreak.app](https://zenbreak.app) or via [GitHub releases](https://github.com/Giuliopime/ZenBreak/releases).  
 
+[<img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+alt="Get it on App Store"
+height="80">](https://apps.apple.com/us/app/zenbreak-focus-timer/id6470151195)
+
 ## Inspiration and resources  
 This project has been insipired by [BreakTimer](https://breaktimer.app).  
 I didn't want a js runtime just for a simple menu bar app so I took the opportunity to build ZenBreak ^^  
