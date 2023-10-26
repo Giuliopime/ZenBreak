@@ -35,7 +35,7 @@ You can install the app via [zenbreak.app](https://zenbreak.app) or via [GitHub 
 
 [<img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
 alt="Get it on App Store"
-height="80">](https://apps.apple.com/us/app/zenbreak-focus-timer/id6470151195)
+height="40">](https://apps.apple.com/us/app/zenbreak-focus-timer/id6470151195)
 
 ## Inspiration and resources  
 This project has been insipired by [BreakTimer](https://breaktimer.app).  
