@@ -7,9 +7,10 @@ description: |
   It offers customisable behaviour and appearance to suit everyone needs!
 
 grade: stable # must be 'stable' to release into candidate/stable channels
-base: core18
 confinement: strict # use 'strict' once you have the right plugs and slots
 
+
+# TODO: this doesn't work, conveyor should be used to build snaps when available
 parts:
   zenbreak:
     plugin: gradle
