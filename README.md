@@ -33,11 +33,6 @@ It currently supports MacOS, Windows and Linux, but I'll consider porting it to 
 ## Installing  
 You can install the app via [zenbreak.app](https://zenbreak.app) or via [GitHub releases](https://github.com/Giuliopime/ZenBreak/releases).  
 
-If you are on mac you can use brew too:
-```sh
-brew install --cask zenbreak
-``` 
-
 ## Inspiration and resources  
 This project has been insipired by [BreakTimer](https://breaktimer.app).  
 I didn't want a js runtime just for a simple menu bar app so I took the opportunity to build ZenBreak ^^  
