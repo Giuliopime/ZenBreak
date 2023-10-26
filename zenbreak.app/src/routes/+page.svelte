@@ -80,6 +80,18 @@
 				console.log("unknown operating system")
 		}
 	})
+
+	function openDownloadPage() {
+		let url = "https://apps.apple.com/us/app/zenbreak-focus-timer/id6470151195";
+
+		if (selectedPlatformIndex === 1) {
+			url = "https://www.microsoft.com/store/apps/9MXW1K1K241V";
+		} else if (selectedPlatformIndex === 2) {
+			url = "https://github.com/Giuliopime/ZenBreak/releases/latest";
+		}
+
+		window.open(url);
+	}
 </script>
 
 <svelte:head>
@@ -103,7 +115,7 @@
 				</span>
 
 				<div class="flex md:justify-start justify-center w-full gap-px text-white px-4">
-					<button class="bg-contrast py-2 px-6 rounded-l-full hover:opacity-90 transition-opacity" on:click={() => {}}>
+					<button class="bg-contrast py-2 px-6 rounded-l-full hover:opacity-90 transition-opacity" on:click={() => openDownloadPage()}>
 						Download
 					</button>
 					<div class="relative">
