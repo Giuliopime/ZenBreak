@@ -7,11 +7,16 @@ description: |
   It offers customisable behaviour and appearance to suit everyone needs!
 
 grade: stable # must be 'stable' to release into candidate/stable channels
+base: core18
 confinement: strict # use 'strict' once you have the right plugs and slots
 
-
-# TODO
 parts:
-  my-part:
-    # See 'snapcraft plugins'
-    plugin: nil
+  zenbreak:
+    plugin: gradle
+    source: desktopApp
+    build-packages:
+      - default-jre
+
+apps:
+  zenbreak:
+    command: bin/startup-script
