@@ -50,6 +50,8 @@ amazing Kotlin native libraries 🫶🏼
 great open source macOS menu bar app, gave me a solid base for the macOS app!
 - [Conveyor](https://conveyor.hydraulic.dev/)  
 amazing tool to built desktop installers for your app, recommend 💯
+- [Touchlab](https://touchlab.co/)
+great tools for kotlin native, such as [KMMBridge](https://github.com/touchlab/KMMBridge)
 - [Kotlin Community](https://kotlinlang.org/community/) of course :>
 
 
