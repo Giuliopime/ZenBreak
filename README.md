@@ -107,7 +107,7 @@ is configured correctly:
 
 Open the project in Android Studio and switch the view from **Android** to **Project** to see all the files and targets belonging to the project:
 
-This Compose Multiplatform project includes 4 modules:
+This Compose Multiplatform project includes 8 modules:
 - `shared-core`
 - `shared-compose-core`
 - `shared-compose-popup`
