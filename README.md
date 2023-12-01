@@ -33,9 +33,17 @@ It currently supports MacOS, Windows and Linux, but I'll consider porting it to 
 ## Installing  
 You can install the app via [zenbreak.app](https://zenbreak.app) or via [GitHub releases](https://github.com/Giuliopime/ZenBreak/releases).  
 
-[<img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-alt="Get it on App Store"
-height="40">](https://apps.apple.com/us/app/zenbreak-focus-timer/id6470151195)
+<p>
+   <a href="https://apps.apple.com/us/app/zenbreak-focus-timer/id6470151195">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+      alt="Get it on App Store"
+      height="40">
+   </a>
+
+   <a href="https://apps.microsoft.com/detail/ZenBreak/9MXW1K1K241V">
+   	<img src="https://get.microsoft.com/images/en-us%20dark.svg" height="40"/>
+   </a>
+</p>
 
 ## Inspiration and resources  
 This project has been insipired by [BreakTimer](https://breaktimer.app).  
