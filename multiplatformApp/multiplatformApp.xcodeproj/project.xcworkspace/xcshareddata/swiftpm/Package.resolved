@@ -1,4 +1,5 @@
 {
+  "originHash" : "130a5880edf74cb094a31552568d1a739877738a9979f14717ffd44168cd09fe",
   "pins" : [
     {
       "identity" : "dynamiccolor",
@@ -50,10 +51,10 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Giuliopime/ZenBreak",
       "state" : {
-        "revision" : "3ad98ed5fdc91927b7f5a4369c9f84908512d799",
-        "version" : "0.1.0"
+        "revision" : "dec62a3d1295f5ffbc53e337a26ce1c898c0df66",
+        "version" : "0.1.1"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
