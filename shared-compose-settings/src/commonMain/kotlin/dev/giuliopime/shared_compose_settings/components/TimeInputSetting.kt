@@ -13,24 +13,17 @@ import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MinuteInputSetting(
+fun TimeInputSetting(
     time: Long,
     onTimeChange: (Long) -> Unit,
     name: String
 ) {
-    val minutes by remember(time) {
-        mutableStateOf(time / 60000)
-    }
-
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -39,7 +32,11 @@ fun MinuteInputSetting(
         Column {
             Text(name)
 
-            Text("$minutes min", style = MaterialTheme.typography.labelMedium)
+            if (time < 60000) {
+                Text("${time / 1000} sec", style = MaterialTheme.typography.labelMedium)
+            } else {
+                Text("${time / 60000} min", style = MaterialTheme.typography.labelMedium)
+            }
         }
 
         Column(
@@ -49,7 +46,11 @@ fun MinuteInputSetting(
         ) {
             FilledIconButton(
                 onClick = {
-                    onTimeChange(time + 60000)
+                    if (time < 60000) {
+                        onTimeChange(time + 10000)
+                    } else {
+                        onTimeChange(time + 60000)
+                    }
                 },
                 shape = RoundedCornerShape(
                     topStart = 6.dp,
@@ -65,9 +66,14 @@ fun MinuteInputSetting(
 
             FilledIconButton(
                 onClick = {
-                    val newTime = time - 60000
+                    val newTime = if (time > 60000) {
+                        time - 60000
+                    } else {
+                        time - 10000
+                    }
+
                     if (newTime > 0) {
-                        onTimeChange(time - 60000)
+                        onTimeChange(newTime)
                     }
                 },
                 shape = RoundedCornerShape(

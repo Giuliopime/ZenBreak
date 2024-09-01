@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.giuliopime.shared_compose_settings.FeatureFlags
 import dev.giuliopime.shared_compose_settings.components.BooleanSetting
-import dev.giuliopime.shared_compose_settings.components.MinuteInputSetting
+import dev.giuliopime.shared_compose_settings.components.TimeInputSetting
 import dev.giuliopime.shared_core.data.model.ZbSettings
 import dev.giuliopime.shared_core.viewmodel.IZenBreakViewModel
 
@@ -19,7 +19,7 @@ fun BehaviourPage(
     viewModel: IZenBreakViewModel,
     featureFlags: FeatureFlags
 ) {
-    MinuteInputSetting(
+    TimeInputSetting(
         time = settings.breakFrequency,
         onTimeChange = {
             viewModel.setBreakFrequency(it)
@@ -29,7 +29,7 @@ fun BehaviourPage(
 
     Spacer(Modifier.height(16.dp))
 
-    MinuteInputSetting(
+    TimeInputSetting(
         time = settings.breakDuration,
         onTimeChange = {
             viewModel.setBreakDuration(it)
@@ -61,7 +61,7 @@ fun BehaviourPage(
         Column {
             Spacer(Modifier.height(16.dp))
 
-            MinuteInputSetting(
+            TimeInputSetting(
                 time = settings.breakSnoozeDuration,
                 onTimeChange = {
                     viewModel.setBreakSnoozeDuration(it)

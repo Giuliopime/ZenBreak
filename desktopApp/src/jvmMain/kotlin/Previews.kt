@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import dev.giuliopime.shared_compose_settings.components.BooleanSetting
 import dev.giuliopime.shared_compose_settings.components.ColorSetting
 import dev.giuliopime.shared_compose_settings.components.DoubleChoiceSetting
-import dev.giuliopime.shared_compose_settings.components.MinuteInputSetting
+import dev.giuliopime.shared_compose_settings.components.TimeInputSetting
 
 @Preview
 @Composable
@@ -46,6 +46,6 @@ fun BooleanSettingPreview() {
 
         DoubleChoiceSetting("Preview", true, {}, "Ok", "not ok")
 
-        MinuteInputSetting(10000, {}, "Time")
+        TimeInputSetting(10000, {}, "Time")
     }
 }
