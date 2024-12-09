@@ -16,6 +16,8 @@
 
 
 ## Overview
+> [!WARNING]  
+> The app is temporarily unavailable on the App Store because I have not renewed my Apple Developer Program license yet.  
 <p align="center">
       <img src="https://raw.githubusercontent.com/Giuliopime/ZenBreak/main/assets/screenshot.png" alt="ZenBreak screenshot"
       width="50%"
