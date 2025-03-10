@@ -16,15 +16,6 @@
 
 
 ## Overview
-> [!WARNING]  
-> The app is temporarily unavailable on the App Store because I have not renewed my Apple Developer Program license yet.  
-<p align="center">
-      <img src="https://raw.githubusercontent.com/Giuliopime/ZenBreak/main/assets/screenshot.png" alt="ZenBreak screenshot"
-      width="50%"
-      align="right">
-</p>
-<br>
-
 This app simply reminds you to take a break from the screen, it has customisable behaviour and appereance to suit everyone needs.  
 (*Check out the [website](https://zenbreak.app) for more screenshots*)  
 
